@@ -6,7 +6,8 @@ export function setSettings(settings) {
     localStorage.setItem('flagfrenzy_settings', JSON.stringify(settings));
 }
 export async function getCountries(unOnly) {
-    const res = await fetch('/data/countries.json');
+    // Always use a relative path for GitHub Pages project sites
+    const res = await fetch('data/countries.json');
     const all = await res.json();
     return unOnly ? all.filter(c => c.unMember) : all;
 }
