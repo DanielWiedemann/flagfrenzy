@@ -460,7 +460,7 @@ function renderGameHeader() {
         html += `<div id="livesDisplay" style="background: rgba(245, 158, 11, 0.1); padding: 0.5rem 1rem; border-radius: 0.5rem;">`;
         html += `<span style="font-size: 1.25rem; font-weight: 600; color: #ef4444;">`;
         for (let i = 1; i <= 3; i++) {
-            if (state.livesLeft >= i) {
+            if (state.livesLeft >= i + 1) {
                 html += `❤️`;
             } else {
                 html += `🩶`;
@@ -523,6 +523,19 @@ function checkAnswer(userAnswer) {
         state.streak = 0;
         if (state.mode === 'survival') {
             state.livesLeft--;
+            // Immediately update hearts display after incorrect answer
+            const livesDisplay = document.getElementById('livesDisplay');
+            if (livesDisplay) {
+                let hearts = '';
+                for (let i = 1; i <= 3; i++) {
+                    if (state.livesLeft >= i + 1) {
+                        hearts += '❤️ ';
+                    } else {
+                        hearts += '🩶 ';
+                    }
+                }
+                livesDisplay.innerHTML = `<span style=\"font-size: 1.25rem; font-weight: 600; color: #ef4444;\">${hearts}</span>`;
+            }
         }
     }
     updateGameUI();
@@ -589,7 +602,7 @@ function startGame() {
         state.totalQuestions = 999;
         startTimer();
     } else if (state.mode === 'survival') {
-        state.livesLeft = 3;
+        state.livesLeft = 4;
         state.totalQuestions = 999;
     } else {
         state.totalQuestions = 10;
@@ -692,7 +705,7 @@ async function initGame() {
         renderPopulationHighest3Question();
     } else if (state.mode === 'survival') {
         state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
-        state.livesLeft = 3;
+        state.livesLeft = 4;
         startGame();
     } else {
         startGame();
