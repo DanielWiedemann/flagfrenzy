@@ -1,0 +1,1737 @@
+<!DOCTYPE html><html lang="en" class="h-full"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flag Frenzy - Ultimate Flag Quiz</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+
+        /* Dark mode styles */
+        .dark body {
+            color: #f9fafb;
+            background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .dark .header {
+            background: rgba(31, 41, 55, 0.9);
+            border-bottom-color: #374151;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #5d5cde, #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .icon-btn {
+            padding: 0.5rem;
+            border: none;
+            background: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1.25rem;
+            transition: background-color 0.2s;
+        }
+
+        .icon-btn:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .icon-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Cards and containers */
+        .card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .dark .card {
+            background: #1f2937;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(93, 92, 222, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary {
+            background: #5d5cde;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #4a4bc7;
+        }
+
+        .btn-secondary {
+            background: #6b7280;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        /* Grid layouts */
+        .grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid-cols-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .grid-cols-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        @media (min-width: 768px) {
+            .md\\:grid-cols-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .md\\:grid-cols-4 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Text styles */
+        .text-center {
+            text-align: center;
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+        }
+
+        .text-2xl {
+            font-size: 1.5rem;
+        }
+
+        .text-3xl {
+            font-size: 1.875rem;
+        }
+
+        .text-4xl {
+            font-size: 2.25rem;
+        }
+
+        .text-8xl {
+            font-size: 6rem;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        .font-semibold {
+            font-weight: 600;
+        }
+
+        /* Spacing */
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-6 { margin-top: 1.5rem; }
+
+        .p-2 { padding: 0.5rem; }
+        .p-3 { padding: 0.75rem; }
+        .p-4 { padding: 1rem; }
+        .p-6 { padding: 1.5rem; }
+        .p-8 { padding: 2rem; }
+
+        /* Flex utilities */
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .space-x-3 > * + * {
+            margin-left: 0.75rem;
+        }
+
+        .space-x-4 > * + * {
+            margin-left: 1rem;
+        }
+
+        .space-y-3 > * + * {
+            margin-top: 0.75rem;
+        }
+
+        /* Flag display */
+        .flag-emoji {
+            font-size: 6rem;
+            line-height: 1;
+            user-select: none;
+            margin: 1rem 0;
+        }
+
+        /* Game mode cards */
+        .game-mode-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .dark .game-mode-card {
+            background: #1f2937;
+        }
+
+        .game-mode-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .game-mode-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Answer options */
+        .answer-option {
+            background: #f3f4f6;
+            border: 2px solid transparent;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .dark .answer-option {
+            background: #374151;
+            color: #f9fafb;
+        }
+
+        .answer-option:hover {
+            background: #e5e7eb;
+        }
+
+        .dark .answer-option:hover {
+            background: #4b5563;
+        }
+
+        .answer-option.correct {
+            background: #10b981;
+            color: white;
+        }
+
+        .answer-option.incorrect {
+            background: #ef4444;
+            color: white;
+        }
+
+        /* Form inputs */
+        .input {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+            border: 2px solid #d1d5db;
+            border-radius: 0.75rem;
+            background: white;
+            transition: all 0.2s ease;
+        }
+
+        .dark .input {
+            background: #374151;
+            border-color: #4b5563;
+            color: #f9fafb;
+        }
+
+        .input:focus {
+            outline: none;
+            border-color: #5d5cde;
+            box-shadow: 0 0 0 3px rgba(93, 92, 222, 0.1);
+        }
+
+        /* Selection buttons */
+        .selection-btn {
+            padding: 1rem;
+            border: 2px solid transparent;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .selection-btn.selected {
+            border-color: #5d5cde;
+            background: rgba(93, 92, 222, 0.1);
+        }
+
+        /* Difficulty buttons */
+        .difficulty-easy {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .dark .difficulty-easy {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+        }
+
+        .difficulty-medium {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .dark .difficulty-medium {
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+        }
+
+        .difficulty-hard {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .dark .difficulty-hard {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+
+        /* Stats display */
+        .stat-card {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .dark .stat-card {
+            background: #1f2937;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #5d5cde;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .dark .stat-label {
+            color: #9ca3af;
+        }
+
+        /* Modals */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            padding: 2rem;
+            max-width: 28rem;
+            width: 100%;
+            margin: 1rem;
+        }
+
+        .dark .modal-content {
+            background: #1f2937;
+        }
+
+        /* Toggle switch */
+        .toggle {
+            width: 3rem;
+            height: 1.5rem;
+            background: #d1d5db;
+            border-radius: 9999px;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle.active {
+            background: #10b981;
+        }
+
+        .toggle-thumb {
+            width: 1.25rem;
+            height: 1.25rem;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 0.125rem;
+            left: 0.125rem;
+            transition: transform 0.2s;
+        }
+
+        .toggle.active .toggle-thumb {
+            transform: translateX(1.5rem);
+        }
+
+        /* Utility classes */
+        .hidden {
+            display: none;
+        }
+
+        .text-primary {
+            color: #5d5cde;
+        }
+
+        .text-success {
+            color: #10b981;
+        }
+
+        .text-danger {
+            color: #ef4444;
+        }
+
+        .text-gray {
+            color: #6b7280;
+        }
+
+        .dark .text-gray {
+            color: #9ca3af;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .animate-bounce-in {
+            animation: bounceIn 0.6s ease-out;
+        }
+
+        .animate-slide-up {
+            animation: slideUp 0.3s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 0.5rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+            
+            .text-4xl {
+                font-size: 2rem;
+            }
+            
+            .text-8xl {
+                font-size: 4rem;
+            }
+            
+            .flag-emoji {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img id="logoLight" src="https://pfst.cf2.poecdn.net/base/image/357ab8028cffdbabc583cccc46a0890d3ff99b9c209eb099358a5e4e64d3abd8?w=458&amp;h=76" alt="Flag Frenzy" style="height: 38px; width: auto;">
+                <img id="logoDark" src="https://pfst.cf2.poecdn.net/base/image/ce253bb7a99c91d09e740d012f1f74eb1c3b2313424b6c8ba041f228ae5d8a46?w=458&amp;h=76" alt="Flag Frenzy" style="height: 38px; width: auto; display: none;">
+            </div>
+            <div class="header-actions">
+                <button id="statsBtn" class="icon-btn">📊</button>
+                <button id="settingsBtn" class="icon-btn">⚙️</button>
+                <button id="darkModeToggle" class="icon-btn">
+                    <span id="darkModeIcon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container" style="padding-top: 2rem; padding-bottom: 2rem;">
+        <!-- Home Screen -->
+        <div id="homeScreen" class="animate-fade-in">
+            <div class="text-center mb-8">
+                <div class="text-8xl mb-4">🏁</div>
+                <h2 class="text-4xl font-bold mb-2">Welcome to Flag Frenzy!</h2>
+                <p class="text-xl text-gray">Test your knowledge of world flags</p>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-3" style="max-width: 24rem; margin: 0 auto; margin-bottom: 4rem;">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalGames">0</div>
+                    <div class="stat-label">Games</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number text-success" id="bestScore">0</div>
+                    <div class="stat-label">Best Score</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" style="color: #9333ea;" id="accuracy">0%</div>
+                    <div class="stat-label">Accuracy</div>
+                </div>
+            </div>
+
+            <!-- Game Mode Selection -->
+            <div class="grid md:grid-cols-2 mb-8">
+                <div class="game-mode-card" data-mode="multiple-choice">
+                    <div class="game-mode-icon text-center">🎯</div>
+                    <h3 class="text-xl font-bold mb-2 text-center">Multiple Choice</h3>
+                    <p class="text-gray text-center">Choose the correct country from 4 options</p>
+                </div>
+                <div class="game-mode-card" data-mode="type-country">
+                    <div class="game-mode-icon text-center">⌨️</div>
+                    <h3 class="text-xl font-bold mb-2 text-center">Type Country</h3>
+                    <p class="text-gray text-center">Type the country name</p>
+                </div>
+                <div class="game-mode-card" data-mode="time-attack">
+                    <div class="game-mode-icon text-center">⏱️</div>
+                    <h3 class="text-xl font-bold mb-2 text-center">Time Attack</h3>
+                    <p class="text-gray text-center">Answer as many as possible in 60 seconds</p>
+                </div>
+                <div class="game-mode-card" data-mode="survival">
+                    <div class="game-mode-icon text-center">💀</div>
+                    <h3 class="text-xl font-bold mb-2 text-center">Survival Mode</h3>
+                    <p class="text-gray text-center">One life - how far can you go?</p>
+                </div>
+            </div>
+
+            <!-- Quick Start -->
+            <div class="text-center">
+                <button id="quickStartBtn" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.125rem;">
+                    Quick Start (Random Mode)
+                </button>
+            </div>
+        </div>
+
+        <!-- Game Setup Screen -->
+        <div id="setupScreen" class="hidden animate-slide-up">
+            <div class="card">
+                <h2 class="text-3xl font-bold mb-6 text-center">Game Setup</h2>
+                
+                <!-- Selected Mode Display -->
+                <div class="mb-6 text-center">
+                    <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(93, 92, 222, 0.1); padding: 0.5rem 1rem; border-radius: 0.5rem;">
+                        <span id="selectedModeIcon" class="text-2xl">🎯</span>
+                        <span id="selectedModeText" class="font-semibold">Multiple Choice</span>
+                    </div>
+                </div>
+
+                <!-- Difficulty Selection -->
+                <div class="mb-6">
+                    <h3 class="text-xl font-semibold mb-4">Difficulty</h3>
+                    <div class="grid grid-cols-3">
+                        <button class="selection-btn difficulty-easy selected" data-difficulty="easy">
+                            <div class="text-2xl mb-2">😊</div>
+                            Easy
+                        </button>
+                        <button class="selection-btn difficulty-medium" data-difficulty="medium">
+                            <div class="text-2xl mb-2">🤔</div>
+                            Medium
+                        </button>
+                        <button class="selection-btn difficulty-hard" data-difficulty="hard">
+                            <div class="text-2xl mb-2">😤</div>
+                            Hard
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Continent Selection -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold mb-4">Continent</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4">
+                        <button class="selection-btn selected" data-continent="all" style="background: rgba(59, 130, 246, 0.1);">
+                            <div class="text-xl mb-1">🌍</div>
+                            All
+                        </button>
+                        <button class="selection-btn" data-continent="africa">
+                            <div class="text-xl mb-1">🌍</div>
+                            Africa
+                        </button>
+                        <button class="selection-btn" data-continent="asia">
+                            <div class="text-xl mb-1">🌏</div>
+                            Asia
+                        </button>
+                        <button class="selection-btn" data-continent="europe">
+                            <div class="text-xl mb-1">🌍</div>
+                            Europe
+                        </button>
+                        <button class="selection-btn" data-continent="north-america">
+                            <div class="text-xl mb-1">🌎</div>
+                            N. America
+                        </button>
+                        <button class="selection-btn" data-continent="south-america">
+                            <div class="text-xl mb-1">🌎</div>
+                            S. America
+                        </button>
+                        <button class="selection-btn" data-continent="oceania">
+                            <div class="text-xl mb-1">🌏</div>
+                            Oceania
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex space-x-4">
+                    <button id="backToHome" class="btn btn-secondary" style="flex: 1;">Back</button>
+                    <button id="startGame" class="btn btn-primary" style="flex: 1;">Start Game</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="gameScreen" class="hidden animate-fade-in">
+            <!-- Game Header -->
+            <div class="card">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center space-x-4">
+                        <div style="background: rgba(93, 92, 222, 0.1); padding: 0.5rem 1rem; border-radius: 0.5rem;">
+                            <span style="font-size: 0.875rem; font-weight: 600; color: #5d5cde;">Score: <span id="currentScore">0</span></span>
+                        </div>
+                        <div style="background: rgba(16, 185, 129, 0.1); padding: 0.5rem 1rem; border-radius: 0.5rem;">
+                            <span style="font-size: 0.875rem; font-weight: 600; color: #10b981;">Streak: <span id="currentStreak">0</span></span>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div id="timerDisplay" class="hidden" style="background: rgba(239, 68, 68, 0.1); padding: 0.5rem 1rem; border-radius: 0.5rem;">
+                            <span style="font-size: 0.875rem; font-weight: 600; color: #ef4444;">⏱️ <span id="timeLeft">60</span>s</span>
+                        </div>
+                        <div id="livesDisplay" class="hidden" style="background: rgba(245, 158, 11, 0.1); padding: 0.5rem 1rem; border-radius: 0.5rem;">
+                            <span style="font-size: 0.875rem; font-weight: 600; color: #f59e0b;">❤️ <span id="livesLeft">1</span></span>
+                        </div>
+                        <button id="quitGame" class="icon-btn">✖️</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Container -->
+            <div class="card text-center">
+                <div class="mb-6">
+                    <div class="text-gray mb-2" style="font-size: 0.875rem;">Question <span id="questionNumber">1</span></div>
+                    <h3 class="text-2xl font-bold mb-4">Which country does this flag belong to?</h3>
+                    
+                    <!-- Flag Display -->
+                    <div class="mb-6">
+                        <div class="flag-emoji animate-bounce-in" id="flagDisplay">🇺🇸</div>
+                        <div id="flagHint" class="text-gray hidden" style="font-size: 0.875rem;"></div>
+                    </div>
+                </div>
+
+                <!-- Answer Container -->
+                <div id="answerContainer">
+                    <!-- Multiple Choice Options -->
+                    <div id="multipleChoiceOptions" class="grid md:grid-cols-2 hidden">
+                        <button class="answer-option" data-answer="0">Option 1</button>
+                        <button class="answer-option" data-answer="1">Option 2</button>
+                        <button class="answer-option" data-answer="2">Option 3</button>
+                        <button class="answer-option" data-answer="3">Option 4</button>
+                    </div>
+
+                    <!-- Text Input -->
+                    <div id="textInputContainer" class="hidden">
+                        <input type="text" id="countryInput" placeholder="Type the country name..." class="input">
+                        <button id="submitAnswer" class="btn btn-primary mt-4" style="padding: 0.75rem 2rem;">Submit Answer</button>
+                    </div>
+                </div>
+
+                <!-- Feedback -->
+                <div id="feedbackContainer" class="hidden mt-6">
+                    <div id="feedbackMessage" class="text-xl font-bold mb-2"></div>
+                    <div id="correctAnswer" class="text-gray mb-4"></div>
+                    <div id="flagFact" class="text-gray mb-4 hidden" style="font-style: italic; font-size: 0.875rem;"></div>
+                    <button id="nextQuestion" class="btn btn-primary">Next Question</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="hidden animate-bounce-in">
+            <div class="card text-center">
+                <div class="mb-6">
+                    <div id="resultIcon" class="text-8xl mb-4">🏆</div>
+                    <h2 id="resultTitle" class="text-3xl font-bold mb-2">Great Job!</h2>
+                    <p id="resultSubtitle" class="text-xl text-gray">You've completed the quiz!</p>
+                </div>
+
+                <!-- Final Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 mb-8">
+                    <div style="background: rgba(93, 92, 222, 0.1); border-radius: 0.75rem; padding: 1rem;">
+                        <div class="text-2xl font-bold text-primary" id="finalScore">0</div>
+                        <div class="text-gray" style="font-size: 0.875rem;">Final Score</div>
+                    </div>
+                    <div style="background: rgba(16, 185, 129, 0.1); border-radius: 0.75rem; padding: 1rem;">
+                        <div class="text-2xl font-bold text-success" id="finalAccuracy">0%</div>
+                        <div class="text-gray" style="font-size: 0.875rem;">Accuracy</div>
+                    </div>
+                    <div style="background: rgba(147, 51, 234, 0.1); border-radius: 0.75rem; padding: 1rem;">
+                        <div class="text-2xl font-bold" style="color: #9333ea;" id="finalTime">0s</div>
+                        <div class="text-gray" style="font-size: 0.875rem;">Time</div>
+                    </div>
+                    <div style="background: rgba(245, 158, 11, 0.1); border-radius: 0.75rem; padding: 1rem;">
+                        <div class="text-2xl font-bold" style="color: #f59e0b;" id="bestStreak">0</div>
+                        <div class="text-gray" style="font-size: 0.875rem;">Best Streak</div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col space-y-3" style="gap: 0.75rem;">
+                    <div style="display: flex; gap: 0.75rem;">
+                        <button id="playAgain" class="btn btn-primary" style="flex: 1;">Play Again</button>
+                        <button id="changeSettings" class="btn btn-secondary" style="flex: 1;">Change Settings</button>
+                    </div>
+                    <button id="backToMenu" class="btn btn-success" style="width: 100%;">Main Menu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal hidden">
+        <div class="modal-content">
+            <h3 class="text-2xl font-bold mb-6">Settings</h3>
+            
+            <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                    <span class="font-semibold">Sound Effects</span>
+                    <div id="soundToggle" class="toggle">
+                        <div class="toggle-thumb"></div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between items-center">
+                    <span class="font-semibold">Flag Facts</span>
+                    <div id="factsToggle" class="toggle active">
+                        <div class="toggle-thumb"></div>
+                    </div>
+                </div>
+                
+                <div style="border-top: 1px solid #e5e7eb; padding-top: 1rem; margin-top: 1rem;">
+                    <button id="resetStats" class="btn btn-danger" style="width: 100%;">Reset All Statistics</button>
+                </div>
+            </div>
+            
+            <div class="mt-6">
+                <button id="closeSettings" class="btn btn-secondary" style="width: 100%;">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Modal -->
+    <div id="statsModal" class="modal hidden">
+        <div class="modal-content">
+            <h3 class="text-2xl font-bold mb-6">Statistics</h3>
+            
+            <div class="grid grid-cols-2 mb-6">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-primary" id="statsTotalGames">0</div>
+                    <div class="text-gray" style="font-size: 0.875rem;">Total Games</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-success" id="statsBestScore">0</div>
+                    <div class="text-gray" style="font-size: 0.875rem;">Best Score</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold" style="color: #9333ea;" id="statsAccuracy">0%</div>
+                    <div class="text-gray" style="font-size: 0.875rem;">Overall Accuracy</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold" style="color: #f59e0b;" id="statsLongestStreak">0</div>
+                    <div class="text-gray" style="font-size: 0.875rem;">Longest Streak</div>
+                </div>
+            </div>
+
+            <div class="text-center text-gray mb-4" style="font-size: 0.875rem;">
+                <p>Total Correct: <span id="statsTotalCorrect">0</span></p>
+                <p>Total Questions: <span id="statsTotalQuestions">0</span></p>
+            </div>
+            
+            <button id="closeStats" class="btn btn-primary" style="width: 100%;">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize dark mode without localStorage to avoid security errors
+        function initializeDarkMode() {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (prefersDark) {
+                document.documentElement.classList.add('dark');
+                document.getElementById('darkModeIcon').textContent = '☀️';
+            } else {
+                document.documentElement.classList.remove('dark');
+                document.getElementById('darkModeIcon').textContent = '🌙';
+            }
+        }
+
+        // Initialize on load
+        initializeDarkMode();
+
+        // Color and pattern groups for smart multiple choice generation
+        const flagGroups = {
+            // Red and white combinations
+            redWhite: ['Austria', 'Poland', 'Monaco', 'Indonesia', 'Latvia', 'Peru', 'Canada'],
+            // Blue, white, red combinations  
+            blueWhiteRed: ['France', 'Netherlands', 'Russia', 'United States', 'United Kingdom', 'Czech Republic', 'Croatia'],
+            // Nordic crosses
+            nordicCross: ['Norway', 'Sweden', 'Denmark', 'Finland'],
+            // Green, white, red combinations
+            greenWhiteRed: ['Italy', 'Mexico', 'Ireland', 'Hungary', 'Bulgaria'],
+            // Tricolor horizontal
+            tricolorHorizontal: ['Germany', 'Belgium', 'Lithuania', 'Estonia'],
+            // Stars and stripes/symbols
+            starsAndSymbols: ['United States', 'Malaysia', 'Uruguay', 'Chile', 'Turkey'],
+            // African patterns
+            africanPatterns: ['South Africa', 'Tanzania', 'Madagascar', 'Seychelles'],
+            // Asian symbols
+            asianSymbols: ['Japan', 'South Korea', 'Bangladesh', 'Kazakhstan'],
+            // Yellow/gold featured
+            yellowFeatured: ['Spain', 'Ukraine', 'Colombia', 'Lithuania'],
+            // Simple bicolor
+            bicolor: ['Poland', 'Monaco', 'Indonesia', 'Ukraine']
+        };
+
+        // Function to get similar flags for smart multiple choice
+        function getSimilarFlags(targetFlag) {
+            const similarFlags = [];
+            
+            // Find which groups the target flag belongs to
+            for (const [groupName, flags] of Object.entries(flagGroups)) {
+                if (flags.includes(targetFlag.name)) {
+                    // Add other flags from the same group
+                    flags.forEach(flagName => {
+                        if (flagName !== targetFlag.name) {
+                            const flag = flagDatabase.find(f => f.name === flagName);
+                            if (flag) similarFlags.push(flag);
+                        }
+                    });
+                }
+            }
+            
+            // If we have enough similar flags, return them
+            if (similarFlags.length >= 3) {
+                return similarFlags.sort(() => 0.5 - Math.random()).slice(0, 3);
+            }
+            
+            // Otherwise, fall back to continent-based similarity
+            const continentFlags = flagDatabase.filter(f => 
+                f.continent === targetFlag.continent && f.name !== targetFlag.name
+            );
+            
+            if (continentFlags.length >= 3) {
+                return continentFlags.sort(() => 0.5 - Math.random()).slice(0, 3);
+            }
+            
+            // Final fallback to random flags
+            return flagDatabase
+                .filter(f => f.name !== targetFlag.name)
+                .sort(() => 0.5 - Math.random())
+                .slice(0, 3);
+        }
+
+        // Flag Database with comprehensive country data
+        const flagDatabase = [
+            // Easy flags
+            { name: "United States", flag: "🇺🇸", continent: "north-america", difficulty: "easy", fact: "The Stars and Stripes has 50 stars representing the 50 states." },
+            { name: "United Kingdom", flag: "🇬🇧", continent: "europe", difficulty: "easy", fact: "The Union Jack combines the flags of England, Scotland, and Northern Ireland." },
+            { name: "France", flag: "🇫🇷", continent: "europe", difficulty: "easy", fact: "The tricolor flag represents liberty, equality, and fraternity." },
+            { name: "Germany", flag: "🇩🇪", continent: "europe", difficulty: "easy", fact: "The black, red, and gold colors date back to the 19th century." },
+            { name: "Japan", flag: "🇯🇵", continent: "asia", difficulty: "easy", fact: "The red circle represents the sun, which is central to Japanese culture." },
+            { name: "Canada", flag: "🇨🇦", continent: "north-america", difficulty: "easy", fact: "The maple leaf is a symbol of Canadian identity." },
+            { name: "Australia", flag: "🇦🇺", continent: "oceania", difficulty: "easy", fact: "Features the Southern Cross constellation visible from Australia." },
+            { name: "Brazil", flag: "🇧🇷", continent: "south-america", difficulty: "easy", fact: "The green represents forests, yellow represents mineral wealth." },
+            { name: "China", flag: "🇨🇳", continent: "asia", difficulty: "easy", fact: "The large star represents the Communist Party, smaller stars represent the people." },
+            { name: "Russia", flag: "🇷🇺", continent: "asia", difficulty: "easy", fact: "White represents nobility, blue represents honesty, red represents courage." },
+            
+            // Medium flags
+            { name: "South Korea", flag: "🇰🇷", continent: "asia", difficulty: "medium", fact: "The Taeguk symbol represents the balance of opposites in the universe." },
+            { name: "Italy", flag: "🇮🇹", continent: "europe", difficulty: "medium", fact: "Legend says green represents hope, white represents faith, red represents charity." },
+            { name: "Spain", flag: "🇪🇸", continent: "europe", difficulty: "medium", fact: "Features the coat of arms with symbols from Spanish kingdoms." },
+            { name: "Mexico", flag: "🇲🇽", continent: "north-america", difficulty: "medium", fact: "The eagle eating a snake represents an Aztec legend." },
+            { name: "India", flag: "🇮🇳", continent: "asia", difficulty: "medium", fact: "The wheel in the center is the Ashoka Chakra, representing progress." },
+            { name: "Argentina", flag: "🇦🇷", continent: "south-america", difficulty: "medium", fact: "The sun represents the Inca sun god Inti." },
+            { name: "South Africa", flag: "🇿🇦", continent: "africa", difficulty: "medium", fact: "The Y-shape represents the convergence of diverse elements in unity." },
+            { name: "Turkey", flag: "🇹🇷", continent: "asia", difficulty: "medium", fact: "The crescent and star are traditional symbols of Islam and the Ottoman Empire." },
+            { name: "Egypt", flag: "🇪🇬", continent: "africa", difficulty: "medium", fact: "Features the Eagle of Saladin, a symbol of Arab nationalism." },
+            { name: "Thailand", flag: "🇹🇭", continent: "asia", difficulty: "medium", fact: "Red represents the nation, white represents religion, blue represents the monarchy." },
+            { name: "Israel", flag: "🇮🇱", continent: "asia", difficulty: "medium", fact: "The Star of David is flanked by two blue stripes representing prayer shawls." },
+            { name: "Greece", flag: "🇬🇷", continent: "europe", difficulty: "medium", fact: "The nine stripes represent the syllables in 'Freedom or Death' in Greek." },
+            { name: "Chile", flag: "🇨🇱", continent: "south-america", difficulty: "medium", fact: "The star represents honor and progress, blue represents the sky." },
+            { name: "Peru", flag: "🇵🇪", continent: "south-america", difficulty: "medium", fact: "Red represents the blood spilled for independence, white represents peace." },
+            { name: "Colombia", flag: "🇨🇴", continent: "south-america", difficulty: "medium", fact: "Yellow represents gold, blue represents seas, red represents blood of patriots." },
+            { name: "Norway", flag: "🇳🇴", continent: "europe", difficulty: "medium", fact: "The Nordic cross design influenced many other Scandinavian flags." },
+            { name: "Sweden", flag: "🇸🇪", continent: "europe", difficulty: "medium", fact: "One of the oldest flags still in use, dating back to the 16th century." },
+            { name: "Denmark", flag: "🇩🇰", continent: "europe", difficulty: "medium", fact: "Legend says the flag fell from heaven during a battle in 1219." },
+            { name: "Finland", flag: "🇫🇮", continent: "europe", difficulty: "medium", fact: "Blue represents lakes and sky, white represents snow and summer nights." },
+            { name: "Poland", flag: "🇵🇱", continent: "europe", difficulty: "medium", fact: "White represents peace, red represents the blood spilled for freedom." },
+            
+            // Hard flags
+            { name: "Nepal", flag: "🇳🇵", continent: "asia", difficulty: "hard", fact: "The only non-rectangular flag in the world, representing the Himalayas." },
+            { name: "Bhutan", flag: "🇧🇹", continent: "asia", difficulty: "hard", fact: "Features a white dragon representing the country's name 'Land of the Thunder Dragon'." },
+            { name: "Madagascar", flag: "🇲🇬", continent: "africa", difficulty: "hard", fact: "White represents purity, red represents sovereignty, green represents hope." },
+            { name: "Papua New Guinea", flag: "🇵🇬", continent: "oceania", difficulty: "hard", fact: "Features the Bird of Paradise and the Southern Cross constellation." },
+            { name: "Kazakhstan", flag: "🇰🇿", continent: "asia", difficulty: "hard", fact: "The golden eagle represents freedom and the nomadic culture." },
+            { name: "Bangladesh", flag: "🇧🇩", continent: "asia", difficulty: "hard", fact: "The red circle represents the sun rising over Bengal and the blood of independence." },
+            { name: "Uruguay", flag: "🇺🇾", continent: "south-america", difficulty: "hard", fact: "The Sun of May represents the May Revolution against Spanish rule." },
+            { name: "Tanzania", flag: "🇹🇿", continent: "africa", difficulty: "hard", fact: "Green represents forests, yellow represents minerals, blue represents the ocean." },
+            { name: "Mozambique", flag: "🇲🇿", continent: "africa", difficulty: "hard", fact: "The only flag in the world to feature a modern rifle (AK-47)." },
+            { name: "Seychelles", flag: "🇸🇨", continent: "africa", difficulty: "hard", fact: "The five rays represent a dynamic new country moving into the future." },
+            { name: "Palau", flag: "🇵🇼", continent: "oceania", difficulty: "hard", fact: "The yellow circle represents the full moon, which is important in Palauan culture." },
+            { name: "Vanuatu", flag: "🇻🇺", continent: "oceania", difficulty: "hard", fact: "The Y-shape represents the chain of islands and the boar's tusk represents prosperity." },
+            { name: "Estonia", flag: "🇪🇪", continent: "europe", difficulty: "hard", fact: "Blue represents loyalty and the sky, black represents past oppression, white represents hope." },
+            { name: "Latvia", flag: "🇱🇻", continent: "europe", difficulty: "hard", fact: "One of the oldest flags in the world, dating back to 1279." },
+            { name: "Lithuania", flag: "🇱🇹", continent: "europe", difficulty: "hard", fact: "Yellow represents wheat fields, green represents forests, red represents blood spilled for freedom." },
+            { name: "Slovenia", flag: "🇸🇮", continent: "europe", difficulty: "hard", fact: "Features Mount Triglav, the country's highest peak." },
+            { name: "Slovakia", flag: "🇸🇰", continent: "europe", difficulty: "hard", fact: "The coat of arms features a double cross on three hills." },
+            { name: "Belarus", flag: "🇧🇾", continent: "europe", difficulty: "hard", fact: "Features a traditional Belarusian decorative pattern on the left side." },
+            { name: "Moldova", flag: "🇲🇩", continent: "europe", difficulty: "hard", fact: "The eagle holds a cross and an olive branch representing Christianity and peace." },
+            { name: "Montenegro", flag: "🇲🇪", continent: "europe", difficulty: "hard", fact: "Features a golden eagle with a shield containing a lion." },
+            { name: "Netherlands", flag: "🇳🇱", continent: "europe", difficulty: "medium", fact: "Originally orange, white, and blue - the oldest tricolor flag." },
+            { name: "Belgium", flag: "🇧🇪", continent: "europe", difficulty: "medium", fact: "Black, yellow, and red are the colors of the Duchy of Brabant." },
+            { name: "Switzerland", flag: "🇨🇭", continent: "europe", difficulty: "medium", fact: "One of only two square flags in the world (along with Vatican City)." },
+            { name: "Austria", flag: "🇦🇹", continent: "europe", difficulty: "medium", fact: "Legend says the design comes from a duke's white coat stained with blood." },
+            { name: "Czech Republic", flag: "🇨🇿", continent: "europe", difficulty: "medium", fact: "Originally just white and red, blue was added to distinguish from Poland." },
+            { name: "Portugal", flag: "🇵🇹", continent: "europe", difficulty: "medium", fact: "Green represents hope, red represents the blood of those who died for the nation." },
+            { name: "Ireland", flag: "🇮🇪", continent: "europe", difficulty: "medium", fact: "Green represents Catholics, orange represents Protestants, white represents peace." },
+            { name: "Ukraine", flag: "🇺🇦", continent: "europe", difficulty: "medium", fact: "Blue represents the sky, yellow represents wheat fields." },
+            { name: "Romania", flag: "🇷🇴", continent: "europe", difficulty: "medium", fact: "Blue represents liberty, yellow represents justice, red represents fraternity." },
+            { name: "Hungary", flag: "🇭🇺", continent: "europe", difficulty: "medium", fact: "Red represents strength, white represents faithfulness, green represents hope." },
+            { name: "Bulgaria", flag: "🇧🇬", continent: "europe", difficulty: "medium", fact: "White represents peace, green represents fertility, red represents courage." },
+            { name: "Croatia", flag: "🇭🇷", continent: "europe", difficulty: "medium", fact: "Features a checkerboard coat of arms dating back to medieval times." },
+            { name: "Serbia", flag: "🇷🇸", continent: "europe", difficulty: "medium", fact: "Features a coat of arms with a two-headed eagle." },
+            { name: "Bosnia and Herzegovina", flag: "🇧🇦", continent: "europe", difficulty: "hard", fact: "The triangle represents the country's three main ethnic groups." },
+            { name: "North Macedonia", flag: "🇲🇰", continent: "europe", difficulty: "hard", fact: "The sun represents the 'new sun of liberty' mentioned in the national anthem." }
+        ];
+
+        // Game state
+        let currentGameState = {
+            mode: null,
+            difficulty: 'easy',
+            continent: 'all',
+            score: 0,
+            streak: 0,
+            bestStreak: 0,
+            questionNumber: 0,
+            totalQuestions: 10,
+            timeLeft: 60,
+            livesLeft: 1,
+            timer: null,
+            currentQuestion: null,
+            correctAnswers: 0,
+            startTime: null,
+            usedQuestions: []
+        };
+
+        // Settings (no localStorage)
+        let settings = {
+            soundEnabled: true,
+            factsEnabled: true
+        };
+
+        // Statistics (no localStorage)
+        let stats = {
+            totalGames: 0,
+            bestScore: 0,
+            totalCorrect: 0,
+            totalQuestions: 0,
+            longestStreak: 0
+        };
+
+        // Audio context for sound effects
+        let audioContext;
+        function initAudio() {
+            try {
+                if (!audioContext) {
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                }
+            } catch (e) {
+                console.log('Audio not supported');
+            }
+        }
+
+        function playSound(frequency, duration, type = 'sine') {
+            if (!settings.soundEnabled || !audioContext) return;
+            
+            try {
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+                oscillator.type = type;
+                
+                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + duration);
+                
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + duration);
+            } catch (e) {
+                console.log('Sound playback failed');
+            }
+        }
+
+        function playCorrectSound() {
+            initAudio();
+            playSound(523.25, 0.3); // C5 note
+            setTimeout(() => playSound(659.25, 0.3), 150); // E5 note
+        }
+
+        function playIncorrectSound() {
+            initAudio();
+            playSound(220, 0.5); // A3 note (lower, sadder)
+        }
+
+        function playStartSound() {
+            initAudio();
+            playSound(440, 0.2); // A4 note
+        }
+
+        function playEndSound() {
+            initAudio();
+            playSound(523.25, 0.3);
+            setTimeout(() => playSound(659.25, 0.3), 200);
+            setTimeout(() => playSound(783.99, 0.5), 400);
+        }
+
+        // Screen management
+        function showScreen(screenId) {
+            const screens = ['homeScreen', 'setupScreen', 'gameScreen', 'resultsScreen'];
+            screens.forEach(id => {
+                const screen = document.getElementById(id);
+                if (id === screenId) {
+                    screen.classList.remove('hidden');
+                    screen.classList.add('animate-fade-in');
+                } else {
+                    screen.classList.add('hidden');
+                    screen.classList.remove('animate-fade-in');
+                }
+            });
+        }
+
+        // Get filtered flags based on settings
+        function getFilteredFlags() {
+            return flagDatabase.filter(flag => {
+                const difficultyMatch = currentGameState.difficulty === 'easy' ? 
+                    flag.difficulty === 'easy' :
+                    currentGameState.difficulty === 'medium' ? 
+                    (flag.difficulty === 'easy' || flag.difficulty === 'medium') :
+                    true; // hard includes all
+                
+                const continentMatch = currentGameState.continent === 'all' || 
+                    flag.continent === currentGameState.continent;
+                
+                return difficultyMatch && continentMatch;
+            });
+        }
+
+        // Generate question
+        function generateQuestion() {
+            const availableFlags = getFilteredFlags().filter(flag => 
+                !currentGameState.usedQuestions.includes(flag.name)
+            );
+            
+            if (availableFlags.length === 0) {
+                // Reset used questions if we've run out
+                currentGameState.usedQuestions = [];
+                return generateQuestion();
+            }
+            
+            const randomFlag = availableFlags[Math.floor(Math.random() * availableFlags.length)];
+            currentGameState.usedQuestions.push(randomFlag.name);
+            
+            let wrongAnswers = [];
+            // For modes that use multiple choice (including time-attack and survival)
+            if (currentGameState.mode === 'multiple-choice' || 
+                currentGameState.mode === 'time-attack' || 
+                currentGameState.mode === 'survival') {
+                // Use smart similar flag selection for challenging options
+                const similarFlags = getSimilarFlags(randomFlag);
+                wrongAnswers = similarFlags.map(f => f.name);
+            }
+            
+            return {
+                correct: randomFlag,
+                wrongAnswers: wrongAnswers,
+                hint: currentGameState.difficulty === 'medium' ? 
+                    `This country is in ${randomFlag.continent.replace('-', ' ')}` : null
+            };
+        }
+
+        // Display question
+        function displayQuestion() {
+            currentGameState.questionNumber++;
+            currentGameState.currentQuestion = generateQuestion();
+            
+            document.getElementById('questionNumber').textContent = currentGameState.questionNumber;
+            document.getElementById('flagDisplay').textContent = currentGameState.currentQuestion.correct.flag;
+            
+            const hintElement = document.getElementById('flagHint');
+            if (currentGameState.currentQuestion.hint) {
+                hintElement.textContent = currentGameState.currentQuestion.hint;
+                hintElement.classList.remove('hidden');
+            } else {
+                hintElement.classList.add('hidden');
+            }
+            
+            // Reset answer containers
+            document.getElementById('multipleChoiceOptions').classList.add('hidden');
+            document.getElementById('textInputContainer').classList.add('hidden');
+            document.getElementById('feedbackContainer').classList.add('hidden');
+            
+            // Setup answer interface based on mode
+            // Time Attack and Survival use multiple choice for speed
+            if (currentGameState.mode === 'multiple-choice' || 
+                currentGameState.mode === 'time-attack' || 
+                currentGameState.mode === 'survival') {
+                setupMultipleChoice();
+            } else if (currentGameState.mode === 'type-country') {
+                setupTextInput();
+            }
+            
+            // Reset flag animation
+            const flagDisplay = document.getElementById('flagDisplay');
+            flagDisplay.classList.remove('animate-bounce-in');
+            setTimeout(() => flagDisplay.classList.add('animate-bounce-in'), 10);
+        }
+
+        function setupMultipleChoice() {
+            const container = document.getElementById('multipleChoiceOptions');
+            const options = [...currentGameState.currentQuestion.wrongAnswers, currentGameState.currentQuestion.correct.name];
+            options.sort(() => 0.5 - Math.random());
+            
+            const buttons = container.querySelectorAll('.answer-option');
+            buttons.forEach((button, index) => {
+                button.textContent = options[index];
+                button.dataset.answer = options[index];
+                button.className = 'answer-option';
+                button.disabled = false;
+            });
+            
+            container.classList.remove('hidden');
+        }
+
+        function setupTextInput() {
+            const input = document.getElementById('countryInput');
+            input.value = '';
+            input.focus();
+            document.getElementById('textInputContainer').classList.remove('hidden');
+        }
+
+        // Check answer
+        function checkAnswer(userAnswer) {
+            const correct = userAnswer.toLowerCase().trim() === 
+                currentGameState.currentQuestion.correct.name.toLowerCase();
+            
+            if (correct) {
+                currentGameState.score += 10 + (currentGameState.streak * 2);
+                currentGameState.streak++;
+                currentGameState.correctAnswers++;
+                currentGameState.bestStreak = Math.max(currentGameState.bestStreak, currentGameState.streak);
+                playCorrectSound();
+            } else {
+                currentGameState.streak = 0;
+                playIncorrectSound();
+                
+                if (currentGameState.mode === 'survival') {
+                    currentGameState.livesLeft--;
+                }
+            }
+            
+            updateGameUI();
+            showFeedback(correct);
+            
+            // Check game end conditions
+            if (currentGameState.mode === 'survival' && currentGameState.livesLeft <= 0) {
+                setTimeout(() => endGame(), 2000);
+            } else if (currentGameState.mode === 'time-attack' && currentGameState.timeLeft <= 0) {
+                setTimeout(() => endGame(), 2000);
+            } else if (currentGameState.questionNumber >= currentGameState.totalQuestions && 
+                      currentGameState.mode !== 'time-attack' && currentGameState.mode !== 'survival') {
+                setTimeout(() => endGame(), 2000);
+            }
+        }
+
+        function showFeedback(correct) {
+            const feedbackContainer = document.getElementById('feedbackContainer');
+            const feedbackMessage = document.getElementById('feedbackMessage');
+            const correctAnswer = document.getElementById('correctAnswer');
+            const flagFact = document.getElementById('flagFact');
+            
+            if (correct) {
+                feedbackMessage.textContent = 'Correct! 🎉';
+                feedbackMessage.className = 'text-xl font-bold mb-2 text-success';
+                correctAnswer.textContent = `Well done! That's ${currentGameState.currentQuestion.correct.name}`;
+            } else {
+                feedbackMessage.textContent = 'Incorrect ❌';
+                feedbackMessage.className = 'text-xl font-bold mb-2 text-danger';
+                correctAnswer.textContent = `The correct answer is ${currentGameState.currentQuestion.correct.name}`;
+            }
+            
+            if (settings.factsEnabled && currentGameState.currentQuestion.correct.fact) {
+                flagFact.textContent = `💡 ${currentGameState.currentQuestion.correct.fact}`;
+                flagFact.classList.remove('hidden');
+            } else {
+                flagFact.classList.add('hidden');
+            }
+            
+            feedbackContainer.classList.remove('hidden');
+            
+            // Hide answer options
+            document.getElementById('multipleChoiceOptions').classList.add('hidden');
+            document.getElementById('textInputContainer').classList.add('hidden');
+        }
+
+        // Update game UI
+        function updateGameUI() {
+            document.getElementById('currentScore').textContent = currentGameState.score;
+            document.getElementById('currentStreak').textContent = currentGameState.streak;
+            
+            if (currentGameState.mode === 'time-attack') {
+                document.getElementById('timeLeft').textContent = currentGameState.timeLeft;
+            }
+            
+            if (currentGameState.mode === 'survival') {
+                document.getElementById('livesLeft').textContent = currentGameState.livesLeft;
+            }
+        }
+
+        // Start game
+        function startGame(mode = null) {
+            if (mode) {
+                currentGameState.mode = mode;
+                // Quick start with defaults
+                currentGameState.difficulty = 'easy';
+                currentGameState.continent = 'all';
+            }
+            
+            // Reset game state
+            currentGameState.score = 0;
+            currentGameState.streak = 0;
+            currentGameState.bestStreak = 0;
+            currentGameState.questionNumber = 0;
+            currentGameState.correctAnswers = 0;
+            currentGameState.usedQuestions = [];
+            currentGameState.startTime = Date.now();
+            
+            // Set mode-specific parameters
+            if (currentGameState.mode === 'time-attack') {
+                currentGameState.timeLeft = 60;
+                currentGameState.totalQuestions = 999; // Unlimited
+            } else if (currentGameState.mode === 'survival') {
+                currentGameState.livesLeft = 1;
+                currentGameState.totalQuestions = 999; // Unlimited
+            } else {
+                currentGameState.totalQuestions = 10;
+            }
+            
+            // Show/hide UI elements based on mode
+            const timerDisplay = document.getElementById('timerDisplay');
+            const livesDisplay = document.getElementById('livesDisplay');
+            
+            if (currentGameState.mode === 'time-attack') {
+                timerDisplay.classList.remove('hidden');
+                livesDisplay.classList.add('hidden');
+                startTimer();
+            } else if (currentGameState.mode === 'survival') {
+                livesDisplay.classList.remove('hidden');
+                timerDisplay.classList.add('hidden');
+            } else {
+                timerDisplay.classList.add('hidden');
+                livesDisplay.classList.add('hidden');
+            }
+            
+            playStartSound();
+            showScreen('gameScreen');
+            updateGameUI();
+            displayQuestion();
+        }
+
+        function startTimer() {
+            currentGameState.timer = setInterval(() => {
+                currentGameState.timeLeft--;
+                updateGameUI();
+                
+                if (currentGameState.timeLeft <= 0) {
+                    clearInterval(currentGameState.timer);
+                    endGame();
+                }
+            }, 1000);
+        }
+
+        // End game
+        function endGame() {
+            if (currentGameState.timer) {
+                clearInterval(currentGameState.timer);
+            }
+            
+            const timeElapsed = Math.round((Date.now() - currentGameState.startTime) / 1000);
+            const accuracy = currentGameState.questionNumber > 0 ? 
+                Math.round((currentGameState.correctAnswers / currentGameState.questionNumber) * 100) : 0;
+            
+            // Update statistics
+            stats.totalGames++;
+            stats.bestScore = Math.max(stats.bestScore, currentGameState.score);
+            stats.totalCorrect += currentGameState.correctAnswers;
+            stats.totalQuestions += currentGameState.questionNumber;
+            stats.longestStreak = Math.max(stats.longestStreak, currentGameState.bestStreak);
+            
+            updateStatsDisplay();
+            
+            // Show results
+            document.getElementById('finalScore').textContent = currentGameState.score;
+            document.getElementById('finalAccuracy').textContent = accuracy + '%';
+            document.getElementById('finalTime').textContent = timeElapsed + 's';
+            document.getElementById('bestStreak').textContent = currentGameState.bestStreak;
+            
+            // Set result message based on performance
+            const resultIcon = document.getElementById('resultIcon');
+            const resultTitle = document.getElementById('resultTitle');
+            const resultSubtitle = document.getElementById('resultSubtitle');
+            
+            if (accuracy >= 90) {
+                resultIcon.textContent = '🏆';
+                resultTitle.textContent = 'Outstanding!';
+                resultSubtitle.textContent = 'You\'re a flag expert!';
+            } else if (accuracy >= 70) {
+                resultIcon.textContent = '🥉';
+                resultTitle.textContent = 'Great Job!';
+                resultSubtitle.textContent = 'Keep practicing to reach expert level!';
+            } else if (accuracy >= 50) {
+                resultIcon.textContent = '👍';
+                resultTitle.textContent = 'Good Effort!';
+                resultSubtitle.textContent = 'You\'re getting better!';
+            } else {
+                resultIcon.textContent = '💪';
+                resultTitle.textContent = 'Keep Trying!';
+                resultSubtitle.textContent = 'Practice makes perfect!';
+            }
+            
+            playEndSound();
+            showScreen('resultsScreen');
+        }
+
+        // Update stats display
+        function updateStatsDisplay() {
+            const overallAccuracy = stats.totalQuestions > 0 ? 
+                Math.round((stats.totalCorrect / stats.totalQuestions) * 100) : 0;
+            
+            // Home screen stats
+            document.getElementById('totalGames').textContent = stats.totalGames;
+            document.getElementById('bestScore').textContent = stats.bestScore;
+            document.getElementById('accuracy').textContent = overallAccuracy + '%';
+            
+            // Stats modal
+            document.getElementById('statsTotalGames').textContent = stats.totalGames;
+            document.getElementById('statsBestScore').textContent = stats.bestScore;
+            document.getElementById('statsAccuracy').textContent = overallAccuracy + '%';
+            document.getElementById('statsLongestStreak').textContent = stats.longestStreak;
+            document.getElementById('statsTotalCorrect').textContent = stats.totalCorrect;
+            document.getElementById('statsTotalQuestions').textContent = stats.totalQuestions;
+        }
+
+        // Update settings UI
+        function updateSettingsUI() {
+            const soundToggle = document.getElementById('soundToggle');
+            const factsToggle = document.getElementById('factsToggle');
+            
+            if (settings.soundEnabled) {
+                soundToggle.classList.add('active');
+            } else {
+                soundToggle.classList.remove('active');
+            }
+            
+            if (settings.factsEnabled) {
+                factsToggle.classList.add('active');
+            } else {
+                factsToggle.classList.remove('active');
+            }
+        }
+
+        // Show confirmation dialog
+        function showConfirmDialog(message, onConfirm) {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content animate-bounce-in">
+                    <p class="text-gray mb-4">${message}</p>
+                    <div class="flex space-x-3">
+                        <button class="cancel-btn btn btn-secondary" style="flex: 1;">Cancel</button>
+                        <button class="confirm-btn btn btn-danger" style="flex: 1;">Confirm</button>
+                    </div>
+                </div>
+            `;
+            
+            modal.querySelector('.cancel-btn').onclick = () => modal.remove();
+            modal.querySelector('.confirm-btn').onclick = () => {
+                modal.remove();
+                onConfirm();
+            };
+            
+            document.body.appendChild(modal);
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStatsDisplay();
+            updateSettingsUI();
+            
+            // Function to update logo based on theme
+            function updateLogo() {
+                const isDark = document.documentElement.classList.contains('dark');
+                const logoLight = document.getElementById('logoLight');
+                const logoDark = document.getElementById('logoDark');
+                
+                if (isDark) {
+                    logoLight.style.display = 'none';
+                    logoDark.style.display = 'block';
+                } else {
+                    logoLight.style.display = 'block';
+                    logoDark.style.display = 'none';
+                }
+            }
+
+            // Dark mode toggle
+            document.getElementById('darkModeToggle').addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                document.getElementById('darkModeIcon').textContent = isDark ? '☀️' : '🌙';
+                updateLogo();
+            });
+
+            // Initialize logo on page load
+            updateLogo();
+            
+            // Game mode selection
+            document.querySelectorAll('.game-mode-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const mode = this.dataset.mode;
+                    currentGameState.mode = mode;
+                    
+                    const modeIcons = {
+                        'multiple-choice': '🎯',
+                        'type-country': '⌨️',
+                        'time-attack': '⏱️',
+                        'survival': '💀'
+                    };
+                    
+                    const modeNames = {
+                        'multiple-choice': 'Multiple Choice',
+                        'type-country': 'Type Country',
+                        'time-attack': 'Time Attack',
+                        'survival': 'Survival Mode'
+                    };
+                    
+                    document.getElementById('selectedModeIcon').textContent = modeIcons[mode];
+                    document.getElementById('selectedModeText').textContent = modeNames[mode];
+                    
+                    showScreen('setupScreen');
+                });
+            });
+            
+            // Quick start
+            document.getElementById('quickStartBtn').addEventListener('click', function() {
+                const modes = ['multiple-choice', 'type-country', 'time-attack', 'survival'];
+                const randomMode = modes[Math.floor(Math.random() * modes.length)];
+                startGame(randomMode);
+            });
+            
+            // Selection buttons
+            document.querySelectorAll('.selection-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (this.dataset.difficulty) {
+                        // Difficulty selection
+                        document.querySelectorAll('[data-difficulty]').forEach(b => b.classList.remove('selected'));
+                        this.classList.add('selected');
+                        currentGameState.difficulty = this.dataset.difficulty;
+                    } else if (this.dataset.continent) {
+                        // Continent selection
+                        document.querySelectorAll('[data-continent]').forEach(b => b.classList.remove('selected'));
+                        this.classList.add('selected');
+                        currentGameState.continent = this.dataset.continent;
+                    }
+                });
+            });
+            
+            // Navigation buttons
+            document.getElementById('backToHome').addEventListener('click', () => showScreen('homeScreen'));
+            document.getElementById('startGame').addEventListener('click', () => startGame());
+            document.getElementById('quitGame').addEventListener('click', function() {
+                showConfirmDialog('Are you sure you want to quit the current game?', () => {
+                    if (currentGameState.timer) {
+                        clearInterval(currentGameState.timer);
+                    }
+                    showScreen('homeScreen');
+                });
+            });
+            
+            // Results screen buttons
+            document.getElementById('playAgain').addEventListener('click', () => startGame());
+            document.getElementById('changeSettings').addEventListener('click', () => showScreen('setupScreen'));
+            document.getElementById('backToMenu').addEventListener('click', () => showScreen('homeScreen'));
+            
+            // Answer handling
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('answer-option') && !e.target.disabled) {
+                    // Disable all buttons
+                    document.querySelectorAll('.answer-option').forEach(b => b.disabled = true);
+                    
+                    const userAnswer = e.target.dataset.answer;
+                    const correct = userAnswer === currentGameState.currentQuestion.correct.name;
+                    
+                    // Visual feedback
+                    if (correct) {
+                        e.target.classList.add('correct');
+                    } else {
+                        e.target.classList.add('incorrect');
+                        
+                        // Highlight correct answer
+                        document.querySelectorAll('.answer-option').forEach(b => {
+                            if (b.dataset.answer === currentGameState.currentQuestion.correct.name) {
+                                b.classList.add('correct');
+                            }
+                        });
+                    }
+                    
+                    setTimeout(() => checkAnswer(userAnswer), 500);
+                }
+            });
+            
+            // Text input handling
+            document.getElementById('submitAnswer').addEventListener('click', function() {
+                const userAnswer = document.getElementById('countryInput').value.trim();
+                if (userAnswer) {
+                    checkAnswer(userAnswer);
+                }
+            });
+            
+            document.getElementById('countryInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const userAnswer = this.value.trim();
+                    if (userAnswer) {
+                        checkAnswer(userAnswer);
+                    }
+                }
+            });
+            
+            // Next question
+            document.getElementById('nextQuestion').addEventListener('click', function() {
+                if ((currentGameState.mode === 'time-attack' && currentGameState.timeLeft > 0) ||
+                    (currentGameState.mode === 'survival' && currentGameState.livesLeft > 0) ||
+                    (currentGameState.mode !== 'time-attack' && currentGameState.mode !== 'survival' && 
+                     currentGameState.questionNumber < currentGameState.totalQuestions)) {
+                    displayQuestion();
+                } else {
+                    endGame();
+                }
+            });
+            
+            // Settings modal
+            document.getElementById('settingsBtn').addEventListener('click', function() {
+                document.getElementById('settingsModal').classList.remove('hidden');
+            });
+            
+            document.getElementById('closeSettings').addEventListener('click', function() {
+                document.getElementById('settingsModal').classList.add('hidden');
+            });
+            
+            document.getElementById('soundToggle').addEventListener('click', function() {
+                settings.soundEnabled = !settings.soundEnabled;
+                updateSettingsUI();
+                
+                if (settings.soundEnabled) {
+                    initAudio();
+                    playSound(440, 0.2); // Test sound
+                }
+            });
+            
+            document.getElementById('factsToggle').addEventListener('click', function() {
+                settings.factsEnabled = !settings.factsEnabled;
+                updateSettingsUI();
+            });
+            
+            document.getElementById('resetStats').addEventListener('click', function() {
+                showConfirmDialog('Are you sure you want to reset all statistics? This cannot be undone.', () => {
+                    stats = {
+                        totalGames: 0,
+                        bestScore: 0,
+                        totalCorrect: 0,
+                        totalQuestions: 0,
+                        longestStreak: 0
+                    };
+                    updateStatsDisplay();
+                });
+            });
+            
+            // Stats modal
+            document.getElementById('statsBtn').addEventListener('click', function() {
+                document.getElementById('statsModal').classList.remove('hidden');
+            });
+            
+            document.getElementById('closeStats').addEventListener('click', function() {
+                document.getElementById('statsModal').classList.add('hidden');
+            });
+            
+            // Close modals when clicking outside
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('modal')) {
+                    e.target.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+
+</body></html>
