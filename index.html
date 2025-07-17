@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <button id="openSettings" style="position: absolute; top: 2rem; right: 2rem; background: none; border: none; font-size: 2rem; cursor: pointer; z-index: 1001;">⚙️</button>
+    <button id="openSettings" style="position: absolute; top: 2rem; right: 2rem; background: none; border: none; font-size: 2rem; cursor: pointer; z-index: 1001;"><i class="fa-solid fa-gear"></i></button>
     <div id="settingsModal" class="modal" style="display: none;">
       <div class="modal-content" style="max-width: 400px;">
         <h2 class="text-2xl font-bold mb-4 text-center">Continent Selection</h2>
@@ -41,7 +41,7 @@
             </label>
           </div>
         </form>
-        <div style="text-align: right; margin-top: 1.5rem;"><button id="closeSettings" class="btn btn-secondary">Close</button></div>
+        <div style="text-align: right; margin-top: 1.5rem;"><button id="closeSettings" class="btn btn-secondary"><i class="fa-regular fa-circle-xmark"></i></button></div>
       </div>
     </div>
     <div class="container" style="padding-top: 2rem; padding-bottom: 2rem;">
@@ -75,8 +75,13 @@
                     <h3 class="text-xl font-bold mb-2 text-center">Survival Mode</h3>
                     <p class="text-gray text-center">One life - how far can you go?</p>
                 </a>
-                </div>
+                <a href="game.html?mode=multiple-choice-unlimited" class="game-mode-card">
+                    <div class="game-mode-icon text-center"><i class="fa-solid fa-infinity" style="color: #219EBC;"></i></div>
+                    <h3 class="text-xl font-bold mb-2 text-center">Multiple Choice Unlimited</h3>
+                    <p class="text-gray text-center">How long can you last? 3 lives, endless questions.</p>
+                </a>
             </div>
+        </div>
 
         <!-- Population Guess Section -->
         <div>

@@ -131,7 +131,7 @@ function generateQuestion() {
     const correct = pickRandom(available, 1)[0];
     state.usedQuestions.push(correct.name);
     let wrongAnswers = [];
-    if (["multiple-choice", "time-attack", "survival"].includes(state.mode)) {
+    if (["multiple-choice", "time-attack", "survival", "multiple-choice-unlimited"].includes(state.mode)) {
         // Use only filtered flags for wrong answers
         wrongAnswers = getSimilarFlags(correct, getFilteredFlags()).map(f => f.name);
         // Ensure 5 unique wrong answers
@@ -158,7 +158,7 @@ function renderQuestion() {
     html += `<h3 class="text-2xl font-bold mb-4">Which country does this flag belong to?</h3>`;
     html += `<div class="mb-6" style="display: flex; justify-content: center;"><img src="${state.currentQuestion.correct.flag}" alt="Flag" class="flag-img" /></div>`;
     html += `<div id="answerContainer">`;
-    if (['multiple-choice', 'time-attack', 'survival'].includes(state.mode)) {
+    if (["multiple-choice", "time-attack", "survival", "multiple-choice-unlimited"].includes(state.mode)) {
         let options = [...state.currentQuestion.wrongAnswers, state.currentQuestion.correct.name];
         options = shuffle(options);
         html += `<div class="grid md:grid-cols-2 lg:grid-cols-3">`;
@@ -456,7 +456,7 @@ function renderGameHeader() {
         html += `<div id="timerDisplay" style="background: rgba(239, 68, 68, 0.1); padding: 0.5rem 1rem; border-radius: 0.5rem;">
             <span style="font-size: 0.875rem; font-weight: 600; color: #ef4444;">⏱️ <span id="timeLeft">${state.timeLeft}</span>s</span></div>`;
     }
-    if (state.mode === 'survival') {
+    if (state.mode === 'survival' || state.mode === 'multiple-choice-unlimited') {
         html += `<div id="livesDisplay" style="background: rgba(245, 158, 11, 0.1); padding: 0.5rem 1rem; border-radius: 0.5rem;">
             <span style="font-size: 0.875rem; font-weight: 600; color: #f59e0b;">❤️ <span id="livesLeft">${state.livesLeft}</span></span></div>`;
     }
@@ -466,7 +466,7 @@ function renderGameHeader() {
 }
 
 function attachQuestionHandlers() {
-    if (['multiple-choice', 'time-attack', 'survival'].includes(state.mode)) {
+    if (['multiple-choice', 'time-attack', 'survival', 'multiple-choice-unlimited'].includes(state.mode)) {
         document.querySelectorAll('.answer-option').forEach(btn => {
             btn.onclick = () => {
                 checkAnswer(btn.dataset.answer);
@@ -669,6 +669,11 @@ async function initGame() {
         state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
         state.totalQuestions = 10;
         renderPopulationMCQuestion();
+    } else if (state.mode === 'multiple-choice-unlimited') {
+        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
+        state.livesLeft = 3;
+        state.totalQuestions = 999;
+        renderQuestion();
     } else if (state.mode === 'population-higher') {
         state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
         state.higherCountries = null;
@@ -727,6 +732,148 @@ const _showPopulationHigherFeedback = showPopulationHigherFeedback;
 showPopulationHigherFeedback = function() { preserveScroll(() => _showPopulationHigherFeedback.apply(this, arguments)); };
 const _showPopulationHighest3Feedback = showPopulationHighest3Feedback;
 showPopulationHighest3Feedback = function() { preserveScroll(() => _showPopulationHighest3Feedback.apply(this, arguments)); };
+
+// Patch renderGameHeader to show lives for unlimited mode
+const _renderGameHeader = renderGameHeader;
+renderGameHeader = function() {
+    let html = `<div class="card"><div class="flex justify-between items-center">`;
+    html += `<div class="flex items-center space-x-4">`;
+    html += `<div class="score-box"><span style="font-size: 0.875rem; font-weight: 600;">Score: <span id="currentScore">${state.score}</span></span></div>`;
+    html += `<div class="score-box"><span style="font-size: 0.875rem; font-weight: 600;">Streak: <span id="currentStreak">${state.streak}</span></span></div>`;
+    html += `</div><div class="flex items-center space-x-4">`;
+    if (state.mode === 'time-attack') {
+        html += `<div id="timerDisplay" style="background: rgba(239, 68, 68, 0.1); padding: 0.5rem 1rem; border-radius: 0.5rem;">
+            <span style="font-size: 0.875rem; font-weight: 600; color: #ef4444;">⏱️ <span id="timeLeft">${state.timeLeft}</span>s</span></div>`;
+    }
+    if (state.mode === 'survival' || state.mode === 'multiple-choice-unlimited') {
+        // Show 3 hearts, cracked and gray for lost lives
+        let hearts = '';
+        for (let i = 0; i < 3; i++) {
+            if (i < state.livesLeft) {
+                hearts += '<i class="fa-solid fa-heart" style="color: #ef4444; font-size: 1.25rem; margin-right: 0.25rem;"></i>';
+            } else {
+                hearts += '<i class="fa-solid fa-heart-crack" style="color: #aaa; font-size: 1.25rem; margin-right: 0.25rem;"></i>';
+            }
+        }
+        html += `<div id="livesDisplay" style="background: rgba(245, 158, 11, 0.1); padding: 0.5rem 1rem; border-radius: 0.5rem;">
+            <span style="font-size: 1.25rem; font-weight: 600; color: #f59e0b;">${hearts}</span></div>`;
+    }
+    html += `<button id="quitGame" class="icon-btn">❌</button>`;
+    html += `</div></div></div>`;
+    return html;
+};
+
+// Patch checkAnswer to handle lives for unlimited mode
+const _checkAnswer = checkAnswer;
+checkAnswer = function(userAnswer) {
+    const correct = state.currentQuestion.correct;
+    const accepted = [correct.name, ...(correct.altNames || [])];
+    const normalizedUser = normalizeAnswer(userAnswer);
+    const isCorrect = accepted.some(ans => normalizeAnswer(ans) === normalizedUser);
+    if (isCorrect) {
+        if (state.mode === 'multiple-choice' || state.mode === 'multiple-choice-unlimited') {
+            state.score += 1;
+        } else {
+            state.score += 10 + (state.streak * 2);
+        }
+        state.streak++;
+        state.correctAnswers++;
+        state.bestStreak = Math.max(state.bestStreak, state.streak);
+    } else {
+        state.streak = 0;
+        if (state.mode === 'survival' || state.mode === 'multiple-choice-unlimited') {
+            state.livesLeft--;
+        }
+    }
+    updateGameUI();
+    showFeedback(isCorrect);
+    // End conditions
+    if ((state.mode === 'survival' || state.mode === 'multiple-choice-unlimited') && state.livesLeft <= 0) {
+        setTimeout(() => endGame(), 1200);
+    } else if (state.mode === 'time-attack' && state.timeLeft <= 0) {
+        setTimeout(() => endGame(), 1200);
+    } else if (state.questionNumber >= state.totalQuestions && !['time-attack', 'survival', 'multiple-choice-unlimited'].includes(state.mode)) {
+        setTimeout(() => endGame(), 1200);
+    }
+};
+
+// Patch endGame to show correct results for unlimited mode
+const _endGame = endGame;
+endGame = function() {
+    if (state.timer) clearInterval(state.timer);
+    let timeElapsed = 0;
+    if (state.startTime && (state.mode === 'time-attack' || state.mode === 'survival')) {
+        timeElapsed = Math.round((Date.now() - state.startTime) / 1000);
+    }
+    const accuracy = state.questionNumber > 0 ? Math.round((state.correctAnswers / state.questionNumber) * 100) : 0;
+    // Update stats
+    const statsKey = settings.unOnly ? 'un' : 'all';
+    if (!stats[statsKey]) stats[statsKey] = {};
+    stats[statsKey].totalGames = (stats[statsKey].totalGames || 0) + 1;
+    stats[statsKey].bestScore = Math.max((stats[statsKey].bestScore || 0), state.score);
+    stats[statsKey].totalCorrect = (stats[statsKey].totalCorrect || 0) + state.correctAnswers;
+    stats[statsKey].totalQuestions = (stats[statsKey].totalQuestions || 0) + state.questionNumber;
+    stats[statsKey].longestStreak = Math.max((stats[statsKey].longestStreak || 0), state.bestStreak);
+    if (state.mode === 'multiple-choice') {
+        stats[statsKey].longestStreakMC = Math.max((stats[statsKey].longestStreakMC || 0), state.bestStreak);
+    }
+    if (state.mode === 'multiple-choice-unlimited') {
+        stats[statsKey].longestStreakMCU = Math.max((stats[statsKey].longestStreakMCU || 0), state.bestStreak);
+    }
+    if (state.mode === 'population-higher') {
+        stats[statsKey].longestStreakHigher = Math.max((stats[statsKey].longestStreakHigher || 0), state.bestStreak);
+    } else if (state.mode === 'population-higher-flags') {
+        stats[statsKey].longestStreakHigherFlags = Math.max((stats[statsKey].longestStreakHigherFlags || 0), state.bestStreak);
+    }
+    if (state.mode === 'population-highest-3') {
+        stats[statsKey].longestStreakHighest3 = Math.max((stats[statsKey].longestStreakHighest3 || 0), state.bestStreak);
+    }
+    setStats(stats);
+    // Show results
+    let html = `<div class="card text-center">`;
+    html += `<div class="mb-6"><div class="text-8xl mb-4">🏆</div>`;
+    html += `<h2 class="text-3xl font-bold mb-2">Great Job!</h2>`;
+    html += `<p class="text-xl text-gray">You've completed the quiz!</p></div>`;
+    if (state.mode === 'multiple-choice') {
+        html += `<div class="grid grid-cols-1 md:grid-cols-2 mb-8">`;
+        html += `<div style="background: #f3f4fd; border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold text-primary">${state.correctAnswers}</div><div class="text-gray" style="font-size: 0.875rem;">Final Score</div></div>`;
+        html += `<div style="background: #fff8ed; border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold" style="color: #fb8500;">${stats[statsKey].longestStreakMC || 0}</div><div class="text-gray" style="font-size: 0.875rem;">Best Streak (All Games)</div></div>`;
+        html += `</div>`;
+    } else if (state.mode === 'multiple-choice-unlimited') {
+        html += `<div class="grid grid-cols-1 md:grid-cols-2 mb-8">`;
+        html += `<div style="background: #f3f4fd; border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold text-primary">${state.correctAnswers}</div><div class="text-gray" style="font-size: 0.875rem;">Final Score</div></div>`;
+        html += `<div style="background: #fff8ed; border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold" style="color: #fb8500;">${stats[statsKey].longestStreakMCU || 0}</div><div class="text-gray" style="font-size: 0.875rem;">Best Streak (All Games)</div></div>`;
+        html += `</div>`;
+    } else if (state.mode === 'population-higher') {
+        html += `<div class="grid grid-cols-1 md:grid-cols-2 mb-8">`;
+        html += `<div style="background: rgba(93, 92, 222, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold text-primary">${state.score}</div><div class="text-gray" style="font-size: 0.875rem;">Final Score</div></div>`;
+        html += `<div style="background: rgba(245, 158, 11, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold" style="color: #f59e0b;">${stats[statsKey].longestStreakHigher || 0}</div><div class="text-gray" style="font-size: 0.875rem;">Best Streak (All Games)</div></div>`;
+        html += `</div>`;
+    } else if (state.mode === 'population-higher-flags') {
+        html += `<div class="grid grid-cols-1 md:grid-cols-2 mb-8">`;
+        html += `<div style="background: rgba(93, 92, 222, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold text-primary">${state.score}</div><div class="text-gray" style="font-size: 0.875rem;">Final Score</div></div>`;
+        html += `<div style="background: rgba(245, 158, 11, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold" style="color: #f59e0b;">${stats[statsKey].longestStreakHigherFlags || 0}</div><div class="text-gray" style="font-size: 0.875rem;">Best Streak (All Games)</div></div>`;
+        html += `</div>`;
+    } else if (state.mode === 'population-highest-3') {
+        html += `<div class="grid grid-cols-1 md:grid-cols-2 mb-8">`;
+        html += `<div style="background: rgba(93, 92, 222, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold text-primary">${state.score}</div><div class="text-gray" style="font-size: 0.875rem;">Final Score</div></div>`;
+        html += `<div style="background: rgba(245, 158, 11, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold" style="color: #f59e0b;">${stats[statsKey].longestStreakHighest3 || 0}</div><div class="text-gray" style="font-size: 0.875rem;">Best Streak (All Games)</div></div>`;
+        html += `</div>`;
+    } else {
+        html += `<div class="grid grid-cols-2 md:grid-cols-4 mb-8">`;
+        html += `<div style="background: rgba(93, 92, 222, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold text-primary">${state.score}</div><div class="text-gray" style="font-size: 0.875rem;">Final Score</div></div>`;
+        html += `<div style="background: rgba(16, 185, 129, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold text-success">${accuracy}%</div><div class="text-gray" style="font-size: 0.875rem;">Accuracy</div></div>`;
+        html += `<div style="background: rgba(147, 51, 234, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold" style="color: #9333ea;">${timeElapsed}s</div><div class="text-gray" style="font-size: 0.875rem;">Time</div></div>`;
+        html += `<div style="background: rgba(245, 158, 11, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold" style="color: #f59e0b;">${state.bestStreak}</div><div class="text-gray" style="font-size: 0.875rem;">Best Streak</div></div>`;
+        html += `</div>`;
+    }
+    html += `<div class="flex flex-col space-y-3" style="gap: 0.75rem;">`;
+    html += `<div style="display: flex; gap: 0.75rem; justify-content: center;"><button id="playAgain" class="btn btn-primary" style="flex: 1;">Play Again</button><button id="backToMenu" class="btn btn-success" style="flex: 1;">Main Menu</button></div>`;
+    html += `</div></div>`;
+    gameContainer.innerHTML = html;
+    document.getElementById('playAgain').onclick = () => initGame();
+    document.getElementById('backToMenu').onclick = () => window.location.href = 'index.html';
+};
 
 document.addEventListener('DOMContentLoaded', function() {
     const openSettings = document.getElementById('openSettings');
