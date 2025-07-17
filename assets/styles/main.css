@@ -1,0 +1,755 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Blue/Orange palette */
+:root {
+  --blue-2: #023047;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--blue-2);
+    background: #8ecae6;
+    min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+/* Dark mode styles */
+.dark body {
+    color: var(--blue-2);
+    background: #8ecae6;
+}
+
+/* Layout */
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.header {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.dark .header {
+    background: rgba(31, 41, 55, 0.9);
+    border-bottom-color: #374151;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-icon {
+    font-size: 2rem;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--blue-2) !important;
+}
+
+/* Ensure all header and logo links use the darkest green */
+.header a, .header a:visited, .header a:hover, .header a:active, .header a:focus,
+.logo-text, .logo a, .logo a:visited, .logo a:hover, .logo a:active, .logo a:focus {
+  color: var(--blue-2) !important;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.icon-btn {
+    padding: 0.5rem;
+    border: none;
+    background: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1.25rem;
+    transition: background-color 0.2s;
+}
+
+.icon-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.dark .icon-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Cards and containers */
+.card {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(2, 48, 71, 0.08);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.dark .card {
+    background: #fff;
+    color: var(--blue-2);
+}
+
+/* Buttons */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    font-size: 1rem;
+    background: var(--orange-0);
+    color: var(--blue-2);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(93, 92, 222, 0.3);
+    background: var(--orange-1);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background: var(--orange-1);
+    color: var(--blue-0);
+}
+
+.btn-primary:hover {
+    background: var(--orange-0);
+}
+
+.btn-secondary {
+    background: var(--blue-1);
+    color: var(--blue-0);
+}
+
+.btn-secondary:hover {
+    background: var(--blue-0);
+    color: var(--blue-2);
+}
+
+.btn-success {
+    background: var(--blue-1);
+    color: var(--blue-0);
+}
+
+.btn-success:hover {
+    background: var(--orange-0);
+    color: var(--blue-2);
+}
+
+.btn-danger {
+    background: #ef4444;
+    color: var(--blue-0);
+}
+
+.btn-danger:hover {
+    background: #dc2626;
+}
+
+/* Grid layouts */
+.grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+@media (min-width: 768px) {
+    .md\:grid-cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .md\:grid-cols-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Text styles */
+.text-center {
+    text-align: center;
+}
+
+.text-xl {
+    font-size: 1.25rem;
+}
+
+.text-2xl {
+    font-size: 1.5rem;
+}
+
+.text-3xl {
+    font-size: 1.875rem;
+}
+
+.text-4xl {
+    font-size: 2.25rem;
+}
+
+.text-8xl {
+    font-size: 6rem;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+/* Spacing */
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 0.75rem; }
+.p-4 { padding: 1rem; }
+.p-6 { padding: 1.5rem; }
+.p-8 { padding: 2rem; }
+
+/* Flex utilities */
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.space-x-3 > * + * {
+    margin-left: 0.75rem;
+}
+
+.space-x-4 > * + * {
+    margin-left: 1rem;
+}
+
+.space-y-3 > * + * {
+    margin-top: 0.75rem;
+}
+
+/* Flag display */
+.flag-emoji {
+    font-size: 6rem;
+    line-height: 1;
+    user-select: none;
+    margin: 1rem 0;
+}
+
+/* Unified flag image style for all game modes */
+.flag-img {
+  max-width: 200px;
+  max-height: 135px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  background: none !important;
+  border-radius: 5px !important;
+  box-shadow: 0 4px 24px 0 rgba(2,48,71,0.18);
+  display: block;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* No rounded corners for Nepal flag */
+.flag-img[alt="Nepal"], .flag-img.nepal-flag {
+  border-radius: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove or override old flag image classes */
+.flag-guess-img, .flag-battle-img {
+  all: unset;
+  max-width: 156px;
+  max-height: 104px;
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 8px #0001;
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+/* Game mode cards */
+.game-mode-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.dark .game-mode-card {
+    background: #fff;
+    color: var(--blue-2);
+}
+
+.game-mode-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.game-mode-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.game-mode-card p {
+  color: #fb8500 !important;
+}
+
+/* Answer options */
+.answer-option {
+    background: #f3f4f6;
+    border: 0px solid transparent;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    font-weight: 600;
+    margin: 0;
+}
+
+.dark .answer-option {
+    background: #374151;
+    color: #f9fafb;
+}
+
+.answer-option:hover {
+    background: #e5e7eb;
+}
+
+.dark .answer-option:hover {
+    background: #4b5563;
+}
+
+.answer-option.correct {
+    background: #10b981;
+    color: white;
+}
+
+.answer-option.incorrect {
+    background: #ef4444;
+    color: white;
+}
+
+/* Answer options grid: 2 columns on mobile, 3 on md+ */
+#answerContainer > .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  #answerContainer > .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Form inputs */
+.input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border: 2px solid #d1d5db;
+    border-radius: 0.75rem;
+    background: var(--blue-0);
+    transition: all 0.2s ease;
+    color: var(--blue-2);
+}
+
+.dark .input {
+    background: var(--blue-2);
+    border-color: var(--blue-1);
+    color: var(--blue-0);
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--orange-1);
+    box-shadow: 0 0 0 3px rgba(251, 133, 0, 0.1);
+}
+
+/* Selection buttons */
+.selection-btn {
+    padding: 1rem;
+    border: 2px solid transparent;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    font-weight: 600;
+    background: var(--blue-0);
+    color: var(--blue-2);
+}
+
+.selection-btn.selected {
+    border-color: var(--orange-1);
+    background: var(--orange-0);
+    color: var(--blue-2);
+}
+
+/* Difficulty buttons */
+.difficulty-easy {
+    background: var(--blue-0);
+    color: var(--blue-2);
+}
+
+.dark .difficulty-easy {
+    background: var(--blue-2);
+    color: var(--blue-0);
+}
+
+.difficulty-medium {
+    background: var(--blue-1);
+    color: var(--blue-0);
+}
+
+.dark .difficulty-medium {
+    background: var(--blue-2);
+    color: var(--orange-0);
+}
+
+.difficulty-hard {
+    background: var(--orange-0);
+    color: var(--blue-2);
+}
+
+.dark .difficulty-hard {
+    background: var(--orange-1);
+    color: var(--blue-0);
+}
+
+/* Stats display */
+.stat-card {
+    background: #fff;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.dark .stat-card {
+    background: #fff;
+    color: var(--blue-2);
+}
+
+.stat-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #5d5cde;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.dark .stat-label {
+    color: #9ca3af;
+}
+
+/* Modals */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    padding: 2rem;
+    max-width: 28rem;
+    width: 100%;
+    margin: 1rem;
+}
+
+.dark .modal-content {
+    background: #fff;
+    color: var(--blue-2);
+}
+
+/* Toggle switch */
+.switch {
+  width: 3rem;
+  height: 1.5rem;
+  background: #eee;
+  border-radius: 9999px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: inline-block;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #eee;
+  transition: .4s;
+  border-radius: 9999px;
+}
+.switch input:checked + .slider {
+  background-color: #FFB703 !important;
+}
+.switch .slider:before {
+  position: absolute;
+  content: "";
+  height: 1.25rem;
+  width: 1.25rem;
+  left: 0.125rem;
+  top: 0.125rem;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: .4s;
+}
+.switch input:checked + .slider:before {
+  transform: translateX(1.5rem);
+}
+.switch input:not(:checked) + .slider:before {
+  transform: translateX(0);
+}
+
+/* Utility classes */
+.hidden {
+    display: none;
+}
+
+.text-primary {
+    color: var(--orange-1);
+}
+
+.text-success {
+    color: var(--orange-0);
+}
+
+.text-danger {
+    color: #ef4444;
+}
+
+.text-gray {
+    color: var(--blue-2);
+    opacity: 0.7;
+}
+
+.dark .text-gray {
+    color: var(--blue-0);
+    opacity: 0.7;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.05); }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.animate-bounce-in {
+    animation: bounceIn 0.6s ease-out;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 0.5rem;
+    }
+    
+    .card {
+        padding: 1.5rem;
+    }
+    
+    .text-4xl {
+        font-size: 2rem;
+    }
+    
+    .text-8xl {
+        font-size: 4rem;
+    }
+    
+    .flag-emoji {
+        font-size: 4rem;
+    }
+} 
+/* Force all links to use the darkest blue and no underline */
+a, a:visited, a:hover, a:active, a:focus,
+h1, h2, h3, h4, h5, h6, .logo-text, .header a, .header a:visited, .header a:hover, .header a:active, .header a:focus,
+.logo a, .logo a:visited, .logo a:hover, .logo a:active, .logo a:focus {
+  color: var(--blue-2) !important;
+  text-decoration: none !important;
+} 
+
+/* Next button styling */
+#nextQuestion, .btn-next {
+  background: #FFB703 !important;
+  color: #fff !important;
+  border: none;
+}
+#nextQuestion:hover, .btn-next:hover {
+  background: #FB8500 !important;
+  color: #fff !important;
+}
+
+/* Score/Streak box styling */
+.score-box, .score-display, .streak-display {
+  background: #FFEDC0 !important;
+  color: #FB8500 !important;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: inline-block;
+} 
+
+#playAgain {
+  background: #FFB703 !important;
+  color: #fff !important;
+}
+#playAgain:hover {
+  background: #FB8500 !important;
+  color: #fff !important;
+}
+
+#backToMenu {
+  background: #219EBC !important;
+  color: #fff !important;
+}
+#backToMenu:hover {
+  background: #126782 !important;
+  color: #fff !important;
+} 
+
+/* --- Responsive stacking for population comparison modes --- */
+@media (max-width: 768px) {
+  /* Stack the flag choices vertically in population-higher, population-higher-flags, and population-highest-3 */
+  .card .flex.justify-center.items-center {
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+  }
+  .card .flex.justify-center.items-center > span[style*="font-size:2rem"] {
+    display: none !important;
+  }
+} 
+
+/* Center flag buttons and content in population comparison modes */
+.highest3-choice, .higher-choice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: none;
+  box-shadow: none;
+  margin: 0 auto 1rem auto;
+  padding: 0.5rem 0 0.5rem 0;
+}
+.highest3-choice .flag-img, .higher-choice .flag-img {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block;
+}
+.highest3-choice span.text-xl, .higher-choice span.text-xl {
+  display: block;
+  text-align: center;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+@media (max-width: 768px) {
+  .highest3-choice, .higher-choice {
+    margin-bottom: 1.25rem;
+  }
+} 
