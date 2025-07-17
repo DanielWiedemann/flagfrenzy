@@ -325,7 +325,7 @@ function showPopulationHigherFeedback(isCorrect, chosen, other, flagsOnly, leftO
     } else {
         html += '<div class="text-xl font-bold mb-2 text-danger">Incorrect ❌</div>';
         html += `<div class="text-gray mb-4">${left.name} (${left.population.toLocaleString()}) vs ${right.name} (${right.population.toLocaleString()})</div>`;
-        html += `<button id="endGame" class="btn btn-danger mt-2">End Game</button>`;
+        html += `<button id="endGameBtn" class="btn btn-primary mt-2">View Results</button>`;
     }
     feedback.innerHTML = html;
     feedback.classList.remove('hidden');
@@ -333,7 +333,7 @@ function showPopulationHigherFeedback(isCorrect, chosen, other, flagsOnly, leftO
     if (isCorrect) {
         document.getElementById('nextQuestion').onclick = () => renderPopulationHigherQuestion(flagsOnly);
     } else {
-        document.getElementById('endGame').onclick = () => endGame();
+        document.getElementById('endGameBtn').onclick = () => endGame();
     }
 }
 
@@ -434,7 +434,7 @@ function showPopulationHighest3Feedback(isCorrect, displayOrder, chosenIdx) {
         html += `<div class="text-gray mb-4">`;
         html += `${displayOrder[0].name} (${displayOrder[0].population.toLocaleString()}) vs ${displayOrder[1].name} (${displayOrder[1].population.toLocaleString()}) vs ${displayOrder[2].name} (${displayOrder[2].population.toLocaleString()})`;
         html += `</div>`;
-        html += `<button id="endGame" class="btn btn-danger mt-2">End Game</button>`;
+        html += `<button id="endGameBtn" class="btn btn-primary mt-2">View Results</button>`;
     }
     feedback.innerHTML = html;
     feedback.classList.remove('hidden');
@@ -442,7 +442,7 @@ function showPopulationHighest3Feedback(isCorrect, displayOrder, chosenIdx) {
     if (isCorrect) {
         document.getElementById('nextQuestion').onclick = () => renderPopulationHighest3Question();
     } else {
-        document.getElementById('endGame').onclick = () => endGame();
+        document.getElementById('endGameBtn').onclick = () => endGame();
     }
 }
 
@@ -739,6 +739,22 @@ async function initGame() {
         state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
         state.livesLeft = 4;
         startGame();
+    } else if (state.mode === 'size-mc') {
+        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
+        state.totalQuestions = 10;
+        renderSizeMCQuestion();
+    } else if (state.mode === 'size-higher') {
+        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
+        state.higherCountries = null;
+        renderSizeHigherQuestion(false);
+    } else if (state.mode === 'size-higher-flags') {
+        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
+        state.higherCountries = null;
+        renderSizeHigherQuestion(true);
+    } else if (state.mode === 'size-highest-3') {
+        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
+        state.highest3Countries = null;
+        renderSizeHighest3Question();
     } else {
         startGame();
     }
@@ -786,11 +802,274 @@ showPopulationHigherFeedback = function() { preserveScroll(() => _showPopulation
 const _showPopulationHighest3Feedback = showPopulationHighest3Feedback;
 showPopulationHighest3Feedback = function() { preserveScroll(() => _showPopulationHighest3Feedback.apply(this, arguments)); };
 
+// --- SIZE MODES ---
+function renderSizeMCQuestion() {
+    state.questionNumber++;
+    // Pick a random country
+    const available = getFilteredFlags().filter(f => !state.usedQuestions.includes(f.name));
+    if (available.length === 0) {
+        state.usedQuestions = [];
+        return renderSizeMCQuestion();
+    }
+    const correct = pickRandom(available, 1)[0];
+    state.usedQuestions.push(correct.name);
+    // Generate 5 wrong area options
+    let areas = [correct.area];
+    let used = new Set([correct.area]);
+    let pool = countries.filter(f => f.name !== correct.name);
+    pool = shuffle(pool);
+    for (const c of pool) {
+        if (areas.length >= 6) break;
+        if (!used.has(c.area)) {
+            areas.push(c.area);
+            used.add(c.area);
+        }
+    }
+    areas = shuffle(areas);
+    let html = `<div class="card text-center">`;
+    html += `<div class="mb-6"><div class="text-gray mb-2" style="font-size: 0.875rem;">Question ${state.questionNumber}</div>`;
+    html += `<h3 class="text-2xl font-bold mb-4">What is the land area of <span class='text-primary'>${correct.name}</span>?</h3>`;
+    html += `<div class="mb-6" style="display: flex; justify-content: center;"><img src="${correct.flag}" alt="Flag" class="flag-img" /></div>`;
+    html += `<div id="answerContainer"><div class="grid md:grid-cols-2 lg:grid-cols-3">`;
+    for (const area of areas) {
+        html += `<button class="answer-option" data-answer="${area}">${area.toLocaleString()} km²</button>`;
+    }
+    html += `</div></div>`;
+    html += `<div id="feedbackContainer" class="hidden mt-6"></div>`;
+    html += `</div>`;
+    gameContainer.innerHTML = renderGameHeader() + html;
+    document.querySelectorAll('.answer-option').forEach(btn => {
+        btn.onclick = () => {
+            const isCorrect = Number(btn.dataset.answer) === correct.area;
+            if (isCorrect) {
+                state.score += 10 + (state.streak * 2);
+                state.streak++;
+                state.correctAnswers++;
+                state.bestStreak = Math.max(state.bestStreak, state.streak);
+            } else {
+                state.streak = 0;
+            }
+            updateGameUI();
+            showSizeMCFeedback(isCorrect, correct);
+        };
+    });
+    patchQuitButton();
+}
+
+function showSizeMCFeedback(isCorrect, correct) {
+    const feedback = document.getElementById('feedbackContainer');
+    let html = '';
+    if (isCorrect) {
+        html += '<div class="text-xl font-bold mb-2 text-success">Correct! 🎉</div>';
+        html += `<div class="text-gray mb-4">Well done! That's ${correct.name} (${correct.area.toLocaleString()} km²)</div>`;
+    } else {
+        html += '<div class="text-xl font-bold mb-2 text-danger">Incorrect ❌</div>';
+        html += `<div class="text-gray mb-4">The correct answer is ${correct.name} (${correct.area.toLocaleString()} km²)</div>`;
+    }
+    html += `<button id="nextQuestion" class="btn btn-primary mt-2">Next Question</button>`;
+    feedback.innerHTML = html;
+    feedback.classList.remove('hidden');
+    // Hide answer options
+    const ac = document.getElementById('answerContainer');
+    if (ac) ac.innerHTML = '';
+    document.getElementById('nextQuestion').onclick = () => {
+        if (state.questionNumber < state.totalQuestions) {
+            renderSizeMCQuestion();
+        } else {
+            endGame();
+        }
+    };
+}
+
+function renderSizeHigherQuestion(flagsOnly = false) {
+    if (!state.higherCountries) {
+        state.higherCountries = pickRandom(countries, 2);
+        state.streak = 0;
+        state.score = 0;
+        state.bestStreak = 0;
+        state.questionNumber = 0;
+    }
+    state.questionNumber++;
+    let [left, right] = state.higherCountries;
+    let html = `<div class="card text-center">`;
+    html += `<div class="mb-6"><div class="text-gray mb-2" style="font-size: 0.875rem;">Streak: <span id='currentStreak'>${state.streak}</span></div>`;
+    html += `<h3 class="text-2xl font-bold mb-4">Which has a larger area?</h3>`;
+    html += `<div class="flex justify-center items-center" style="gap:2rem;">`;
+    html += `<button class="higher-choice" data-side="left" style="border:none;background:none;cursor:pointer;">`;
+    html += `<img src="${left.flag}" alt="Flag" class="flag-img" /><br/>`;
+    if (!flagsOnly) html += `<span class="text-xl font-bold">${left.name}</span>`;
+    html += `</button>`;
+    html += `<span style="font-size:2rem;">vs</span>`;
+    html += `<button class="higher-choice" data-side="right" style="border:none;background:none;cursor:pointer;">`;
+    html += `<img src="${right.flag}" alt="Flag" class="flag-img" /><br/>`;
+    if (!flagsOnly) html += `<span class="text-xl font-bold">${right.name}</span>`;
+    html += `</button>`;
+    html += `</div></div>`;
+    html += `<div id="feedbackContainer" class="hidden mt-6"></div>`;
+    html += `</div>`;
+    gameContainer.innerHTML = renderGameHeader() + html;
+    document.querySelectorAll('.higher-choice').forEach(btn => {
+        btn.onclick = () => {
+            const chosen = btn.dataset.side === 'left' ? left : right;
+            const other = btn.dataset.side === 'left' ? right : left;
+            const isCorrect = chosen.area >= other.area;
+            if (isCorrect) {
+                state.streak++;
+                state.score += 10;
+                state.bestStreak = Math.max(state.bestStreak, state.streak);
+                // Replace one country
+                const keep = chosen;
+                let pool = countries.filter(c => c.name !== keep.name);
+                const newCountry = pickRandom(pool, 1)[0];
+                state.higherCountries = btn.dataset.side === 'left' ? [keep, newCountry] : [newCountry, keep];
+                showSizeHigherFeedback(isCorrect, chosen, other, flagsOnly);
+            } else {
+                state.streak = 0;
+                state.higherCountries = null;
+                showSizeHigherFeedback(isCorrect, chosen, other, flagsOnly, true);
+            }
+        };
+    });
+    patchQuitButton();
+}
+
+function showSizeHigherFeedback(isCorrect, chosen, other, flagsOnly, end = false) {
+    const feedback = document.getElementById('feedbackContainer');
+    let html = '';
+    if (isCorrect) {
+        html += '<div class="text-xl font-bold mb-2 text-success">Correct! 🎉</div>';
+        html += `<div class="text-gray mb-4">${chosen.name} is larger (${chosen.area.toLocaleString()} km² vs ${other.area.toLocaleString()} km²)</div>`;
+    } else {
+        html += '<div class="text-xl font-bold mb-2 text-danger">Incorrect ❌</div>';
+        html += `<div class="text-gray mb-4">${other.name} is larger (${other.area.toLocaleString()} km² vs ${chosen.area.toLocaleString()} km²)</div>`;
+    }
+    if (isCorrect) {
+        html += `<button id="nextQuestion" class="btn btn-primary mt-2">Next Question</button>`;
+    } else {
+        html += `<button id="endGameBtn" class="btn btn-primary mt-2">View Results</button>`;
+    }
+    feedback.innerHTML = html;
+    feedback.classList.remove('hidden');
+    if (isCorrect) {
+        document.getElementById('nextQuestion').onclick = () => {
+            renderSizeHigherQuestion(flagsOnly);
+        };
+    } else {
+        document.getElementById('endGameBtn').onclick = () => {
+            endGame();
+        };
+    }
+}
+
+function renderSizeHighest3Question() {
+    let tries = 0;
+    while (
+        !state.highest3Countries ||
+        state.highest3Countries.length !== 3 ||
+        state.highest3Countries.some(c => !c) ||
+        new Set(state.highest3Countries.map(c => c?.name)).size !== 3
+    ) {
+        state.highest3Countries = pickRandom(countries, 3);
+        tries++;
+        if (tries > 5) break;
+    }
+    if (
+        !state.highest3Countries ||
+        state.highest3Countries.length !== 3 ||
+        state.highest3Countries.some(c => !c) ||
+        new Set(state.highest3Countries.map(c => c?.name)).size !== 3
+    ) {
+        gameContainer.innerHTML = '<div class="card text-center"><div class="text-danger">Error: Could not load 3 unique countries. Please refresh the page.</div></div>';
+        return;
+    }
+    state.questionNumber++;
+    let [a, b, c] = state.highest3Countries;
+    let html = `<div class="card text-center">`;
+    html += `<div class="mb-6"><div class="text-gray mb-2" style="font-size: 0.875rem;">Streak: <span id='currentStreak'>${state.streak}</span></div>`;
+    html += `<h3 class="text-2xl font-bold mb-4">Which has the largest area?</h3>`;
+    html += `<div class="flex justify-center items-center" style="gap:2rem;">`;
+    [a, b, c].forEach((country, idx) => {
+        if (!country) return;
+        html += `<button class="highest3-choice" data-idx="${idx}" style="border:none;background:none;cursor:pointer;">`;
+        html += `<img src="${country.flag}" alt="Flag" class="flag-img" /><br/>`;
+        html += `<span class="text-xl font-bold">${country.name}</span>`;
+        html += `</button>`;
+        if (idx < 2) html += `<span style="font-size:2rem;">vs</span>`;
+    });
+    html += `</div></div>`;
+    html += `<div id="feedbackContainer" class="hidden mt-6"></div>`;
+    html += `</div>`;
+    gameContainer.innerHTML = renderGameHeader() + html;
+    document.querySelectorAll('.highest3-choice').forEach(btn => {
+        btn.onclick = () => {
+            const idx = Number(btn.dataset.idx);
+            const chosen = [a, b, c][idx];
+            const others = [a, b, c].filter((_, i) => i !== idx);
+            const isCorrect = chosen && others[0] && others[1] && chosen.area >= others[0].area && chosen.area >= others[1].area;
+            if (isCorrect) {
+                state.streak++;
+                state.score += 10;
+                state.bestStreak = Math.max(state.bestStreak, state.streak);
+                const keepIdx = Math.floor(Math.random() * 3);
+                const keepCountry = [a, b, c][keepIdx];
+                let pool = countries.filter(c => c.name !== keepCountry.name);
+                let newCountries = [null, null, null];
+                newCountries[keepIdx] = keepCountry;
+                const [new1, new2] = pickRandom(pool, 2);
+                let fillIdxs = [0, 1, 2].filter(i => i !== keepIdx);
+                newCountries[fillIdxs[0]] = new1;
+                newCountries[fillIdxs[1]] = new2;
+                if (new Set(newCountries.map(c => c?.name)).size === 3) {
+                    state.highest3Countries = newCountries;
+                } else {
+                    state.highest3Countries = pickRandom(countries, 3);
+                }
+                showSizeHighest3Feedback(isCorrect, [a, b, c], idx);
+            } else {
+                state.streak = 0;
+                state.highest3Countries = null;
+                showSizeHighest3Feedback(isCorrect, [a, b, c], idx, true);
+            }
+        };
+    });
+    patchQuitButton();
+}
+
+function showSizeHighest3Feedback(isCorrect, displayOrder, chosenIdx, end = false) {
+    const feedback = document.getElementById('feedbackContainer');
+    let html = '';
+    const chosen = displayOrder[chosenIdx];
+    const others = displayOrder.filter((_, i) => i !== chosenIdx);
+    if (isCorrect) {
+        html += '<div class="text-xl font-bold mb-2 text-success">Correct! 🎉</div>';
+        html += `<div class="text-gray mb-4">${chosen.name} has the largest area (${chosen.area.toLocaleString()} km²)</div>`;
+    } else {
+        html += '<div class="text-xl font-bold mb-2 text-danger">Incorrect ❌</div>';
+        html += `<div class="text-gray mb-4">The correct answer is ${others[0].name} or ${others[1].name} (${others[0].area.toLocaleString()} km², ${others[1].area.toLocaleString()} km²)</div>`;
+    }
+    if (isCorrect) {
+        html += `<button id="nextQuestion" class="btn btn-primary mt-2">Next Question</button>`;
+    } else {
+        html += `<button id="endGameBtn" class="btn btn-primary mt-2">View Results</button>`;
+    }
+    feedback.innerHTML = html;
+    feedback.classList.remove('hidden');
+    if (isCorrect) {
+        document.getElementById('nextQuestion').onclick = () => {
+            renderSizeHighest3Question();
+        };
+    } else {
+        document.getElementById('endGameBtn').onclick = () => {
+            endGame();
+        };
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Insert game logo header at the top
     const logoHeader = document.createElement('div');
     logoHeader.className = 'game-logo-header';
-    logoHeader.innerHTML = '<span class="game-logo-icon">🌍</span> <span class="game-logo-text">Geo Frenzy</span>';
+    logoHeader.innerHTML = '<img src="assets/images/logo-light.png" alt="Geo Frenzy Logo" class="game-logo-img" />';
     document.body.insertBefore(logoHeader, document.body.firstChild);
 
     const openSettings = document.getElementById('openSettings');

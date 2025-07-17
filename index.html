@@ -46,15 +46,17 @@
         </div>
     <div class="container" style="padding-top: 2rem; padding-bottom: 2rem;">
             <div class="text-center mb-8">
-            <div class="text-8xl mb-4"><i class="fa-solid fa-earth-europe" style="color: #219EBC;"></i></div>
-            <h2 class="text-4xl font-bold mb-2">Welcome to Geo Frenzy!</h2>
+            <!-- Logo at the top of the homepage -->
+            <div class="homepage-logo-container">
+              <img src="assets/images/logo-light.png" alt="Geo Frenzy Logo" class="homepage-logo" />
+            </div>
             <p class="text-xl text-gray">Test your knowledge of world geography</p>
             </div>
 
         <!-- Flags Section -->
         <div class="section-container flags-section">
           <div class="section-title">FLAGS</div>
-          <div class="grid md:grid-cols-2 mb-8">
+          <div class="grid md:grid-cols-2 mb-1">
             <a href="game.html?mode=multiple-choice" class="game-mode-card">
               <div class="game-mode-icon text-center"><i class="fa-solid fa-bullseye" style="color: #219EBC;"></i></div>
               <h3 class="text-xl font-bold mb-2 text-center">Multiple Choice</h3>
@@ -80,7 +82,7 @@
         <!-- Population Guess Section -->
         <div class="section-container population-section">
           <div class="section-title">POPULATION GUESS</div>
-          <div class="grid md:grid-cols-2 mb-8">
+          <div class="grid md:grid-cols-2 mb-1">
             <a href="game.html?mode=population-mc" class="game-mode-card">
               <div class="game-mode-icon text-center"><i class="fa-solid fa-hashtag" style="color: #FFB703;"></i></div>
               <h3 class="text-xl font-bold mb-2 text-center">Guess the Population</h3>
@@ -100,6 +102,32 @@
               <div class="game-mode-icon text-center"><i class="fa-solid fa-users" style="color: #FFB703;"></i></div>
               <h3 class="text-xl font-bold mb-2 text-center">Highest Population (3 Countries)</h3>
               <p class="text-gray text-center">Pick which of 3 countries has the highest population</p>
+            </a>
+          </div>
+        </div>
+        <!-- Guess the Size Section -->
+        <div class="section-container size-section">
+          <div class="section-title">GUESS THE SIZE</div>
+          <div class="grid md:grid-cols-2 mb-1">
+            <a href="game.html?mode=size-mc" class="game-mode-card">
+              <div class="game-mode-icon text-center"><i class="fa-solid fa-ruler-combined" style="color: #608B7C;"></i></div>
+              <h3 class="text-xl font-bold mb-2 text-center">Guess the Size</h3>
+              <p class="text-gray text-center">Choose the correct land area from 6 options</p>
+            </a>
+            <a href="game.html?mode=size-higher" class="game-mode-card">
+              <div class="game-mode-icon text-center"><i class="fa-solid fa-expand-arrows-alt" style="color: #608B7C;"></i></div>
+              <h3 class="text-xl font-bold mb-2 text-center">Larger Area</h3>
+              <p class="text-gray text-center">Pick which country (name & flag) has a larger area</p>
+            </a>
+            <a href="game.html?mode=size-higher-flags" class="game-mode-card">
+              <div class="game-mode-icon text-center"><i class="fa-solid fa-map" style="color: #608B7C;"></i></div>
+              <h3 class="text-xl font-bold mb-2 text-center">Larger Area (Flags Only)</h3>
+              <p class="text-gray text-center">Pick which flag has a larger area</p>
+            </a>
+            <a href="game.html?mode=size-highest-3" class="game-mode-card">
+              <div class="game-mode-icon text-center"><i class="fa-solid fa-layer-group" style="color: #608B7C;"></i></div>
+              <h3 class="text-xl font-bold mb-2 text-center">Largest Area (3 Countries)</h3>
+              <p class="text-gray text-center">Pick which of 3 countries has the largest area</p>
             </a>
           </div>
         </div>

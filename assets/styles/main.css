@@ -888,6 +888,11 @@ h1, h2, h3, h4, h5, h6, .logo-text, .header a, .header a:visited, .header a:hove
   color: #023047;
   font-weight: bold;
 }
+.game-logo-img {
+  height: 2.2rem;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
 .mt-game-card {
   margin-top: 1.5rem !important;
 } 
@@ -906,4 +911,50 @@ h1, h2, h3, h4, h5, h6, .logo-text, .header a, .header a:visited, .header a:hove
   line-height: 1;
   vertical-align: middle;
   text-align: center;
+} 
+.size-section .section-title {
+  background: #2B6450;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-top-left-radius: 1.25rem;
+  border-top-right-radius: 1.25rem;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.05em;
+  text-align: center;
+} 
+#endGameBtn {
+  background: #FFB703 !important;
+  color: #fff !important;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+#endGameBtn:hover {
+  background: #FB8500 !important;
+  color: #fff !important;
+} 
+
+.homepage-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.homepage-logo {
+  width: 434px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+@media (max-width: 600px) {
+  .homepage-logo {
+    width: 80vw;
+    max-width: 434px;
+  }
 } 
