@@ -6,7 +6,7 @@
     <title>Geo Frenzy - Home</title>
     <link rel="stylesheet" href="assets/styles/main.css">
     <!-- FontAwesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <button id="openSettings" style="position: absolute; top: 2rem; right: 2rem; background: none; border: none; font-size: 2rem; cursor: pointer; z-index: 1001;"><i class="fa-solid fa-gear"></i></button>
@@ -40,10 +40,10 @@
               <span>Oceania</span>
               <span class="switch"><input type="checkbox" name="continent" value="Oceania" checked><span class="slider"></span></span>
             </label>
-          </div>
+            </div>
         </form>
-      </div>
-    </div>
+            </div>
+        </div>
     <div class="container" style="padding-top: 2rem; padding-bottom: 2rem;">
             <div class="text-center mb-8">
             <div class="text-8xl mb-4"><i class="fa-solid fa-earth-europe" style="color: #219EBC;"></i></div>
@@ -52,57 +52,56 @@
             </div>
 
         <!-- Flags Section -->
-        <div class="mb-10">
-            <h3 class="text-2xl font-bold mb-4 text-center">FLAGS</h3>
-            <div class="grid md:grid-cols-2 mb-8">
-                <a href="game.html?mode=multiple-choice" class="game-mode-card">
-                    <div class="game-mode-icon text-center"><i class="fa-solid fa-bullseye" style="color: #219EBC;"></i></div>
-                    <h3 class="text-xl font-bold mb-2 text-center">Multiple Choice</h3>
-                    <p class="text-gray text-center">Choose the correct country from 6 options</p>
-                </a>
-                <a href="game.html?mode=type-country" class="game-mode-card">
-                    <div class="game-mode-icon text-center"><i class="fa-solid fa-keyboard" style="color: #219EBC;"></i></div>
-                    <h3 class="text-xl font-bold mb-2 text-center">Type Country</h3>
-                    <p class="text-gray text-center">Type the country name</p>
-                </a>
-                <a href="game.html?mode=time-attack" class="game-mode-card">
-                    <div class="game-mode-icon text-center"><i class="fa-solid fa-stopwatch" style="color: #219EBC;"></i></div>
-                    <h3 class="text-xl font-bold mb-2 text-center">Time Attack</h3>
-                    <p class="text-gray text-center">Answer as many as possible in 60 seconds</p>
-                </a>
-                <a href="game.html?mode=survival" class="game-mode-card">
-                    <div class="game-mode-icon text-center"><i class="fa-solid fa-skull" style="color: #219EBC;"></i></div>
-                    <h3 class="text-xl font-bold mb-2 text-center">Survival Mode</h3>
-                    <p class="text-gray text-center">Three lives - how far can you go?</p>
-                </a>
-                </div>
-            </div>
-
+        <div class="section-container flags-section">
+          <div class="section-title">FLAGS</div>
+          <div class="grid md:grid-cols-2 mb-8">
+            <a href="game.html?mode=multiple-choice" class="game-mode-card">
+              <div class="game-mode-icon text-center"><i class="fa-solid fa-bullseye" style="color: #219EBC;"></i></div>
+              <h3 class="text-xl font-bold mb-2 text-center">Multiple Choice</h3>
+              <p class="text-gray text-center">Choose the correct country from 6 options</p>
+            </a>
+            <a href="game.html?mode=type-country" class="game-mode-card">
+              <div class="game-mode-icon text-center"><i class="fa-solid fa-keyboard" style="color: #219EBC;"></i></div>
+              <h3 class="text-xl font-bold mb-2 text-center">Type Country</h3>
+              <p class="text-gray text-center">Type the country name</p>
+            </a>
+            <a href="game.html?mode=time-attack" class="game-mode-card">
+              <div class="game-mode-icon text-center"><i class="fa-solid fa-stopwatch" style="color: #219EBC;"></i></div>
+              <h3 class="text-xl font-bold mb-2 text-center">Time Attack</h3>
+              <p class="text-gray text-center">Answer as many as possible in 60 seconds</p>
+            </a>
+            <a href="game.html?mode=survival" class="game-mode-card">
+              <div class="game-mode-icon text-center"><i class="fa-solid fa-skull" style="color: #219EBC;"></i></div>
+              <h3 class="text-xl font-bold mb-2 text-center">Survival Mode</h3>
+              <p class="text-gray text-center">Three lives - how far can you go?</p>
+            </a>
+          </div>
+        </div>
         <!-- Population Guess Section -->
-        <div>
-            <h3 class="text-2xl font-bold mb-4 text-center">POPULATION GUESS</h3>
-            <div class="grid md:grid-cols-2 mb-8">
-                <a href="game.html?mode=population-mc" class="game-mode-card">
-                    <div class="game-mode-icon text-center"><i class="fa-solid fa-hashtag" style="color: #FFB703;"></i></div>
-                    <h3 class="text-xl font-bold mb-2 text-center">Guess the Population</h3>
-                    <p class="text-gray text-center">Choose the correct population from 6 options</p>
-                </a>
-                <a href="game.html?mode=population-higher" class="game-mode-card">
-                    <div class="game-mode-icon text-center"><i class="fa-solid fa-user-group" style="color: #FFB703;"></i></div>
-                    <h3 class="text-xl font-bold mb-2 text-center">Higher Population</h3>
-                    <p class="text-gray text-center">Pick which country (name & flag) has a higher population</p>
-                </a>
-                <a href="game.html?mode=population-higher-flags" class="game-mode-card">
-                    <div class="game-mode-icon text-center"><i class="fa-solid fa-users-rectangle" style="color: #FFB703;"></i></div>
-                    <h3 class="text-xl font-bold mb-2 text-center">Higher Population (Flags Only)</h3>
-                    <p class="text-gray text-center">Pick which flag has a higher population</p>
-                </a>
-                <a href="game.html?mode=population-highest-3" class="game-mode-card">
-                    <div class="game-mode-icon text-center"><i class="fa-solid fa-users" style="color: #FFB703;"></i></div>
-                    <h3 class="text-xl font-bold mb-2 text-center">Highest Population (3 Countries)</h3>
-                    <p class="text-gray text-center">Pick which of 3 countries has the highest population</p>
-                </a>
-            </div>
+        <div class="section-container population-section">
+          <div class="section-title">POPULATION GUESS</div>
+          <div class="grid md:grid-cols-2 mb-8">
+            <a href="game.html?mode=population-mc" class="game-mode-card">
+              <div class="game-mode-icon text-center"><i class="fa-solid fa-hashtag" style="color: #FFB703;"></i></div>
+              <h3 class="text-xl font-bold mb-2 text-center">Guess the Population</h3>
+              <p class="text-gray text-center">Choose the correct population from 6 options</p>
+            </a>
+            <a href="game.html?mode=population-higher" class="game-mode-card">
+              <div class="game-mode-icon text-center"><i class="fa-solid fa-user-group" style="color: #FFB703;"></i></div>
+              <h3 class="text-xl font-bold mb-2 text-center">Higher Population</h3>
+              <p class="text-gray text-center">Pick which country (name & flag) has a higher population</p>
+            </a>
+            <a href="game.html?mode=population-higher-flags" class="game-mode-card">
+              <div class="game-mode-icon text-center"><i class="fa-solid fa-users-rectangle" style="color: #FFB703;"></i></div>
+              <h3 class="text-xl font-bold mb-2 text-center">Higher Population (Flags Only)</h3>
+              <p class="text-gray text-center">Pick which flag has a higher population</p>
+            </a>
+            <a href="game.html?mode=population-highest-3" class="game-mode-card">
+              <div class="game-mode-icon text-center"><i class="fa-solid fa-users" style="color: #FFB703;"></i></div>
+              <h3 class="text-xl font-bold mb-2 text-center">Highest Population (3 Countries)</h3>
+              <p class="text-gray text-center">Pick which of 3 countries has the highest population</p>
+            </a>
+          </div>
         </div>
                     </div>
 <script type="module" src="assets/scripts/continent-settings.js"></script>

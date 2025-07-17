@@ -690,12 +690,22 @@ h1, h2, h3, h4, h5, h6, .logo-text, .header a, .header a:visited, .header a:hove
   background: #FFEDC0 !important;
   color: #FB8500 !important;
   border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.25rem 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
   display: inline-block;
 } 
-
+#timerDisplay, #livesDisplay {
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+}
+.icon-btn {
+  font-size: 1.3rem !important;
+  padding: 0.2rem 0.4rem !important;
+  min-width: unset;
+  min-height: unset;
+}
 #playAgain {
   background: #FFB703 !important;
   color: #fff !important;
@@ -794,4 +804,106 @@ h1, h2, h3, h4, h5, h6, .logo-text, .header a, .header a:visited, .header a:hove
   display: inline-block !important;
   z-index: 10 !important;
   position: relative;
+} 
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 1rem;
+  margin: 2rem 0 1.5rem 0;
+  padding: 0.75rem 0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+  letter-spacing: 0.05em;
+}
+.flags-header {
+  background: #023047;
+  color: #fff;
+}
+.population-header {
+  background: #FB8500;
+  color: #fff;
+} 
+
+.section-container {
+  background: #fff;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 16px rgba(2,48,71,0.08);
+  margin-bottom: 2.5rem;
+  padding: 0 0 1.5rem 0;
+  overflow: hidden;
+}
+.section-container > .grid {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.flags-section .section-title {
+  background: #023047;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-top-left-radius: 1.25rem;
+  border-top-right-radius: 1.25rem;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+.population-section .section-title {
+  background: #FB8500;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-top-left-radius: 1.25rem;
+  border-top-right-radius: 1.25rem;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.05em;
+  text-align: center;
+} 
+
+.game-logo-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(2,48,71,0.06);
+  padding: 1.25rem 0 1rem 0;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid #e0e0e0;
+  z-index: 100;
+}
+.game-logo-icon {
+  font-size: 2.2rem;
+  margin-right: 0.5rem;
+}
+.game-logo-text {
+  font-size: 1.5rem;
+  color: #023047;
+  font-weight: bold;
+}
+.mt-game-card {
+  margin-top: 1.5rem !important;
+} 
+.mt-game-results {
+  margin-top: 1.5rem !important;
+} 
+.game-results-card {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 480px;
+  text-align: center;
+} 
+.fa-fallback {
+  font-size: 4rem !important;
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+  text-align: center;
 } 

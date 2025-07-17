@@ -447,7 +447,7 @@ function showPopulationHighest3Feedback(isCorrect, displayOrder, chosenIdx) {
 }
 
 function renderGameHeader() {
-    let html = `<div class="card"><div class="flex justify-between items-center">`;
+    let html = `<div class="card game-main-card mt-game-card"><div class="flex justify-between items-center">`;
     html += `<div class="flex items-center space-x-4">`;
     html += `<div class="score-box"><span style="font-size: 0.875rem; font-weight: 600;">Score: <span id="currentScore">${state.score}</span></span></div>`;
     html += `<div class="score-box"><span style="font-size: 0.875rem; font-weight: 600;">Streak: <span id="currentStreak">${state.streak}</span></span></div>`;
@@ -650,31 +650,63 @@ function endGame() {
     }
     setStats(stats);
     // Show results
-    let html = `<div class="card text-center">`;
-    html += `<div class="mb-6"><div class="text-8xl mb-4">🏆</div>`;
-    html += `<h2 class="text-3xl font-bold mb-2">Great Job!</h2>`;
-    html += `<p class="text-xl text-gray">You've completed the quiz!</p></div>`;
+    let iconHtml = '';
+    let title = '';
+    let subtitle = '';
+    if (state.mode === 'time-attack') {
+        iconHtml = `<i class='fa-solid fa-hourglass-end' style='font-size:4rem;color:#219ebc;'></i><span class='fa-fallback' style='font-size:3rem;vertical-align:middle;'>⏳</span>`;
+        title = 'Time is up!';
+        subtitle = "You've completed the quiz!";
+    } else if (state.mode === 'survival') {
+        iconHtml = `<i class='fa-regular fa-face-dizzy' style='font-size:4rem;color:#ef4444;'></i><span class='fa-fallback' style='font-size:3rem;vertical-align:middle;'>😵‍💫</span>`;
+        title = 'Game over!';
+        subtitle = "You've ran out of lives.";
+    } else if (state.mode === 'population-higher' || state.mode === 'population-higher-flags' || state.mode === 'population-highest-3') {
+        iconHtml = `<i class='fa-solid fa-skull-crossbones' style='font-size:4rem;color:#ef4444;'></i><span class='fa-fallback' style='font-size:3rem;vertical-align:middle;'>☠️</span>`;
+        title = 'Game over!';
+        subtitle = "You've ran out of lives.";
+    } else if (state.mode === 'multiple-choice' || state.mode === 'type-country') {
+        iconHtml = `<i class='fa-solid fa-trophy' style='font-size:4rem;color:#FB8500;'></i><span class='fa-fallback' style='font-size:3rem;vertical-align:middle;'>🏆</span>`;
+        title = 'Great Job!';
+        subtitle = "You've completed the quiz!";
+    } else {
+        iconHtml = `<i class='fa-solid fa-trophy' style='font-size:4rem;color:#FB8500;'></i><span class='fa-fallback' style='font-size:3rem;vertical-align:middle;'>🏆</span>`;
+        title = 'Great Job!';
+        subtitle = "You've completed the quiz!";
+    }
+    let html = `<div class="card game-results-card mt-game-results">`;
+    html += `<div class="mb-6"><div class="text-8xl mb-4">${iconHtml}</div>`;
+    html += `<h2 class="text-3xl font-bold mb-2">${title}</h2>`;
+    html += `<p class="text-xl text-gray">${subtitle}</p></div>`;
     if (state.mode === 'population-higher') {
         html += `<div class="grid grid-cols-1 md:grid-cols-2 mb-8">`;
         html += `<div style="background: rgba(93, 92, 222, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold text-primary">${state.score}</div><div class="text-gray" style="font-size: 0.875rem;">Final Score</div></div>`;
-        html += `<div style="background: rgba(245, 158, 11, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold" style="color: #f59e0b;">${stats[statsKey].longestStreakHigher || 0}</div><div class="text-gray" style="font-size: 0.875rem;">Best Streak (All Games)</div></div>`;
+        html += `<div style="background: rgba(245, 158, 11, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold" style="color: #f59e0b;">${stats[statsKey].longestStreakHigher || 0}</div><div class="text-gray" style="font-size: 0.875rem;">Best Streak (All Time)</div></div>`;
         html += `</div>`;
     } else if (state.mode === 'population-higher-flags') {
         html += `<div class="grid grid-cols-1 md:grid-cols-2 mb-8">`;
         html += `<div style="background: rgba(93, 92, 222, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold text-primary">${state.score}</div><div class="text-gray" style="font-size: 0.875rem;">Final Score</div></div>`;
-        html += `<div style="background: rgba(245, 158, 11, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold" style="color: #f59e0b;">${stats[statsKey].longestStreakHigherFlags || 0}</div><div class="text-gray" style="font-size: 0.875rem;">Best Streak (All Games)</div></div>`;
+        html += `<div style="background: rgba(245, 158, 11, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold" style="color: #f59e0b;">${stats[statsKey].longestStreakHigherFlags || 0}</div><div class="text-gray" style="font-size: 0.875rem;">Best Streak (All Time)</div></div>`;
         html += `</div>`;
     } else if (state.mode === 'multiple-choice') {
         html += `<div class="grid grid-cols-1 md:grid-cols-2 mb-8">`;
         html += `<div style="background: #f3f4fd; border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold text-primary">${state.correctAnswers}</div><div class="text-gray" style="font-size: 0.875rem;">Final Score</div></div>`;
-        html += `<div style="background: #fff8ed; border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold" style="color: #fb8500;">${stats[statsKey].longestStreakMC || 0}</div><div class="text-gray" style="font-size: 0.875rem;">Best Streak (All Games)</div></div>`;
+        html += `<div style="background: #fff8ed; border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold" style="color: #fb8500;">${stats[statsKey].longestStreakMC || 0}</div><div class="text-gray" style="font-size: 0.875rem;">Best Streak (All Time)</div></div>`;
+        html += `</div>`;
+    } else if (state.mode === 'population-highest-3') {
+        html += `<div class="grid grid-cols-1 md:grid-cols-2 mb-8">`;
+        html += `<div style="background: rgba(93, 92, 222, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold text-primary">${state.score}</div><div class="text-gray" style="font-size: 0.875rem;">Final Score</div></div>`;
+        html += `<div style="background: rgba(245, 158, 11, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold" style="color: #f59e0b;">${stats[statsKey].longestStreakHighest3 || 0}</div><div class="text-gray" style="font-size: 0.875rem;">Best Streak (All Time)</div></div>`;
+        html += `</div>`;
+    } else if (state.mode === 'survival') {
+        html += `<div class="grid grid-cols-1 md:grid-cols-2 mb-8">`;
+        html += `<div style="background: rgba(93, 92, 222, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold text-primary">${state.score}</div><div class="text-gray" style="font-size: 0.875rem;">Final Score</div></div>`;
+        html += `<div style="background: rgba(245, 158, 11, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold" style="color: #f59e0b;">${stats[statsKey].longestStreak || 0}</div><div class="text-gray" style="font-size: 0.875rem;">Best Streak (All Time)</div></div>`;
         html += `</div>`;
     } else {
-        html += `<div class="grid grid-cols-2 md:grid-cols-4 mb-8">`;
+        html += `<div class="grid grid-cols-1 md:grid-cols-2 mb-8">`;
         html += `<div style="background: rgba(93, 92, 222, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold text-primary">${state.score}</div><div class="text-gray" style="font-size: 0.875rem;">Final Score</div></div>`;
-        html += `<div style="background: rgba(16, 185, 129, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold text-success">${accuracy}%</div><div class="text-gray" style="font-size: 0.875rem;">Accuracy</div></div>`;
-        html += `<div style="background: rgba(147, 51, 234, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold" style="color: #9333ea;">${timeElapsed}s</div><div class="text-gray" style="font-size: 0.875rem;">Time</div></div>`;
-        html += `<div style="background: rgba(245, 158, 11, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold" style="color: #f59e0b;">${state.bestStreak}</div><div class="text-gray" style="font-size: 0.875rem;">Best Streak</div></div>`;
+        html += `<div style="background: rgba(245, 158, 11, 0.1); border-radius: 0.75rem; padding: 1rem;"><div class="text-2xl font-bold" style="color: #f59e0b;">${state.bestStreak}</div><div class="text-gray" style="font-size: 0.875rem;">Best Streak (All Time)</div></div>`;
         html += `</div>`;
     }
     html += `<div class="flex flex-col space-y-3" style="gap: 0.75rem;">`;
@@ -755,6 +787,12 @@ const _showPopulationHighest3Feedback = showPopulationHighest3Feedback;
 showPopulationHighest3Feedback = function() { preserveScroll(() => _showPopulationHighest3Feedback.apply(this, arguments)); };
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Insert game logo header at the top
+    const logoHeader = document.createElement('div');
+    logoHeader.className = 'game-logo-header';
+    logoHeader.innerHTML = '<span class="game-logo-icon">🌍</span> <span class="game-logo-text">Geo Frenzy</span>';
+    document.body.insertBefore(logoHeader, document.body.firstChild);
+
     const openSettings = document.getElementById('openSettings');
     const settingsModal = document.getElementById('settingsModal');
     const closeSettings = document.getElementById('closeSettings');
