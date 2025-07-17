@@ -531,6 +531,7 @@ body {
     border-radius: 1rem;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
     padding: 2rem;
+    padding-top: 3.5rem;
     max-width: 28rem;
     width: 100%;
     margin: 1rem;
@@ -752,4 +753,45 @@ h1, h2, h3, h4, h5, h6, .logo-text, .header a, .header a:visited, .header a:hove
   .highest3-choice, .higher-choice {
     margin-bottom: 1.25rem;
   }
+} 
+
+/* Ensure survival mode hearts are always visible and styled */
+#livesDisplay .fa-heart {
+  color: #ef4444 !important;
+  font-size: 1.5rem !important;
+  filter: none !important;
+}
+#livesDisplay .fa-heart-crack {
+  color: #aaa !important;
+  font-size: 1.5rem !important;
+  filter: none !important;
+}
+
+/* Make the quit/close X icon always visible and styled */
+.icon-btn .fa-circle-xmark {
+  color: #023047 !important;
+  font-size: 2rem !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* Also style the settings gear for consistency */
+#openSettings .fa-gear {
+  color: #023047 !important;
+  font-size: 2rem !important;
+} 
+
+/* Force FontAwesome icons to always display and be visible */
+.fa, .fa-solid, .fa-regular {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: inherit;
+}
+
+/* Ensure #livesDisplay is always visible and not overlapped */
+#livesDisplay {
+  display: inline-block !important;
+  z-index: 10 !important;
+  position: relative;
 } 
