@@ -55,6 +55,4 @@ const backgrounds = [
   'background5.svg'
 ];
 const chosen = backgrounds[Math.floor(Math.random() * backgrounds.length)];
-const overlay = document.createElement('style');
-overlay.innerHTML = `body::before { background-image: url('../images/${chosen}'), linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)); }`;
-document.head.appendChild(overlay); 
+document.body.style.setProperty('--overlay-bg-url', `url('../images/${chosen}')`); 

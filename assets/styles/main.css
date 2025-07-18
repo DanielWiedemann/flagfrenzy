@@ -23,21 +23,21 @@ body {
 }
 
 body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 0;
-  background-image:
-    url('../images/background.svg'),
-    linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5));
-  background-repeat: repeat, no-repeat;
-  background-size: auto, cover;
-  background-blend-mode: overlay; /* try multiply, darken, etc */
-  opacity: 0.2;
-  filter: brightness(8) grayscale(1);
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+        var(--overlay-bg-url, url('../images/background1.svg')),
+        linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5));
+    background-repeat: repeat, no-repeat;
+    background-size: auto, cover;
+    background-blend-mode: overlay;
+    opacity: 0.1;
+    filter: brightness(8) grayscale(1);
 }
 
 /* Ensure main content is above the overlay */
