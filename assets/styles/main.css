@@ -1147,3 +1147,6 @@ a[href*="size-highest-3"] p {
     max-width: 100%;
   }
 } 
+.flag-img.extreme-hidden {
+  pointer-events: none;
+} 

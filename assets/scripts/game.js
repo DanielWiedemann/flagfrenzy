@@ -603,6 +603,8 @@ function attachQuestionHandlers() {
                 if (val) checkAnswer(val);
             }
         };
+        // Always focus the input field
+        setTimeout(() => { input.focus(); }, 0);
     }
 }
 
@@ -1307,13 +1309,14 @@ function renderExtremeQuestion() {
     html += `<div class=\"card text-center\">`;
     html += `<div class=\"mb-6\"><div class=\"text-gray mb-2\" style=\"font-size: 0.875rem;\">Question ${state.questionNumber} of 195</div>`;
     html += `<h3 class=\"text-2xl font-bold mb-4\">Which country does this flag belong to?</h3>`;
-    html += `<div class=\"mb-6\" style=\"display: flex; justify-content: center;\">`;
-    html += `<div id=\"flag-canvas-container\" style=\"position:relative;display:inline-block;\"></div>`;
+    html += `<div class=\"mb-6\" style=\"display: flex; justify-content: center; position: relative;\">`;
+    html += `<div id=\"flag-canvas-container\" style=\"position:relative;display:inline-block;\">`;
+    html += `<button id=\"showFlagBtn\" class=\"icon-btn\" style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:3rem;color:#219EBC;z-index:1;pointer-events:auto;\"><i class=\"fa-solid fa-eye\"></i></button>`;
+    html += `</div>`;
     html += `</div>`;
     html += `<div id=\"answerContainer\">`;
     html += `<input type=\"text\" id=\"countryInput\" placeholder=\"Type the country name...\" class=\"input\">`;
     html += `<button id=\"submitAnswer\" class=\"btn btn-primary mt-2\" style=\"padding: 0.75rem 2rem; margin-top: 1rem; background: #FFB703; color: #fff; border: none;\">Submit Answer</button>`;
-    html += `<button id=\"showFlagBtn\" class=\"icon-btn\" style=\"margin-left: 1rem; margin-top: 0.5rem; font-size: 1.5rem; vertical-align: middle; color: #219EBC;\"><i class=\"fa-solid fa-eye\"></i></button>`;
     html += `</div>`;
     html += `<div id=\"feedbackContainer\" class=\"hidden mt-6\"></div>`;
     html += `</div>`;
@@ -1380,32 +1383,43 @@ function renderExtremeQuestion() {
         }
         const container = document.getElementById('flag-canvas-container');
         container.innerHTML = '';
+        // Ensure the button is always present and behind the canvas
+        const showFlagBtn = document.createElement('button');
+        showFlagBtn.id = 'showFlagBtn';
+        showFlagBtn.className = 'icon-btn';
+        showFlagBtn.style.position = 'absolute';
+        showFlagBtn.style.top = '50%';
+        showFlagBtn.style.left = '50%';
+        showFlagBtn.style.transform = 'translate(-50%,-50%)';
+        showFlagBtn.style.fontSize = '3rem';
+        showFlagBtn.style.color = '#219EBC';
+        showFlagBtn.style.zIndex = '1';
+        showFlagBtn.style.pointerEvents = 'auto';
+        showFlagBtn.innerHTML = '<i class="fa-solid fa-eye"></i>';
+        container.appendChild(showFlagBtn);
         canvas.className = 'flag-img';
         canvas.style.borderRadius = '5px';
+        canvas.style.position = 'relative';
+        canvas.style.zIndex = '2';
         container.appendChild(canvas);
         // Hide after 0.5s by making transparent (Extreme mode only)
         if (state.mode === 'extreme') {
-            setTimeout(() => { canvas.style.opacity = '0'; }, 500);
+            setTimeout(() => { canvas.style.opacity = '0'; canvas.classList.add('extreme-hidden'); }, 500);
         }
-    };
-    // Eye icon logic
-    let revealsLeft = 2;
-    const showFlagBtn = document.getElementById('showFlagBtn');
-    showFlagBtn.onclick = () => {
-        if (revealsLeft > 0) {
-            revealsLeft--;
-            // Redraw and hide after 0.5s
-            const container = document.getElementById('flag-canvas-container');
-            const canvas = container.querySelector('canvas');
-            if (canvas) {
+        // Eye icon logic
+        let revealsLeft = 2;
+        showFlagBtn.onclick = () => {
+            if (revealsLeft > 0) {
+                revealsLeft--;
                 canvas.style.opacity = '1';
-                setTimeout(() => { canvas.style.opacity = '0'; }, 500);
+                canvas.classList.remove('extreme-hidden');
+                setTimeout(() => { canvas.style.opacity = '0'; canvas.classList.add('extreme-hidden'); }, 500);
+                if (revealsLeft === 0) {
+                    showFlagBtn.innerHTML = '<i class="fa-solid fa-eye-slash" style="color: #aaa;"></i>';
+                    showFlagBtn.disabled = true;
+                }
             }
-            if (revealsLeft === 0) {
-                showFlagBtn.innerHTML = '<i class="fa-solid fa-eye-slash" style="color: #aaa;"></i>';
-                showFlagBtn.disabled = true;
-            }
-        }
+        };
     };
     attachQuestionHandlers();
     patchQuitButton();
@@ -1448,6 +1462,7 @@ showFeedback = function(correct) {
         const canvas = container && container.querySelector('canvas');
         if (canvas) {
             canvas.style.opacity = '1';
+            canvas.classList.remove('extreme-hidden');
         }
         document.getElementById('nextQuestion').onclick = () => {
             if (state.questionNumber < state.totalQuestions) {
