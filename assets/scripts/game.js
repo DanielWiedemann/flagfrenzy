@@ -625,7 +625,7 @@ function checkAnswer(userAnswer) {
     const isCorrect = accepted.some(ans => normalizeAnswer(ans) === normalizedUser);
     if (isCorrect) {
         if (state.mode === 'multiple-choice') {
-            state.score += 1;
+            state.score += 10 + (state.streak * 2);
         } else {
             state.score += 10 + (state.streak * 2);
         }
