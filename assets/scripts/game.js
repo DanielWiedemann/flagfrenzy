@@ -179,7 +179,7 @@ function renderQuestion() {
         html += `</div>`;
     } else if (state.mode === 'type-country') {
         html += `<input type="text" id="countryInput" placeholder="Type the country name..." class="input">`;
-        html += `<button id="submitAnswer" class="btn btn-primary mt-4" style="padding: 0.75rem 2rem;">Submit Answer</button>`;
+        html += `<button id="submitAnswer" class="btn btn-primary mt-2" style="padding: 0.75rem 2rem;">Submit Answer</button>`;
     }
     html += `</div>`;
     html += `<div id="feedbackContainer" class="hidden mt-6"></div>`;
@@ -486,20 +486,120 @@ function renderGameHeader() {
 }
 
 function attachQuestionHandlers() {
-    if (['multiple-choice', 'time-attack', 'survival'].includes(state.mode)) {
-        document.querySelectorAll('.answer-option').forEach(btn => {
+    if (["multiple-choice", "time-attack", "survival"].includes(state.mode)) {
+        document.querySelectorAll(".answer-option").forEach((btn) => {
             btn.onclick = () => {
                 checkAnswer(btn.dataset.answer);
             };
         });
-    } else if (state.mode === 'type-country') {
-        document.getElementById('submitAnswer').onclick = () => {
-            const val = document.getElementById('countryInput').value.trim();
+    } else if (state.mode === "type-country" || state.mode === "hard") {
+        const input = document.getElementById("countryInput");
+        const submitBtn = document.getElementById("submitAnswer");
+        // Wrap input in a relative div for dropdown positioning
+        const wrapper = document.createElement("div");
+        wrapper.className = "autocomplete-wrapper";
+        wrapper.style.position = "relative";
+        input.parentNode.insertBefore(wrapper, input);
+        wrapper.appendChild(input);
+        wrapper.appendChild(submitBtn);
+        // Create autocomplete dropdown
+        let dropdown = document.createElement("div");
+        dropdown.className = "autocomplete-dropdown";
+        dropdown.style.position = "absolute";
+        dropdown.style.left = 0;
+        dropdown.style.top = input.offsetHeight + 2 + "px";
+        dropdown.style.zIndex = 10;
+        dropdown.style.background = "#fff";
+        dropdown.style.border = "1px solid #eee";
+        dropdown.style.maxHeight = "180px";
+        dropdown.style.overflowY = "auto";
+        dropdown.style.display = "none";
+        dropdown.style.width = input.offsetWidth + "px";
+        wrapper.appendChild(dropdown);
+        input.addEventListener("input", function () {
+            const val = input.value.trim().toLowerCase();
+            if (!val) {
+                dropdown.style.display = "none";
+                return;
+            }
+            // Filter and sort countries: startsWith first, then includes
+            let filtered = getFilteredFlags().filter((c) => {
+                if (c.name.toLowerCase().includes(val)) return true;
+                if (c.code && c.code.toLowerCase().includes(val)) return true;
+                if (c.altNames && c.altNames.some((alt) => alt.toLowerCase().includes(val))) return true;
+                return false;
+            });
+            filtered = filtered.sort((a, b) => {
+                const aName = a.name.toLowerCase();
+                const bName = b.name.toLowerCase();
+                const aCode = (a.code || '').toLowerCase();
+                const bCode = (b.code || '').toLowerCase();
+                const aAlt = (a.altNames || []).map(x => x.toLowerCase());
+                const bAlt = (b.altNames || []).map(x => x.toLowerCase());
+                // Helper: does it start with val?
+                function startsWithAny(strs) {
+                  return strs.some(s => s.startsWith(val));
+                }
+                const aStarts = aName.startsWith(val) || aCode.startsWith(val) || startsWithAny(aAlt);
+                const bStarts = bName.startsWith(val) || bCode.startsWith(val) || startsWithAny(bAlt);
+                if (aStarts && !bStarts) return -1;
+                if (!aStarts && bStarts) return 1;
+                return aName.localeCompare(bName);
+            });
+            if (filtered.length === 0) {
+                dropdown.style.display = "none";
+                return;
+            }
+            dropdown.innerHTML = filtered
+                .map(
+                    (c) =>
+                        `<div class="autocomplete-item" style="padding: 0.4rem 0.8rem; cursor: pointer; border-bottom: 1px solid #f3f3f3; text-align: left;">${c.name}</div>`
+                )
+                .join("");
+            dropdown.style.display = "block";
+            dropdown.style.width = input.offsetWidth + "px";
+            // Click handler for suggestions
+            dropdown.querySelectorAll('.autocomplete-item').forEach((item, idx) => {
+                item.onclick = () => {
+                    input.value = filtered[idx].name;
+                    dropdown.style.display = "none";
+                    input.focus();
+                };
+            });
+        });
+        input.addEventListener("blur", () => setTimeout(() => (dropdown.style.display = "none"), 150));
+        // Keyboard navigation
+        let selectedIdx = -1;
+        input.addEventListener("keydown", function (e) {
+            const items = dropdown.querySelectorAll(".autocomplete-item");
+            if (!items.length || dropdown.style.display === "none") return;
+            if (e.key === "ArrowDown") {
+                selectedIdx = (selectedIdx + 1) % items.length;
+                items.forEach((it, i) => (it.style.background = i === selectedIdx ? "#f3f4f6" : "#fff"));
+                e.preventDefault();
+            } else if (e.key === "ArrowUp") {
+                selectedIdx = (selectedIdx - 1 + items.length) % items.length;
+                items.forEach((it, i) => (it.style.background = i === selectedIdx ? "#f3f4f6" : "#fff"));
+                e.preventDefault();
+            } else if (e.key === "Enter" && selectedIdx >= 0) {
+                items[selectedIdx].click();
+                selectedIdx = -1;
+                e.preventDefault();
+            }
+        });
+        submitBtn.className = "btn btn-primary mt-2";
+        submitBtn.style.background = "#FFB703";
+        submitBtn.style.color = "#fff";
+        submitBtn.style.border = "none";
+        submitBtn.style.padding = "";
+        submitBtn.style.marginTop = "1rem";
+        submitBtn.onclick = () => {
+            const val = input.value.trim();
             if (val) checkAnswer(val);
         };
-        document.getElementById('countryInput').onkeypress = (e) => {
-            if (e.key === 'Enter') {
-                const val = document.getElementById('countryInput').value.trim();
+        input.onkeypress = (e) => {
+            if (e.key === "Enter") {
+                const val = input.value.trim();
                 if (val) checkAnswer(val);
             }
         };
@@ -766,6 +866,10 @@ async function initGame() {
         state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
         state.highest3Countries = null;
         renderSizeHighest3Question();
+    } else if (state.mode === 'hard') {
+        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
+        state.totalQuestions = 50;
+        renderHardQuestion();
     } else {
         startGame();
     }
@@ -805,7 +909,34 @@ renderPopulationHighest3Question = function() { preserveScroll(() => _renderPopu
 
 // Patch feedback functions as well
 const _showFeedback = showFeedback;
-showFeedback = function() { preserveScroll(() => _showFeedback.apply(this, arguments)); };
+showFeedback = function(correct) {
+    if (state.mode === 'hard') {
+        const feedback = document.getElementById('feedbackContainer');
+        let html = '';
+        if (correct) {
+            html += '<div class="text-xl font-bold mb-2 text-success">Correct! 🎉</div>';
+            html += `<div class="text-gray mb-4">Well done! That's ${state.currentQuestion.correct.name}</div>`;
+        } else {
+            html += '<div class="text-xl font-bold mb-2 text-danger">Incorrect ❌</div>';
+            html += `<div class="text-gray mb-4">The correct answer is ${state.currentQuestion.correct.name}</div>`;
+        }
+        html += `<button id="nextQuestion" class="btn btn-primary mt-2">Next Question</button>`;
+        feedback.innerHTML = html;
+        feedback.classList.remove('hidden');
+        // Hide answer options
+        const ac = document.getElementById('answerContainer');
+        if (ac) ac.innerHTML = '';
+        document.getElementById('nextQuestion').onclick = () => {
+            if (state.questionNumber < state.totalQuestions) {
+                renderHardQuestion();
+            } else {
+                endGame();
+            }
+        };
+        return;
+    }
+    return _showFeedback.apply(this, arguments);
+}
 const _showPopulationMCFeedback = showPopulationMCFeedback;
 showPopulationMCFeedback = function() { preserveScroll(() => _showPopulationMCFeedback.apply(this, arguments)); };
 const _showPopulationHigherFeedback = showPopulationHigherFeedback;
@@ -1078,6 +1209,202 @@ function showSizeHighest3Feedback(isCorrect, displayOrder, chosenIdx, end = fals
     }
 }
 
+function renderHardQuestion() {
+    state.questionNumber++;
+    state.currentQuestion = generateQuestion();
+    let html = '';
+    html += `<div class="card text-center">`;
+    html += `<div class="mb-6"><div class="text-gray mb-2" style="font-size: 0.875rem;">Question ${state.questionNumber} of 50</div>`;
+    html += `<h3 class="text-2xl font-bold mb-4">Which country does this flag belong to?</h3>`;
+    // Randomly choose transformations
+    const transforms = [];
+    if (Math.random() < 0.5) transforms.push('mirror');
+    if (Math.random() < 0.5) transforms.push('flip');
+    const doColorReplace = Math.random() < 0.7;
+    html += `<div class="mb-6" style="display: flex; justify-content: center;">
+      <div id="flag-canvas-container" style="position:relative;display:inline-block;"></div>
+    </div>`;
+    html += `<div id="answerContainer">`;
+    html += `<input type="text" id="countryInput" placeholder="Type the country name..." class="input">`;
+    html += `<button id="submitAnswer" class="btn btn-primary mt-2" style="padding: 0.75rem 2rem; margin-top: 1rem; background: #FFB703; color: #fff; border: none;">Submit Answer</button>`;
+    html += `</div>`;
+    html += `<div id="feedbackContainer" class="hidden mt-6"></div>`;
+    html += `</div>`;
+    gameContainer.innerHTML = renderGameHeader() + html;
+    // Draw flag on canvas with color replacement (always visible)
+    const img = new window.Image();
+    img.crossOrigin = "anonymous";
+    img.src = state.currentQuestion.correct.flag;
+    img.onload = function() {
+        const displayWidth = 400;
+        const displayHeight = Math.round(img.height * (displayWidth / img.width));
+        const canvas = document.createElement('canvas');
+        canvas.width = displayWidth;
+        canvas.height = displayHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.save();
+        if (transforms.includes('mirror')) {
+            ctx.translate(displayWidth, 0);
+            ctx.scale(-1, 1);
+        }
+        if (transforms.includes('flip')) {
+            ctx.translate(0, displayHeight);
+            ctx.scale(1, -1);
+        }
+        ctx.drawImage(img, 0, 0, displayWidth, displayHeight);
+        ctx.restore();
+        if (doColorReplace) {
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const d = imageData.data;
+            const COLORS = {
+                green:  [0, 158, 96],
+                red:    [206, 17, 38],
+                blue:   [0, 56, 168],
+                yellow: [252, 209, 22],
+                white:  [255, 255, 255]
+            };
+            function colorDistance(r1, g1, b1, r2, g2, b2) {
+                return Math.sqrt((r1-r2)**2 + (g1-g2)**2 + (b1-b2)**2);
+            }
+            for (let i = 0; i < d.length; i += 4) {
+                const r = d[i], g = d[i+1], b = d[i+2];
+                let minDist = 80;
+                let match = null;
+                for (const [name, [tr, tg, tb]] of Object.entries(COLORS)) {
+                    const dist = colorDistance(r, g, b, tr, tg, tb);
+                    if (dist < minDist) {
+                        minDist = dist;
+                        match = name;
+                    }
+                }
+                if (match === 'green') { d[i]=220; d[i+1]=30; d[i+2]=30; }
+                else if (match === 'red') { d[i]=30; d[i+1]=30; d[i+2]=220; }
+                else if (match === 'blue') { d[i]=240; d[i+1]=220; d[i+2]=30; }
+                else if (match === 'yellow') { d[i]=255; d[i+1]=255; d[i+2]=255; }
+                else if (match === 'white') { d[i]=30; d[i+1]=180; d[i+2]=30; }
+            }
+            ctx.putImageData(imageData, 0, 0);
+        }
+        const container = document.getElementById('flag-canvas-container');
+        container.innerHTML = '';
+        canvas.className = 'flag-img';
+        canvas.style.borderRadius = '5px';
+        container.appendChild(canvas);
+    };
+    attachQuestionHandlers();
+    patchQuitButton();
+}
+
+function renderExtremeQuestion() {
+    state.questionNumber++;
+    state.currentQuestion = generateQuestion();
+    let html = '';
+    html += `<div class=\"card text-center\">`;
+    html += `<div class=\"mb-6\"><div class=\"text-gray mb-2\" style=\"font-size: 0.875rem;\">Question ${state.questionNumber} of 195</div>`;
+    html += `<h3 class=\"text-2xl font-bold mb-4\">Which country does this flag belong to?</h3>`;
+    // Randomly choose transformations
+    const transforms = [];
+    if (Math.random() < 0.5) transforms.push('mirror');
+    if (Math.random() < 0.5) transforms.push('flip');
+    const doColorReplace = Math.random() < 0.7;
+    html += `<div class=\"mb-6\" style=\"display: flex; justify-content: center;\">`;
+    html += `<div id=\"flag-canvas-container\" style=\"position:relative;display:inline-block;\"></div>`;
+    html += `</div>`;
+    html += `<div id=\"answerContainer\">`;
+    html += `<div style=\"display:flex;align-items:center;gap:0.5rem;justify-content:center;\">`;
+    html += `<input type=\"text\" id=\"countryInput\" placeholder=\"Type the country name...\" class=\"input\">`;
+    html += `<button id=\"showFlagBtn\" class=\"icon-btn\" title=\"Show flag again (2 left)\"><i class=\"fa-solid fa-eye\"></i></button>`;
+    html += `</div>`;
+    html += `<button id=\"submitAnswer\" class=\"btn btn-primary mt-2\" style=\"padding: 0.75rem 2rem; margin-top: 1rem; background: #FFB703; color: #fff; border: none;\">Submit Answer</button>`;
+    html += `</div>`;
+    html += `<div id=\"feedbackContainer\" class=\"hidden mt-6\"></div>`;
+    html += `</div>`;
+    gameContainer.innerHTML = renderGameHeader() + html;
+    // Draw flag on canvas with color replacement, then hide after 0.5s
+    const img = new window.Image();
+    img.crossOrigin = "anonymous";
+    img.src = state.currentQuestion.correct.flag;
+    img.onload = function() {
+        drawAndHideFlag();
+    };
+    function drawAndHideFlag() {
+        const displayWidth = 400;
+        const displayHeight = Math.round(img.height * (displayWidth / img.width));
+        const canvas = document.createElement('canvas');
+        canvas.width = displayWidth;
+        canvas.height = displayHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.save();
+        if (transforms.includes('mirror')) {
+            ctx.translate(displayWidth, 0);
+            ctx.scale(-1, 1);
+        }
+        if (transforms.includes('flip')) {
+            ctx.translate(0, displayHeight);
+            ctx.scale(1, -1);
+        }
+        ctx.drawImage(img, 0, 0, displayWidth, displayHeight);
+        ctx.restore();
+        if (doColorReplace) {
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const d = imageData.data;
+            const COLORS = {
+                green:  [0, 158, 96],
+                red:    [206, 17, 38],
+                blue:   [0, 56, 168],
+                yellow: [252, 209, 22],
+                white:  [255, 255, 255]
+            };
+            function colorDistance(r1, g1, b1, r2, g2, b2) {
+                return Math.sqrt((r1-r2)**2 + (g1-g2)**2 + (b1-b2)**2);
+            }
+            for (let i = 0; i < d.length; i += 4) {
+                const r = d[i], g = d[i+1], b = d[i+2];
+                let minDist = 80;
+                let match = null;
+                for (const [name, [tr, tg, tb]] of Object.entries(COLORS)) {
+                    const dist = colorDistance(r, g, b, tr, tg, tb);
+                    if (dist < minDist) {
+                        minDist = dist;
+                        match = name;
+                    }
+                }
+                if (match === 'green') { d[i]=220; d[i+1]=30; d[i+2]=30; }
+                else if (match === 'red') { d[i]=30; d[i+1]=30; d[i+2]=220; }
+                else if (match === 'blue') { d[i]=240; d[i+1]=220; d[i+2]=30; }
+                else if (match === 'yellow') { d[i]=255; d[i+1]=255; d[i+2]=255; }
+                else if (match === 'white') { d[i]=30; d[i+1]=180; d[i+2]=30; }
+            }
+            ctx.putImageData(imageData, 0, 0);
+        }
+        const container = document.getElementById('flag-canvas-container');
+        container.innerHTML = '';
+        canvas.className = 'flag-img';
+        canvas.style.borderRadius = '5px';
+        container.appendChild(canvas);
+        // Ensure the flag is visible for 0.5s after it is drawn
+        requestAnimationFrame(() => {
+            setTimeout(() => { container.innerHTML = ''; }, 500);
+        });
+    }
+    // Eye icon logic
+    let showCount = 0;
+    const showBtn = document.getElementById('showFlagBtn');
+    showBtn.onclick = () => {
+        if (showCount >= 2) return;
+        showCount++;
+        drawAndHideFlag();
+        if (showCount === 2) {
+            showBtn.innerHTML = '<i class=\"fa-solid fa-eye-slash\" style=\"color:#888\"></i>';
+            showBtn.title = 'No more reveals';
+        } else {
+            showBtn.title = `Show flag again (${2-showCount} left)`;
+        }
+    };
+    attachQuestionHandlers();
+    patchQuitButton();
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Insert game logo header at the top
     const logoHeader = document.createElement('div');
@@ -1110,3 +1437,47 @@ document.addEventListener('DOMContentLoaded', function() {
 
   
 }); 
+
+// Patch initGame to support extreme mode
+const _initGameExtreme = initGame;
+initGame = async function() {
+    countries = await getCountries(false); // all 195 countries
+    if (state.mode === 'extreme') {
+        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
+        state.totalQuestions = 195;
+        renderExtremeQuestion();
+    } else {
+        return _initGameExtreme.apply(this, arguments);
+    }
+}
+
+// Patch feedback for extreme mode
+const _showFeedbackExtreme = showFeedback;
+showFeedback = function(correct) {
+    if (state.mode === 'extreme') {
+        const feedback = document.getElementById('feedbackContainer');
+        let html = '';
+        if (correct) {
+            html += '<div class="text-xl font-bold mb-2 text-success">Correct! 🎉</div>';
+            html += `<div class="text-gray mb-4">Well done! That's ${state.currentQuestion.correct.name}</div>`;
+        } else {
+            html += '<div class="text-xl font-bold mb-2 text-danger">Incorrect ❌</div>';
+            html += `<div class="text-gray mb-4">The correct answer is ${state.currentQuestion.correct.name}</div>`;
+        }
+        html += `<button id="nextQuestion" class="btn btn-primary mt-2">Next Question</button>`;
+        feedback.innerHTML = html;
+        feedback.classList.remove('hidden');
+        // Hide answer options
+        const ac = document.getElementById('answerContainer');
+        if (ac) ac.innerHTML = '';
+        document.getElementById('nextQuestion').onclick = () => {
+            if (state.questionNumber < state.totalQuestions) {
+                renderExtremeQuestion();
+            } else {
+                endGame();
+            }
+        };
+        return;
+    }
+    return _showFeedbackExtreme.apply(this, arguments);
+} 

@@ -52,7 +52,10 @@ const backgrounds = [
   'background2.svg',
   'background3.svg',
   'background4.svg',
-  'background5.svg'
+  'background5.svg',
+  'background6.svg',
+  'background7.svg',
+  'background8.svg'
 ];
 const chosen = backgrounds[Math.floor(Math.random() * backgrounds.length)];
 document.body.style.setProperty('--overlay-bg-url', `url('../images/${chosen}')`); 
