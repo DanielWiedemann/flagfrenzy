@@ -803,12 +803,12 @@ h1, h2, h3, h4, h5, h6, .logo-text, .header a, .header a:visited, .header a:hove
 /* Ensure survival mode hearts are always visible and styled */
 #livesDisplay .fa-heart {
   color: #ef4444 !important;
-  font-size: 1.5rem !important;
+  font-size: 1rem !important;
   filter: none !important;
 }
 #livesDisplay .fa-heart-crack {
   color: #aaa !important;
-  font-size: 1.5rem !important;
+  font-size: 1rem !important;
   filter: none !important;
 }
 
@@ -1072,8 +1072,8 @@ a[href*="size-highest-3"] p {
     font-size: 1.1rem !important;
   }
   .score-box, .score-display, .streak-display {
-    padding: 0.12rem 0.28rem !important;
-    font-size: 0.75rem !important;
+    padding: 0.55rem 0.3rem !important;
+    font-size: 0.7rem !important;
   }
   .icon-btn {
     font-size: 1rem !important;
