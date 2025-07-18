@@ -1065,3 +1065,21 @@ a[href*="size-highest-3"] p {
   80% { transform: scale(1); opacity: 1; }
   90% { transform: scale(1); opacity: 1; }
 } 
+
+@media (max-width: 600px) {
+  #livesDisplay .fa-heart,
+  #livesDisplay .fa-heart-crack {
+    font-size: 1.1rem !important;
+  }
+  .score-box, .score-display, .streak-display {
+    padding: 0.12rem 0.28rem !important;
+    font-size: 0.75rem !important;
+  }
+  .icon-btn {
+    font-size: 1rem !important;
+    padding: 0.1rem 0.2rem !important;
+  }
+  .icon-btn .fa-xmark, .icon-btn .fa-circle-xmark {
+    font-size: 1.2rem !important;
+  }
+} 
