@@ -1082,7 +1082,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Insert game logo header at the top
     const logoHeader = document.createElement('div');
     logoHeader.className = 'game-logo-header';
-    logoHeader.innerHTML = '<img src="assets/images/logo-light.png" alt="Geo Frenzy Logo" class="game-logo-img" />';
+    logoHeader.innerHTML = '<img src="assets/images/logo-light.webp" alt="Geo Frenzy Logo" class="game-logo-img" />';
     document.body.insertBefore(logoHeader, document.body.firstChild);
 
     const openSettings = document.getElementById('openSettings');
