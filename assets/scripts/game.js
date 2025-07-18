@@ -688,6 +688,8 @@ function showFeedback(correct) {
             endGame();
         }
     };
+    // Focus the Next Question button for Enter key
+    setTimeout(() => { document.getElementById('nextQuestion').focus(); }, 0);
 }
 
 function updateGameUI() {
@@ -937,6 +939,8 @@ showFeedback = function(correct) {
                 endGame();
             }
         };
+        // Focus the Next Question button for Enter key
+        setTimeout(() => { document.getElementById('nextQuestion').focus(); }, 0);
         return;
     }
     return _showFeedback.apply(this, arguments);
@@ -1264,11 +1268,12 @@ function renderHardQuestion() {
             const d = imageData.data;
             // Define target colors for matching
             const COLORS = {
-                green:  [0, 158, 96],
-                red:    [206, 17, 38],
-                blue:   [0, 56, 168],
-                yellow: [252, 209, 22],
-                white:  [255, 255, 255]
+                green:  [252,209,22],
+                red:    [252,209,22],
+                blue:   [239,43,45],
+                yellow: [7,137,48],
+                white:  [0, 0, 0],
+                black:  [255, 255, 255],
             };
             function colorDistance(r1, g1, b1, r2, g2, b2) {
                 return Math.sqrt((r1-r2)**2 + (g1-g2)**2 + (b1-b2)**2);
@@ -1348,16 +1353,17 @@ function renderExtremeQuestion() {
         ctx.drawImage(img, 0, 0, displayWidth, displayHeight);
         ctx.restore();
         // Color replacement
-        const doColorReplace = Math.random() < 0.7;
+        const doColorReplace = Math.random() < 1;
         if (doColorReplace) {
             const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
             const d = imageData.data;
             const COLORS = {
-                green:  [0, 158, 96],
-                red:    [206, 17, 38],
-                blue:   [0, 56, 168],
-                yellow: [252, 209, 22],
-                white:  [255, 255, 255]
+                green:  [252,209,22],
+                red:    [252,209,22],
+                blue:   [239,43,45],
+                yellow: [7,137,48],
+                white:  [0, 0, 0],
+                black:  [255, 255, 255],
             };
             function colorDistance(r1, g1, b1, r2, g2, b2) {
                 return Math.sqrt((r1-r2)**2 + (g1-g2)**2 + (b1-b2)**2);
@@ -1471,6 +1477,8 @@ showFeedback = function(correct) {
                 endGame();
             }
         };
+        // Focus the Next Question button for Enter key
+        setTimeout(() => { document.getElementById('nextQuestion').focus(); }, 0);
         return;
     }
     return _showFeedbackExtreme.apply(this, arguments);
