@@ -1,6 +1,17 @@
 // game.js
 import { getCountries, getSettings, setStats, getStats, getContinents } from './shared.js';
 
+  // Ensure FontAwesome is loaded on the game page
+  (function() {
+    if (!document.querySelector('link[href*="font-awesome"], link[href*="fontawesome"], link[href*="cdnjs.cloudflare.com/ajax/libs/font-awesome"]')) {
+      var fa = document.createElement('link');
+      fa.rel = 'stylesheet';
+      fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css';
+      fa.crossOrigin = 'anonymous';
+      fa.referrerPolicy = 'no-referrer';
+      document.head.appendChild(fa);
+    }
+  })();
 // Parse mode from URL
 function getMode() {
     const params = new URLSearchParams(window.location.search);
@@ -461,15 +472,15 @@ function renderGameHeader() {
         html += `<span style="font-size: 1.25rem; font-weight: 600; color: #ef4444;">`;
         for (let i = 1; i <= 3; i++) {
             if (state.livesLeft >= i + 1) {
-                html += `❤️`;
+                html += `<i class="fa-solid fa-heart"></i>`;
             } else {
-                html += `🩶`;
+                html += `<i class="fa-solid fa-heart-crack"></i>`;
             }
             html += ' ';
         }
         html += `</span></div>`;
     }
-    html += `<button id="quitGame" class="icon-btn" style="font-size:2rem; background:none; border:none;">❌</button>`;
+    html += `<button id="quitGame" class="icon-btn" style="font-size:2rem; background:none; border:none;"><i class="fa-solid fa-xmark"></i></button>`;
     html += `</div></div></div>`;
     return html;
 }
@@ -529,9 +540,9 @@ function checkAnswer(userAnswer) {
                 let hearts = '';
                 for (let i = 1; i <= 3; i++) {
                     if (state.livesLeft >= i + 1) {
-                        hearts += '❤️ ';
+                        hearts += '<i class="fa-solid fa-heart fa-beat"></i> ';
                     } else {
-                        hearts += '🩶 ';
+                        hearts += '<i class="fa-solid fa-heart-crack"></i> ';
                     }
                 }
                 livesDisplay.innerHTML = `<span style=\"font-size: 1.25rem; font-weight: 600; color: #ef4444;\">${hearts}</span>`;
@@ -654,23 +665,23 @@ function endGame() {
     let title = '';
     let subtitle = '';
     if (state.mode === 'time-attack') {
-        iconHtml = `<i class='fa-solid fa-hourglass-end' style='font-size:4rem;color:#219ebc;'></i><span class='fa-fallback' style='font-size:3rem;vertical-align:middle;'>⏳</span>`;
+        iconHtml = `<span class='fa-fallback' style='font-size:3rem;vertical-align:middle;'>⏳</span>`;
         title = 'Time is up!';
         subtitle = "You've completed the quiz!";
     } else if (state.mode === 'survival') {
-        iconHtml = `<i class='fa-regular fa-face-dizzy' style='font-size:4rem;color:#ef4444;'></i><span class='fa-fallback' style='font-size:3rem;vertical-align:middle;'>😵‍💫</span>`;
+        iconHtml = `<span class='fa-fallback' style='font-size:3rem;vertical-align:middle;'>😵</span>`;
         title = 'Game over!';
         subtitle = "You've ran out of lives.";
     } else if (state.mode === 'population-higher' || state.mode === 'population-higher-flags' || state.mode === 'population-highest-3') {
-        iconHtml = `<i class='fa-solid fa-skull-crossbones' style='font-size:4rem;color:#ef4444;'></i><span class='fa-fallback' style='font-size:3rem;vertical-align:middle;'>☠️</span>`;
+        iconHtml = `<span class='fa-fallback' style='font-size:3rem;vertical-align:middle;'>☠️</span>`;
         title = 'Game over!';
         subtitle = "You've ran out of lives.";
     } else if (state.mode === 'multiple-choice' || state.mode === 'type-country') {
-        iconHtml = `<i class='fa-solid fa-trophy' style='font-size:4rem;color:#FB8500;'></i><span class='fa-fallback' style='font-size:3rem;vertical-align:middle;'>🏆</span>`;
+        iconHtml = `<span class='fa-fallback' style='font-size:3rem;vertical-align:middle;'>🏆</span>`;
         title = 'Great Job!';
         subtitle = "You've completed the quiz!";
     } else {
-        iconHtml = `<i class='fa-solid fa-trophy' style='font-size:4rem;color:#FB8500;'></i><span class='fa-fallback' style='font-size:3rem;vertical-align:middle;'>🏆</span>`;
+        iconHtml = `<span class='fa-fallback' style='font-size:3rem;vertical-align:middle;'>🏆</span>`;
         title = 'Great Job!';
         subtitle = "You've completed the quiz!";
     }
@@ -1040,12 +1051,14 @@ function showSizeHighest3Feedback(isCorrect, displayOrder, chosenIdx, end = fals
     let html = '';
     const chosen = displayOrder[chosenIdx];
     const others = displayOrder.filter((_, i) => i !== chosenIdx);
+    // Find the country with the largest area
+    const largest = displayOrder.reduce((max, c) => c.area > max.area ? c : max, displayOrder[0]);
     if (isCorrect) {
         html += '<div class="text-xl font-bold mb-2 text-success">Correct! 🎉</div>';
         html += `<div class="text-gray mb-4">${chosen.name} has the largest area (${chosen.area.toLocaleString()} km²)</div>`;
     } else {
         html += '<div class="text-xl font-bold mb-2 text-danger">Incorrect ❌</div>';
-        html += `<div class="text-gray mb-4">The correct answer is ${others[0].name} or ${others[1].name} (${others[0].area.toLocaleString()} km², ${others[1].area.toLocaleString()} km²)</div>`;
+        html += `<div class="text-gray mb-4">The correct answer is ${largest.name} (${largest.area.toLocaleString()} km²)</div>`;
     }
     if (isCorrect) {
         html += `<button id="nextQuestion" class="btn btn-primary mt-2">Next Question</button>`;
@@ -1094,4 +1107,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (typeof initGame === 'function') initGame();
         };
     }
+
+  
 }); 

@@ -14,9 +14,19 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
     color: var(--blue-2);
-    background: #8ecae6;
     min-height: 100vh;
     transition: all 0.3s ease;
+    background: linear-gradient(135deg, #8ecae6, #219ebc, #ffb703, #fb8500);
+    background-size: 400% 400%;
+    animation: animated-gradient-bg 18s ease-in-out infinite;
+}
+
+@keyframes animated-gradient-bg {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 50% 100%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 0%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Dark mode styles */
@@ -870,13 +880,10 @@ h1, h2, h3, h4, h5, h6, .logo-text, .header a, .header a:visited, .header a:hove
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(2,48,71,0.06);
   padding: 1.25rem 0 1rem 0;
   font-size: 2rem;
   font-weight: bold;
   letter-spacing: 0.03em;
-  border-bottom: 1px solid #e0e0e0;
   z-index: 100;
 }
 .game-logo-icon {
@@ -889,9 +896,9 @@ h1, h2, h3, h4, h5, h6, .logo-text, .header a, .header a:visited, .header a:hove
   font-weight: bold;
 }
 .game-logo-img {
-  height: 2.2rem;
+  height: 3rem;
   vertical-align: middle;
-  margin-right: 0.5rem;
+  margin-left: 1.5rem;
 }
 .mt-game-card {
   margin-top: 1.5rem !important;
@@ -941,20 +948,95 @@ h1, h2, h3, h4, h5, h6, .logo-text, .header a, .header a:visited, .header a:hove
 } 
 
 .homepage-logo-container {
+  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   margin-bottom: 1.5rem;
+  min-height: 2.2rem;
 }
 .homepage-logo {
   width: 434px;
   max-width: 100%;
   height: auto;
   display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.homepage-gear-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #023047;
+  cursor: pointer;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 @media (max-width: 600px) {
   .homepage-logo {
     width: 80vw;
-    max-width: 434px;
+    max-width: calc(80vw - 3rem);
   }
+} 
+
+/* Game mode descriptions match icon color using href selectors */
+a[href*="multiple-choice"] p,
+a[href*="type-country"] p,
+a[href*="time-attack"] p,
+a[href*="survival"] p {
+  color: #219EBC !important;
+}
+a[href*="population-mc"] p,
+a[href*="population-higher"] p,
+a[href*="population-higher-flags"] p,
+a[href*="population-highest-3"] p {
+  color: #FB8500 !important;
+}
+a[href*="size-mc"] p,
+a[href*="size-higher"] p,
+a[href*="size-higher-flags"] p,
+a[href*="size-highest-3"] p {
+  color: #608B7C !important;
+} 
+
+.game-mode-card:hover .game-mode-icon i {
+  animation: fa-beat 1s infinite linear;
+}
+
+@keyframes fa-beat {
+  0%, 100% { transform: scale(1); }
+  10% { transform: scale(1.1); }
+  20% { transform: scale(0.95); }
+  30% { transform: scale(1.05); }
+  40% { transform: scale(0.97); }
+  50% { transform: scale(1.03); }
+  60% { transform: scale(0.99); }
+  70% { transform: scale(1.01); }
+  80% { transform: scale(1); }
+  90% { transform: scale(1); }
+} 
+.icon-btn .fa-xmark, .homepage-gear-btn .fa-xmark {
+  font-size: 2.2rem !important;
+  color: #c50808 !important;
+}
+.icon-btn:hover .fa-xmark, .homepage-gear-btn:hover .fa-xmark {
+  animation: fa-beat 1s infinite linear;
+}
+@keyframes fa-beat-fade {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  10% { transform: scale(1.15); opacity: 0.8; }
+  20% { transform: scale(0.95); opacity: 0.7; }
+  30% { transform: scale(1.1); opacity: 0.9; }
+  40% { transform: scale(0.97); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+  60% { transform: scale(0.99); opacity: 0.9; }
+  70% { transform: scale(1.01); opacity: 0.8; }
+  80% { transform: scale(1); opacity: 1; }
+  90% { transform: scale(1); opacity: 1; }
 } 
