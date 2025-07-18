@@ -492,7 +492,7 @@ function attachQuestionHandlers() {
                 checkAnswer(btn.dataset.answer);
             };
         });
-    } else if (state.mode === "type-country" || state.mode === "hard") {
+    } else if (state.mode === "type-country" || state.mode === "hard" || state.mode === "extreme") {
         const input = document.getElementById("countryInput");
         const submitBtn = document.getElementById("submitAnswer");
         // Wrap input in a relative div for dropdown positioning
@@ -830,50 +830,52 @@ function endGame() {
 
 async function initGame() {
     countries = await getCountries(settings.unOnly);
-    if (state.mode === 'population-mc') {
-        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
+    // Reset common state properties
+    state.score = 0;
+    state.streak = 0;
+    state.bestStreak = 0;
+    state.questionNumber = 0;
+    state.correctAnswers = 0;
+    state.usedQuestions = [];
+
+    if (state.mode === 'extreme') {
+        state.totalQuestions = 195;
+        renderExtremeQuestion();
+    } else if (state.mode === 'population-mc') {
         state.totalQuestions = 10;
         renderPopulationMCQuestion();
     } else if (state.mode === 'population-higher') {
-        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
         state.higherCountries = null;
         renderPopulationHigherQuestion(false);
     } else if (state.mode === 'population-higher-flags') {
-        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
         state.higherCountries = null;
         renderPopulationHigherQuestion(true);
     } else if (state.mode === 'population-highest-3') {
-        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
         state.highest3Countries = null;
         renderPopulationHighest3Question();
     } else if (state.mode === 'survival') {
-        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
         state.livesLeft = 4;
         startGame();
     } else if (state.mode === 'size-mc') {
-        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
         state.totalQuestions = 10;
         renderSizeMCQuestion();
     } else if (state.mode === 'size-higher') {
-        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
         state.higherCountries = null;
         renderSizeHigherQuestion(false);
     } else if (state.mode === 'size-higher-flags') {
-        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
         state.higherCountries = null;
         renderSizeHigherQuestion(true);
     } else if (state.mode === 'size-highest-3') {
-        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
         state.highest3Countries = null;
         renderSizeHighest3Question();
     } else if (state.mode === 'hard') {
-        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
         state.totalQuestions = 50;
         renderHardQuestion();
     } else {
         startGame();
     }
 }
+
 
 document.addEventListener('DOMContentLoaded', initGame);
 
@@ -1218,8 +1220,8 @@ function renderHardQuestion() {
     html += `<h3 class="text-2xl font-bold mb-4">Which country does this flag belong to?</h3>`;
     // Randomly choose transformations
     const transforms = [];
-    if (Math.random() < 0.5) transforms.push('mirror');
-    if (Math.random() < 0.5) transforms.push('flip');
+    if (Math.random() < 0.5) transforms.push('mirror'); // scaleX(-1)
+    if (Math.random() < 0.5) transforms.push('flip');   // scaleY(-1)
     const doColorReplace = Math.random() < 0.7;
     html += `<div class="mb-6" style="display: flex; justify-content: center;">
       <div id="flag-canvas-container" style="position:relative;display:inline-block;"></div>
@@ -1231,17 +1233,19 @@ function renderHardQuestion() {
     html += `<div id="feedbackContainer" class="hidden mt-6"></div>`;
     html += `</div>`;
     gameContainer.innerHTML = renderGameHeader() + html;
-    // Draw flag on canvas with color replacement (always visible)
+    // Draw flag on canvas with color replacement
     const img = new window.Image();
     img.crossOrigin = "anonymous";
     img.src = state.currentQuestion.correct.flag;
     img.onload = function() {
+        // Resize to display size
         const displayWidth = 400;
         const displayHeight = Math.round(img.height * (displayWidth / img.width));
         const canvas = document.createElement('canvas');
         canvas.width = displayWidth;
         canvas.height = displayHeight;
         const ctx = canvas.getContext('2d');
+        // Apply transforms
         ctx.save();
         if (transforms.includes('mirror')) {
             ctx.translate(displayWidth, 0);
@@ -1256,6 +1260,7 @@ function renderHardQuestion() {
         if (doColorReplace) {
             const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
             const d = imageData.data;
+            // Define target colors for matching
             const COLORS = {
                 green:  [0, 158, 96],
                 red:    [206, 17, 38],
@@ -1268,7 +1273,7 @@ function renderHardQuestion() {
             }
             for (let i = 0; i < d.length; i += 4) {
                 const r = d[i], g = d[i+1], b = d[i+2];
-                let minDist = 80;
+                let minDist = 80; // threshold for color match
                 let match = null;
                 for (const [name, [tr, tg, tb]] of Object.entries(COLORS)) {
                     const dist = colorDistance(r, g, b, tr, tg, tb);
@@ -1277,11 +1282,11 @@ function renderHardQuestion() {
                         match = name;
                     }
                 }
-                if (match === 'green') { d[i]=220; d[i+1]=30; d[i+2]=30; }
-                else if (match === 'red') { d[i]=30; d[i+1]=30; d[i+2]=220; }
-                else if (match === 'blue') { d[i]=240; d[i+1]=220; d[i+2]=30; }
-                else if (match === 'yellow') { d[i]=255; d[i+1]=255; d[i+2]=255; }
-                else if (match === 'white') { d[i]=30; d[i+1]=180; d[i+2]=30; }
+                if (match === 'green') { d[i]=220; d[i+1]=30; d[i+2]=30; } // green→red
+                else if (match === 'red') { d[i]=30; d[i+1]=30; d[i+2]=220; } // red→blue
+                else if (match === 'blue') { d[i]=240; d[i+1]=220; d[i+2]=30; } // blue→yellow
+                else if (match === 'yellow') { d[i]=255; d[i+1]=255; d[i+2]=255; } // yellow→white
+                else if (match === 'white') { d[i]=30; d[i+1]=180; d[i+2]=30; } // white→green
             }
             ctx.putImageData(imageData, 0, 0);
         }
@@ -1302,38 +1307,32 @@ function renderExtremeQuestion() {
     html += `<div class=\"card text-center\">`;
     html += `<div class=\"mb-6\"><div class=\"text-gray mb-2\" style=\"font-size: 0.875rem;\">Question ${state.questionNumber} of 195</div>`;
     html += `<h3 class=\"text-2xl font-bold mb-4\">Which country does this flag belong to?</h3>`;
-    // Randomly choose transformations
-    const transforms = [];
-    if (Math.random() < 0.5) transforms.push('mirror');
-    if (Math.random() < 0.5) transforms.push('flip');
-    const doColorReplace = Math.random() < 0.7;
     html += `<div class=\"mb-6\" style=\"display: flex; justify-content: center;\">`;
     html += `<div id=\"flag-canvas-container\" style=\"position:relative;display:inline-block;\"></div>`;
     html += `</div>`;
     html += `<div id=\"answerContainer\">`;
-    html += `<div style=\"display:flex;align-items:center;gap:0.5rem;justify-content:center;\">`;
     html += `<input type=\"text\" id=\"countryInput\" placeholder=\"Type the country name...\" class=\"input\">`;
-    html += `<button id=\"showFlagBtn\" class=\"icon-btn\" title=\"Show flag again (2 left)\"><i class=\"fa-solid fa-eye\"></i></button>`;
-    html += `</div>`;
     html += `<button id=\"submitAnswer\" class=\"btn btn-primary mt-2\" style=\"padding: 0.75rem 2rem; margin-top: 1rem; background: #FFB703; color: #fff; border: none;\">Submit Answer</button>`;
+    html += `<button id=\"showFlagBtn\" class=\"icon-btn\" style=\"margin-left: 1rem; margin-top: 0.5rem; font-size: 1.5rem; vertical-align: middle; color: #219EBC;\"><i class=\"fa-solid fa-eye\"></i></button>`;
     html += `</div>`;
     html += `<div id=\"feedbackContainer\" class=\"hidden mt-6\"></div>`;
     html += `</div>`;
     gameContainer.innerHTML = renderGameHeader() + html;
-    // Draw flag on canvas with color replacement, then hide after 0.5s
+    // Draw flag on canvas with color replacement
     const img = new window.Image();
     img.crossOrigin = "anonymous";
     img.src = state.currentQuestion.correct.flag;
     img.onload = function() {
-        drawAndHideFlag();
-    };
-    function drawAndHideFlag() {
         const displayWidth = 400;
         const displayHeight = Math.round(img.height * (displayWidth / img.width));
         const canvas = document.createElement('canvas');
         canvas.width = displayWidth;
         canvas.height = displayHeight;
         const ctx = canvas.getContext('2d');
+        // Randomly choose transformations
+        const transforms = [];
+        if (Math.random() < 0.5) transforms.push('mirror');
+        if (Math.random() < 0.5) transforms.push('flip');
         ctx.save();
         if (transforms.includes('mirror')) {
             ctx.translate(displayWidth, 0);
@@ -1345,6 +1344,8 @@ function renderExtremeQuestion() {
         }
         ctx.drawImage(img, 0, 0, displayWidth, displayHeight);
         ctx.restore();
+        // Color replacement
+        const doColorReplace = Math.random() < 0.7;
         if (doColorReplace) {
             const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
             const d = imageData.data;
@@ -1382,27 +1383,82 @@ function renderExtremeQuestion() {
         canvas.className = 'flag-img';
         canvas.style.borderRadius = '5px';
         container.appendChild(canvas);
-        // Ensure the flag is visible for 0.5s after it is drawn
-        requestAnimationFrame(() => {
-            setTimeout(() => { container.innerHTML = ''; }, 500);
-        });
-    }
+        // Hide after 0.5s by making transparent (Extreme mode only)
+        if (state.mode === 'extreme') {
+            setTimeout(() => { canvas.style.opacity = '0'; }, 500);
+        }
+    };
     // Eye icon logic
-    let showCount = 0;
-    const showBtn = document.getElementById('showFlagBtn');
-    showBtn.onclick = () => {
-        if (showCount >= 2) return;
-        showCount++;
-        drawAndHideFlag();
-        if (showCount === 2) {
-            showBtn.innerHTML = '<i class=\"fa-solid fa-eye-slash\" style=\"color:#888\"></i>';
-            showBtn.title = 'No more reveals';
-        } else {
-            showBtn.title = `Show flag again (${2-showCount} left)`;
+    let revealsLeft = 2;
+    const showFlagBtn = document.getElementById('showFlagBtn');
+    showFlagBtn.onclick = () => {
+        if (revealsLeft > 0) {
+            revealsLeft--;
+            // Redraw and hide after 0.5s
+            const container = document.getElementById('flag-canvas-container');
+            const canvas = container.querySelector('canvas');
+            if (canvas) {
+                canvas.style.opacity = '1';
+                setTimeout(() => { canvas.style.opacity = '0'; }, 500);
+            }
+            if (revealsLeft === 0) {
+                showFlagBtn.innerHTML = '<i class="fa-solid fa-eye-slash" style="color: #aaa;"></i>';
+                showFlagBtn.disabled = true;
+            }
         }
     };
     attachQuestionHandlers();
     patchQuitButton();
+}
+
+// Patch initGame to support extreme mode
+const _initGameExtreme = initGame;
+initGame = async function() {
+    countries = await getCountries(settings.unOnly);
+    if (state.mode === 'extreme') {
+        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
+        state.totalQuestions = 195;
+        renderExtremeQuestion();
+    } else {
+        return _initGameExtreme.apply(this, arguments);
+    }
+}
+
+// Patch feedback for extreme mode
+const _showFeedbackExtreme = showFeedback;
+showFeedback = function(correct) {
+    if (state.mode === 'extreme') {
+        const feedback = document.getElementById('feedbackContainer');
+        let html = '';
+        if (correct) {
+            html += '<div class="text-xl font-bold mb-2 text-success">Correct! 🎉</div>';
+            html += `<div class="text-gray mb-4">Well done! That's ${state.currentQuestion.correct.name}</div>`;
+        } else {
+            html += '<div class="text-xl font-bold mb-2 text-danger">Incorrect ❌</div>';
+            html += `<div class="text-gray mb-4">The correct answer is ${state.currentQuestion.correct.name}</div>`;
+        }
+        html += `<button id="nextQuestion" class="btn btn-primary mt-2">Next Question</button>`;
+        feedback.innerHTML = html;
+        feedback.classList.remove('hidden');
+        // Hide answer options
+        const ac = document.getElementById('answerContainer');
+        if (ac) ac.innerHTML = '';
+        // Restore flag opacity
+        const container = document.getElementById('flag-canvas-container');
+        const canvas = container && container.querySelector('canvas');
+        if (canvas) {
+            canvas.style.opacity = '1';
+        }
+        document.getElementById('nextQuestion').onclick = () => {
+            if (state.questionNumber < state.totalQuestions) {
+                renderExtremeQuestion();
+            } else {
+                endGame();
+            }
+        };
+        return;
+    }
+    return _showFeedbackExtreme.apply(this, arguments);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -1437,47 +1493,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
   
 }); 
-
-// Patch initGame to support extreme mode
-const _initGameExtreme = initGame;
-initGame = async function() {
-    countries = await getCountries(false); // all 195 countries
-    if (state.mode === 'extreme') {
-        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
-        state.totalQuestions = 195;
-        renderExtremeQuestion();
-    } else {
-        return _initGameExtreme.apply(this, arguments);
-    }
-}
-
-// Patch feedback for extreme mode
-const _showFeedbackExtreme = showFeedback;
-showFeedback = function(correct) {
-    if (state.mode === 'extreme') {
-        const feedback = document.getElementById('feedbackContainer');
-        let html = '';
-        if (correct) {
-            html += '<div class="text-xl font-bold mb-2 text-success">Correct! 🎉</div>';
-            html += `<div class="text-gray mb-4">Well done! That's ${state.currentQuestion.correct.name}</div>`;
-        } else {
-            html += '<div class="text-xl font-bold mb-2 text-danger">Incorrect ❌</div>';
-            html += `<div class="text-gray mb-4">The correct answer is ${state.currentQuestion.correct.name}</div>`;
-        }
-        html += `<button id="nextQuestion" class="btn btn-primary mt-2">Next Question</button>`;
-        feedback.innerHTML = html;
-        feedback.classList.remove('hidden');
-        // Hide answer options
-        const ac = document.getElementById('answerContainer');
-        if (ac) ac.innerHTML = '';
-        document.getElementById('nextQuestion').onclick = () => {
-            if (state.questionNumber < state.totalQuestions) {
-                renderExtremeQuestion();
-            } else {
-                endGame();
-            }
-        };
-        return;
-    }
-    return _showFeedbackExtreme.apply(this, arguments);
-} 
