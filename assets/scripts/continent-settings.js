@@ -44,4 +44,17 @@ document.addEventListener('DOMContentLoaded', function() {
             setContinents(selected);
         };
     }
-}); 
+});
+
+// Randomize SVG overlay background
+const backgrounds = [
+  'background1.svg',
+  'background2.svg',
+  'background3.svg',
+  'background4.svg',
+  'background5.svg'
+];
+const chosen = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+const overlay = document.createElement('style');
+overlay.innerHTML = `body::before { background-image: url('../images/${chosen}'), linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)); }`;
+document.head.appendChild(overlay); 
