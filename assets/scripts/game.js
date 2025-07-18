@@ -465,7 +465,7 @@ function renderGameHeader() {
     html += `</div><div class="flex items-center space-x-4">`;
     if (state.mode === 'time-attack') {
         html += `<div id="timerDisplay" style="background: rgba(239, 68, 68, 0.1); padding: 0.5rem 1rem; border-radius: 0.5rem;">
-            <span style="font-size: 0.875rem; font-weight: 600; color: #ef4444;"><i class='fa-regular fa-stopwatch'></i> <span id="timeLeft">${state.timeLeft}</span>s</span></div>`;
+            <span style="font-size: 0.875rem; font-weight: 600; color: #ef4444;"><i class="fa-solid fa-stopwatch fa-shake" style="animation-delay: 50s;"></i> <span id="timeLeft">${state.timeLeft}</span>s</span></div>`;
     }
     if (state.mode === 'survival') {
         html += `<div id="livesDisplay" style="background: rgba(245, 158, 11, 0.1); padding: 0.5rem 1rem; border-radius: 0.5rem;">`;
