@@ -43,13 +43,15 @@
             </label>
             </div>
         </form>
-        <div class="flex justify-center items-center mb-6" style="gap: 0.7rem; margin-top: 1.5rem;">
-          <span id="labelLeftModal" class="font-semibold">UN Countries Only</span>
-          <label class="switch" style="vertical-align: middle;">
-            <input type="checkbox" id="unOnlyToggleModal" style="opacity:0;width:0;height:0;position:absolute;">
-            <span class="slider"></span>
+        <div class="flex justify-center items-center mb-6" style="gap: 0.7rem; margin-top: 1.5rem; flex-direction: column; align-items: stretch; width: 100%; max-width: 350px;">
+          <label for="unOnlyRadio" id="labelLeftModal" class="font-semibold" style="cursor:pointer;display:flex;flex-direction:row;align-items:center;justify-content:space-between;width:100%;gap:0.4rem;">
+            <span style="text-align:left;">UN Countries Only</span>
+            <input type="radio" id="unOnlyRadio" name="countryMode" value="unOnly" checked style="accent-color:#10b981;">
           </label>
-          <span id="labelRightModal" class="font-semibold">All Countries & Territories</span>
+          <label for="allCountriesRadio" id="labelRightModal" class="font-semibold" style="cursor:pointer;display:flex;flex-direction:row;align-items:center;justify-content:space-between;width:100%;gap:0.4rem; margin-top:0.5rem;">
+            <span style="text-align:left;">All Countries & Territories</span>
+            <input type="radio" id="allCountriesRadio" name="countryMode" value="allCountries" style="accent-color:#10b981;">
+          </label>
         </div></div>
         </div>
     <div class="container" style="padding-top: 2rem; padding-bottom: 2rem;">

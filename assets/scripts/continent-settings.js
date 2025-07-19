@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeSettings = document.getElementById('closeSettings');
     const continentForm = document.getElementById('continentForm');
     const unOnlyToggle = document.getElementById('unOnlyToggleModal');
+    const unOnlyRadio = document.getElementById('unOnlyRadio');
+    const allCountriesRadio = document.getElementById('allCountriesRadio');
     const labelLeft = document.getElementById('labelLeftModal');
     const labelRight = document.getElementById('labelRightModal');
     if (openSettings && settingsModal && closeSettings && continentForm) {
@@ -52,27 +54,31 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         // Load and apply saved setting
         let settings = getSettings() || { unOnly: true };
-        if (unOnlyToggle) {
-            const switchEl = unOnlyToggle.closest('.switch');
-            // Invert logic: checked = All Countries, unchecked = UN Only
-            unOnlyToggle.checked = !settings.unOnly;
+        if (unOnlyRadio && allCountriesRadio) {
+            // Set initial state
+            unOnlyRadio.checked = settings.unOnly;
+            allCountriesRadio.checked = !settings.unOnly;
             updateLabels();
-            // Always keep switch yellow
-            function updateSwitchBg() {
-                if (switchEl) switchEl.style.background = '#FFB703';
-            }
-            updateSwitchBg();
-            unOnlyToggle.addEventListener('change', function() {
-                settings.unOnly = !unOnlyToggle.checked;
-                setSettings(settings);
-                updateLabels();
-                updateSwitchBg();
-                if (typeof window.initGame === 'function') window.initGame();
+            unOnlyRadio.addEventListener('change', function() {
+                if (unOnlyRadio.checked) {
+                    settings.unOnly = true;
+                    setSettings(settings);
+                    updateLabels();
+                    if (typeof window.initGame === 'function') window.initGame();
+                }
+            });
+            allCountriesRadio.addEventListener('change', function() {
+                if (allCountriesRadio.checked) {
+                    settings.unOnly = false;
+                    setSettings(settings);
+                    updateLabels();
+                    if (typeof window.initGame === 'function') window.initGame();
+                }
             });
         }
         function updateLabels() {
-            if (!labelLeft || !labelRight || !unOnlyToggle) return;
-            if (!unOnlyToggle.checked) {
+            if (!labelLeft || !labelRight || !unOnlyRadio || !allCountriesRadio) return;
+            if (unOnlyRadio.checked) {
                 labelLeft.style.fontWeight = '700';
                 labelLeft.style.color = '#10b981';
                 labelRight.style.fontWeight = '400';
