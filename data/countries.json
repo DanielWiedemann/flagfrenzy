@@ -1,199 +1,199 @@
 [
-  {"name": "Afghanistan", "code": "af", "population": 42500000, "area": 652860, "density": 65, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/af.png", "altNames": []},
-  {"name": "Albania", "code": "al", "population": 2854000, "area": 28748, "density": 99, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/al.png", "altNames": []},
-  {"name": "Algeria", "code": "dz", "population": 46200000, "area": 2381741, "density": 19, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/dz.png", "altNames": []},
-  {"name": "Andorra", "code": "ad", "population": 79000, "area": 468, "density": 169, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ad.png", "altNames": []},
-  {"name": "Angola", "code": "ao", "population": 36800000, "area": 1246700, "density": 30, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ao.png", "altNames": []},
-  {"name": "Argentina", "code": "ar", "population": 46200000, "area": 2780400, "density": 17, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ar.png", "altNames": []},
-  {"name": "Armenia", "code": "am", "population": 2720000, "area": 29743, "density": 92, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/am.png", "altNames": []},
-  {"name": "Australia", "code": "au", "population": 26700000, "area": 7692024, "density": 3, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/au.png", "altNames": []},
-  {"name": "Austria", "code": "at", "population": 9000000, "area": 83879, "density": 107, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/at.png", "altNames": []},
-  {"name": "Azerbaijan", "code": "az", "population": 10300000, "area": 86600, "density": 119, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/az.png", "altNames": []},
-  {"name": "Bahamas", "code": "bs", "population": 401000, "area": 13943, "density": 29, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bs.png", "altNames": []},
-  {"name": "Bahrain", "code": "bh", "population": 1543000, "area": 765, "density": 2017, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bh.png", "altNames": []},
-  {"name": "Bangladesh", "code": "bd", "population": 169000000, "area": 148460, "density": 1138, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bd.png", "altNames": []},
-  {"name": "Barbados", "code": "bb", "population": 281000, "area": 430, "density": 653, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bb.png", "altNames": []},
-  {"name": "Belarus", "code": "by", "population": 9400000, "area": 207600, "density": 45, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/by.png", "altNames": []},
-  {"name": "Belgium", "code": "be", "population": 11500000, "area": 30528, "density": 377, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/be.png", "altNames": []},
-  {"name": "Belize", "code": "bz", "population": 405000, "area": 22966, "density": 18, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bz.png", "altNames": []},
-  {"name": "Benin", "code": "bj", "population": 13400000, "area": 112622, "density": 119, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bj.png", "altNames": []},
-  {"name": "Bhutan", "code": "bt", "population": 782000, "area": 38394, "density": 20, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bt.png", "altNames": []},
-  {"name": "Bolivia", "code": "bo", "population": 12400000, "area": 1098581, "density": 11, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bo.png", "altNames": []},
-  {"name": "Bosnia and Herzegovina", "code": "ba", "population": 3200000, "area": 51197, "density": 62, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ba.png", "altNames": []},
-  {"name": "Botswana", "code": "bw", "population": 2600000, "area": 581730, "density": 4, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bw.png", "altNames": []},
-  {"name": "Brazil", "code": "br", "population": 216000000, "area": 8515767, "density": 25, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/br.png", "altNames": []},
-  {"name": "Brunei", "code": "bn", "population": 450000, "area": 5765, "density": 78, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bn.png", "altNames": []},
-  {"name": "Bulgaria", "code": "bg", "population": 6700000, "area": 110879, "density": 60, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bg.png", "altNames": []},
-  {"name": "Burkina Faso", "code": "bf", "population": 22800000, "area": 272967, "density": 84, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bf.png", "altNames": []},
-  {"name": "Burundi", "code": "bi", "population": 13600000, "area": 27834, "density": 489, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bi.png", "altNames": []},
-  {"name": "Cabo Verde", "code": "cv", "population": 600000, "area": 4033, "density": 149, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cv.png", "altNames": ["Cape Verde"]},
-  {"name": "Cambodia", "code": "kh", "population": 17000000, "area": 181035, "density": 94, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/kh.png", "altNames": []},
-  {"name": "Cameroon", "code": "cm", "population": 28000000, "area": 475442, "density": 59, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cm.png", "altNames": []},
-  {"name": "Canada", "code": "ca", "population": 39000000, "area": 9984670, "density": 4, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ca.png", "altNames": []},
-  {"name": "Central African Republic", "code": "cf", "population": 5900000, "area": 622984, "density": 9, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cf.png", "altNames": []},
-  {"name": "Chad", "code": "td", "population": 18000000, "area": 1284000, "density": 14, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/td.png", "altNames": []},
-  {"name": "Chile", "code": "cl", "population": 19600000, "area": 756102, "density": 26, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cl.png", "altNames": []},
-  {"name": "China", "code": "cn", "population": 1412000000, "area": 9596961, "density": 147, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cn.png", "altNames": []},
-  {"name": "Colombia", "code": "co", "population": 52000000, "area": 1141748, "density": 46, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/co.png", "altNames": []},
-  {"name": "Comoros", "code": "km", "population": 850000, "area": 2235, "density": 380, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/km.png", "altNames": []},
-  {"name": "Congo", "code": "cg", "population": 6000000, "area": 342000, "density": 18, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cg.png", "altNames": []},
-  {"name": "Costa Rica", "code": "cr", "population": 5200000, "area": 51100, "density": 102, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cr.png", "altNames": []},
-  {"name": "Croatia", "code": "hr", "population": 3900000, "area": 56594, "density": 69, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/hr.png", "altNames": []},
-  {"name": "Cuba", "code": "cu", "population": 11200000, "area": 109884, "density": 102, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cu.png", "altNames": []},
-  {"name": "Cyprus", "code": "cy", "population": 1200000, "area": 9251, "density": 130, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cy.png", "altNames": []},
-  {"name": "Czechia", "code": "cz", "population": 10700000, "area": 78865, "density": 136, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cz.png", "altNames": ["Czech Republic"]},
-  {"name": "Democratic Republic of the Congo", "code": "cd", "population": 99000000, "area": 2344858, "density": 42, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cd.png", "altNames": ["DR Congo"]},
-  {"name": "Denmark", "code": "dk", "population": 5900000, "area": 43094, "density": 137, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/dk.png", "altNames": []},
-  {"name": "Djibouti", "code": "dj", "population": 1120000, "area": 23200, "density": 48, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/dj.png", "altNames": []},
-  {"name": "Dominica", "code": "dm", "population": 72000, "area": 751, "density": 96, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/dm.png", "altNames": []},
-  {"name": "Dominican Republic", "code": "do", "population": 11000000, "area": 48671, "density": 226, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/do.png", "altNames": []},
-  {"name": "Ecuador", "code": "ec", "population": 18000000, "area": 276841, "density": 65, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ec.png", "altNames": []},
-  {"name": "Egypt", "code": "eg", "population": 109000000, "area": 1002450, "density": 109, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/eg.png", "altNames": []},
-  {"name": "El Salvador", "code": "sv", "population": 6500000, "area": 21041, "density": 309, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sv.png", "altNames": []},
-  {"name": "Equatorial Guinea", "code": "gq", "population": 1700000, "area": 28051, "density": 61, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gq.png", "altNames": []},
-  {"name": "Eritrea", "code": "er", "population": 3600000, "area": 117600, "density": 31, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/er.png", "altNames": []},
-  {"name": "Estonia", "code": "ee", "population": 1330000, "area": 45227, "density": 29, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ee.png", "altNames": []},
-  {"name": "Eswatini", "code": "sz", "population": 1200000, "area": 17364, "density": 69, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sz.png", "altNames": ["Swaziland"]},
-  {"name": "Ethiopia", "code": "et", "population": 126000000, "area": 1104300, "density": 114, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/et.png", "altNames": []},
-  {"name": "Fiji", "code": "fj", "population": 930000, "area": 18274, "density": 51, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/fj.png", "altNames": []},
-  {"name": "Finland", "code": "fi", "population": 5600000, "area": 338424, "density": 16, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/fi.png", "altNames": []},
-  {"name": "France", "code": "fr", "population": 68000000, "area": 551695, "density": 123, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/fr.png", "altNames": []},
-  {"name": "Gabon", "code": "ga", "population": 2400000, "area": 267668, "density": 9, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ga.png", "altNames": []},
-  {"name": "Gambia", "code": "gm", "population": 2700000, "area": 11295, "density": 239, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gm.png", "altNames": []},
-  {"name": "Georgia", "code": "ge", "population": 3700000, "area": 69700, "density": 53, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ge.png", "altNames": []},
-  {"name": "Germany", "code": "de", "population": 84000000, "area": 357022, "density": 235, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/de.png", "altNames": []},
-  {"name": "Ghana", "code": "gh", "population": 34000000, "area": 238533, "density": 143, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gh.png", "altNames": []},
-  {"name": "Greece", "code": "gr", "population": 10400000, "area": 131957, "density": 79, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gr.png", "altNames": []},
-  {"name": "Grenada", "code": "gd", "population": 125000, "area": 344, "density": 363, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gd.png", "altNames": []},
-  {"name": "Guatemala", "code": "gt", "population": 18000000, "area": 108889, "density": 165, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gt.png", "altNames": []},
-  {"name": "Guinea", "code": "gn", "population": 14000000, "area": 245857, "density": 57, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gn.png", "altNames": []},
-  {"name": "Guinea-Bissau", "code": "gw", "population": 2200000, "area": 36125, "density": 61, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gw.png", "altNames": []},
-  {"name": "Guyana", "code": "gy", "population": 800000, "area": 214969, "density": 4, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gy.png", "altNames": []},
-  {"name": "Haiti", "code": "ht", "population": 11600000, "area": 27750, "density": 418, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ht.png", "altNames": []},
-  {"name": "Honduras", "code": "hn", "population": 10400000, "area": 112492, "density": 92, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/hn.png", "altNames": []},
-  {"name": "Hungary", "code": "hu", "population": 9700000, "area": 93028, "density": 104, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/hu.png", "altNames": []},
-  {"name": "Iceland", "code": "is", "population": 380000, "area": 103000, "density": 4, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/is.png", "altNames": []},
-  {"name": "India", "code": "in", "population": 1428000000, "area": 3287263, "density": 435, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/in.png", "altNames": []},
-  {"name": "Indonesia", "code": "id", "population": 277000000, "area": 1904569, "density": 145, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/id.png", "altNames": []},
-  {"name": "Iran", "code": "ir", "population": 89000000, "area": 1648195, "density": 54, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ir.png", "altNames": []},
-  {"name": "Iraq", "code": "iq", "population": 44000000, "area": 438317, "density": 100, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/iq.png", "altNames": []},
-  {"name": "Ireland", "code": "ie", "population": 5000000, "area": 70273, "density": 71, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ie.png", "altNames": []},
-  {"name": "Israel", "code": "il", "population": 9600000, "area": 22072, "density": 435, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/il.png", "altNames": []},
-  {"name": "Italy", "code": "it", "population": 59000000, "area": 301340, "density": 196, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/it.png", "altNames": []},
-  {"name": "Jamaica", "code": "jm", "population": 2800000, "area": 10991, "density": 255, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/jm.png", "altNames": []},
-  {"name": "Japan", "code": "jp", "population": 125000000, "area": 377930, "density": 331, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/jp.png", "altNames": []},
-  {"name": "Jordan", "code": "jo", "population": 11000000, "area": 89342, "density": 123, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/jo.png", "altNames": []},
-  {"name": "Kazakhstan", "code": "kz", "population": 20000000, "area": 2724900, "density": 7, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/kz.png", "altNames": []},
-  {"name": "Kenya", "code": "ke", "population": 55000000, "area": 580367, "density": 95, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ke.png", "altNames": []},
-  {"name": "Kiribati", "code": "ki", "population": 130000, "area": 811, "density": 160, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ki.png", "altNames": []},
-  {"name": "Kuwait", "code": "kw", "population": 4300000, "area": 17818, "density": 241, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/kw.png", "altNames": []},
-  {"name": "Kyrgyzstan", "code": "kg", "population": 7000000, "area": 199951, "density": 35, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/kg.png", "altNames": []},
-  {"name": "Laos", "code": "la", "population": 7600000, "area": 236800, "density": 32, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/la.png", "altNames": []},
-  {"name": "Latvia", "code": "lv", "population": 1900000, "area": 64559, "density": 29, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/lv.png", "altNames": []},
-  {"name": "Lebanon", "code": "lb", "population": 5400000, "area": 10452, "density": 517, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/lb.png", "altNames": []},
-  {"name": "Lesotho", "code": "ls", "population": 2300000, "area": 30355, "density": 76, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ls.png", "altNames": []},
-  {"name": "Liberia", "code": "lr", "population": 5300000, "area": 111369, "density": 48, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/lr.png", "altNames": []},
-  {"name": "Libya", "code": "ly", "population": 7000000, "area": 1759540, "density": 4, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ly.png", "altNames": []},
-  {"name": "Liechtenstein", "code": "li", "population": 39000, "area": 160, "density": 244, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/li.png", "altNames": []},
-  {"name": "Lithuania", "code": "lt", "population": 2800000, "area": 65300, "density": 43, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/lt.png", "altNames": []},
-  {"name": "Luxembourg", "code": "lu", "population": 660000, "area": 2586, "density": 255, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/lu.png", "altNames": []},
-  {"name": "Madagascar", "code": "mg", "population": 30000000, "area": 587041, "density": 51, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mg.png", "altNames": []},
-  {"name": "Malawi", "code": "mw", "population": 21000000, "area": 118484, "density": 177, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mw.png", "altNames": []},
-  {"name": "Malaysia", "code": "my", "population": 34000000, "area": 330803, "density": 103, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/my.png", "altNames": []},
-  {"name": "Maldives", "code": "mv", "population": 521000, "area": 298, "density": 1748, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mv.png", "altNames": []},
-  {"name": "Mali", "code": "ml", "population": 23000000, "area": 1240192, "density": 19, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ml.png", "altNames": []},
-  {"name": "Malta", "code": "mt", "population": 520000, "area": 316, "density": 1646, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mt.png", "altNames": []},
-  {"name": "Marshall Islands", "code": "mh", "population": 59000, "area": 181, "density": 326, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mh.png", "altNames": []},
-  {"name": "Mauritania", "code": "mr", "population": 4800000, "area": 1030700, "density": 5, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mr.png", "altNames": []},
-  {"name": "Mauritius", "code": "mu", "population": 1300000, "area": 2040, "density": 637, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mu.png", "altNames": []},
-  {"name": "Mexico", "code": "mx", "population": 128000000, "area": 1964375, "density": 65, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mx.png", "altNames": []},
-  {"name": "Micronesia", "code": "fm", "population": 115000, "area": 702, "density": 164, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/fm.png", "altNames": []},
-  {"name": "Moldova", "code": "md", "population": 2600000, "area": 33846, "density": 77, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/md.png", "altNames": []},
-  {"name": "Monaco", "code": "mc", "population": 39000, "area": 2, "density": 19500, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mc.png", "altNames": []},
-  {"name": "Mongolia", "code": "mn", "population": 3400000, "area": 1564110, "density": 2, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mn.png", "altNames": []},
-  {"name": "Montenegro", "code": "me", "population": 620000, "area": 13812, "density": 45, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/me.png", "altNames": []},
-  {"name": "Morocco", "code": "ma", "population": 38000000, "area": 446550, "density": 85, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ma.png", "altNames": []},
-  {"name": "Mozambique", "code": "mz", "population": 33000000, "area": 801590, "density": 41, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mz.png", "altNames": []},
-  {"name": "Myanmar", "code": "mm", "population": 55000000, "area": 676578, "density": 81, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mm.png", "altNames": ["Burma"]},
-  {"name": "Namibia", "code": "na", "population": 2600000, "area": 825615, "density": 3, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/na.png", "altNames": []},
-  {"name": "Nauru", "code": "nr", "population": 11000, "area": 21, "density": 524, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/nr.png", "altNames": []},
-  {"name": "Nepal", "code": "np", "population": 30000000, "area": 147516, "density": 203, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/np.png", "altNames": []},
-  {"name": "Netherlands", "code": "nl", "population": 17500000, "area": 41543, "density": 421, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/nl.png", "altNames": []},
-  {"name": "New Zealand", "code": "nz", "population": 5200000, "area": 268838, "density": 19, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/nz.png", "altNames": []},
-  {"name": "Nicaragua", "code": "ni", "population": 7000000, "area": 130373, "density": 54, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ni.png", "altNames": []},
-  {"name": "Niger", "code": "ne", "population": 27000000, "area": 1267000, "density": 21, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ne.png", "altNames": []},
-  {"name": "Nigeria", "code": "ng", "population": 223000000, "area": 923768, "density": 241, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ng.png", "altNames": []},
-  {"name": "North Korea", "code": "kp", "population": 26000000, "area": 120538, "density": 216, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/kp.png", "altNames": ["DPRK"]},
-  {"name": "North Macedonia", "code": "mk", "population": 2100000, "area": 25713, "density": 82, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mk.png", "altNames": ["Macedonia"]},
-  {"name": "Norway", "code": "no", "population": 5400000, "area": 385207, "density": 14, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/no.png", "altNames": []},
-  {"name": "Oman", "code": "om", "population": 4600000, "area": 309500, "density": 15, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/om.png", "altNames": []},
-  {"name": "Pakistan", "code": "pk", "population": 240000000, "area": 881912, "density": 272, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/pk.png", "altNames": []},
-  {"name": "Palau", "code": "pw", "population": 18000, "area": 459, "density": 39, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/pw.png", "altNames": []},
-  {"name": "Palestine", "code": "ps", "population": 5100000, "area": 6220, "density": 820, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ps.png", "altNames": []},
-  {"name": "Panama", "code": "pa", "population": 4400000, "area": 75417, "density": 58, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/pa.png", "altNames": []},
-  {"name": "Papua New Guinea", "code": "pg", "population": 10000000, "area": 462840, "density": 22, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/pg.png", "altNames": []},
-  {"name": "Paraguay", "code": "py", "population": 7000000, "area": 406752, "density": 17, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/py.png", "altNames": []},
-  {"name": "Peru", "code": "pe", "population": 34000000, "area": 1285216, "density": 26, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/pe.png", "altNames": []},
-  {"name": "Philippines", "code": "ph", "population": 117000000, "area": 300000, "density": 390, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ph.png", "altNames": []},
-  {"name": "Poland", "code": "pl", "population": 38000000, "area": 312696, "density": 122, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/pl.png", "altNames": []},
-  {"name": "Portugal", "code": "pt", "population": 10300000, "area": 92212, "density": 112, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/pt.png", "altNames": []},
-  {"name": "Qatar", "code": "qa", "population": 2800000, "area": 11586, "density": 242, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/qa.png", "altNames": []},
-  {"name": "Romania", "code": "ro", "population": 19000000, "area": 238397, "density": 80, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ro.png", "altNames": []},
-  {"name": "Russia", "code": "ru", "population": 146000000, "area": 17098242, "density": 9, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ru.png", "altNames": []},
-  {"name": "Rwanda", "code": "rw", "population": 14000000, "area": 26338, "density": 532, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/rw.png", "altNames": []},
-  {"name": "Saint Kitts and Nevis", "code": "kn", "population": 47000, "area": 261, "density": 180, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/kn.png", "altNames": []},
-  {"name": "Saint Lucia", "code": "lc", "population": 180000, "area": 616, "density": 292, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/lc.png", "altNames": []},
-  {"name": "Saint Vincent and the Grenadines", "code": "vc", "population": 110000, "area": 389, "density": 283, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/vc.png", "altNames": []},
-  {"name": "Samoa", "code": "ws", "population": 220000, "area": 2842, "density": 77, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ws.png", "altNames": []},
-  {"name": "San Marino", "code": "sm", "population": 34000, "area": 61, "density": 557, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sm.png", "altNames": []},
-  {"name": "Sao Tome and Principe", "code": "st", "population": 230000, "area": 964, "density": 239, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/st.png", "altNames": []},
-  {"name": "Saudi Arabia", "code": "sa", "population": 37000000, "area": 2149690, "density": 17, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sa.png", "altNames": []},
-  {"name": "Senegal", "code": "sn", "population": 18000000, "area": 196722, "density": 92, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sn.png", "altNames": []},
-  {"name": "Serbia", "code": "rs", "population": 6900000, "area": 77474, "density": 89, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/rs.png", "altNames": []},
-  {"name": "Seychelles", "code": "sc", "population": 100000, "area": 455, "density": 220, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sc.png", "altNames": []},
-  {"name": "Sierra Leone", "code": "sl", "population": 8400000, "area": 71740, "density": 117, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sl.png", "altNames": []},
-  {"name": "Singapore", "code": "sg", "population": 5700000, "area": 728, "density": 7820, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sg.png", "altNames": []},
-  {"name": "Slovakia", "code": "sk", "population": 5400000, "area": 49035, "density": 110, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sk.png", "altNames": []},
-  {"name": "Slovenia", "code": "si", "population": 2100000, "area": 20273, "density": 104, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/si.png", "altNames": []},
-  {"name": "Solomon Islands", "code": "sb", "population": 740000, "area": 28896, "density": 26, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sb.png", "altNames": []},
-  {"name": "Somalia", "code": "so", "population": 18000000, "area": 637657, "density": 28, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/so.png", "altNames": []},
-  {"name": "South Africa", "code": "za", "population": 60000000, "area": 1221037, "density": 49, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/za.png", "altNames": []},
-  {"name": "South Korea", "code": "kr", "population": 52000000, "area": 100210, "density": 519, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/kr.png", "altNames": ["Republic of Korea"]},
-  {"name": "South Sudan", "code": "ss", "population": 11000000, "area": 619745, "density": 18, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ss.png", "altNames": []},
-  {"name": "Spain", "code": "es", "population": 48000000, "area": 505990, "density": 95, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/es.png", "altNames": []},
-  {"name": "Sri Lanka", "code": "lk", "population": 22000000, "area": 65610, "density": 335, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/lk.png", "altNames": []},
-  {"name": "Sudan", "code": "sd", "population": 48000000, "area": 1861484, "density": 26, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sd.png", "altNames": []},
-  {"name": "Suriname", "code": "sr", "population": 630000, "area": 163820, "density": 4, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sr.png", "altNames": []},
-  {"name": "Sweden", "code": "se", "population": 10500000, "area": 450295, "density": 23, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/se.png", "altNames": []},
-  {"name": "Switzerland", "code": "ch", "population": 8900000, "area": 41284, "density": 216, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ch.png", "altNames": []},
-  {"name": "Syria", "code": "sy", "population": 22000000, "area": 185180, "density": 119, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sy.png", "altNames": []},
-  {"name": "Tajikistan", "code": "tj", "population": 10000000, "area": 143100, "density": 70, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/tj.png", "altNames": []},
-  {"name": "Tanzania", "code": "tz", "population": 67000000, "area": 945087, "density": 71, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/tz.png", "altNames": []},
-  {"name": "Thailand", "code": "th", "population": 72000000, "area": 513120, "density": 140, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/th.png", "altNames": []},
-  {"name": "Timor-Leste", "code": "tl", "population": 1400000, "area": 14874, "density": 94, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/tl.png", "altNames": ["East Timor"]},
-  {"name": "Togo", "code": "tg", "population": 8900000, "area": 56785, "density": 157, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/tg.png", "altNames": []},
-  {"name": "Tonga", "code": "to", "population": 107000, "area": 747, "density": 143, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/to.png", "altNames": []},
-  {"name": "Trinidad and Tobago", "code": "tt", "population": 1500000, "area": 5130, "density": 292, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/tt.png", "altNames": []},
-  {"name": "Tunisia", "code": "tn", "population": 12000000, "area": 163610, "density": 73, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/tn.png", "altNames": []},
-  {"name": "Turkey", "code": "tr", "population": 86000000, "area": 783356, "density": 110, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/tr.png", "altNames": []},
-  {"name": "Turkmenistan", "code": "tm", "population": 6500000, "area": 488100, "density": 13, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/tm.png", "altNames": []},
-  {"name": "Tuvalu", "code": "tv", "population": 12000, "area": 26, "density": 462, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/tv.png", "altNames": []},
-  {"name": "Uganda", "code": "ug", "population": 48000000, "area": 241038, "density": 199, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ug.png", "altNames": []},
-  {"name": "Ukraine", "code": "ua", "population": 37000000, "area": 603500, "density": 61, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ua.png", "altNames": []},
-  {"name": "United Arab Emirates", "code": "ae", "population": 9900000, "area": 83600, "density": 118, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ae.png", "altNames": []},
-  {"name": "United Kingdom", "code": "gb", "population": 67000000, "area": 243610, "density": 275, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gb.png", "altNames": []},
-  {"name": "United States", "code": "us", "population": 334000000, "area": 9833517, "density": 34, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/us.png", "altNames": ["USA"]},
-  {"name": "Uruguay", "code": "uy", "population": 3500000, "area": 181034, "density": 19, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/uy.png", "altNames": []},
-  {"name": "Uzbekistan", "code": "uz", "population": 35000000, "area": 448978, "density": 78, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/uz.png", "altNames": []},
-  {"name": "Vanuatu", "code": "vu", "population": 320000, "area": 12189, "density": 26, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/vu.png", "altNames": []},
-  {"name": "Vatican City", "code": "va", "population": 800, "area": 0.44, "density": 1818, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/va.png", "altNames": ["Holy See"]},
-  {"name": "Venezuela", "code": "ve", "population": 28000000, "area": 916445, "density": 31, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ve.png", "altNames": []},
-  {"name": "Vietnam", "code": "vn", "population": 99000000, "area": 331212, "density": 299, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/vn.png", "altNames": []},
-  {"name": "Yemen", "code": "ye", "population": 34000000, "area": 527968, "density": 64, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ye.png", "altNames": []},
-  {"name": "Zambia", "code": "zm", "population": 20000000, "area": 752612, "density": 27, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/zm.png", "altNames": []},
-  {"name": "Zimbabwe", "code": "zw", "population": 16300000, "area": 390757, "density": 42, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/zw.png", "altNames": []},
-  {"name": "Côte d'Ivoire", "code": "ci", "population": 32750000, "area": 318000, "density": 103, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ci.png", "altNames": ["Ivory Coast"]},
-  {"name": "Antigua and Barbuda", "code": "ag", "population": 94000, "area": 440, "density": 214, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ag.png", "altNames": ["antigua", "barbuda", "antigua barbuda"]},
+  {"name": "Afghanistan", "code": "af", "population": 42500000, "area": 652860, "density": 65, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/af.png", "altNames": [], "capital": "Kabul"},
+  {"name": "Albania", "code": "al", "population": 2854000, "area": 28748, "density": 99, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/al.png", "altNames": [], "capital": "Tirana"},
+  {"name": "Algeria", "code": "dz", "population": 46200000, "area": 2381741, "density": 19, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/dz.png", "altNames": [], "capital": "Algiers"},
+  {"name": "Andorra", "code": "ad", "population": 79000, "area": 468, "density": 169, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ad.png", "altNames": [], "capital": "Andorra la Vella"},
+  {"name": "Angola", "code": "ao", "population": 36800000, "area": 1246700, "density": 30, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ao.png", "altNames": [], "capital": "Luanda"},
+  {"name": "Argentina", "code": "ar", "population": 46200000, "area": 2780400, "density": 17, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ar.png", "altNames": [], "capital": "Buenos Aires"},
+  {"name": "Armenia", "code": "am", "population": 2720000, "area": 29743, "density": 92, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/am.png", "altNames": [], "capital": "Yerevan"},
+  {"name": "Australia", "code": "au", "population": 26700000, "area": 7692024, "density": 3, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/au.png", "altNames": [], "capital": "Canberra"},
+  {"name": "Austria", "code": "at", "population": 9000000, "area": 83879, "density": 107, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/at.png", "altNames": [], "capital": "Vienna"},
+  {"name": "Azerbaijan", "code": "az", "population": 10300000, "area": 86600, "density": 119, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/az.png", "altNames": [], "capital": "Baku"},
+  {"name": "Bahamas", "code": "bs", "population": 401000, "area": 13943, "density": 29, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bs.png", "altNames": [], "capital": "Nassau"},
+  {"name": "Bahrain", "code": "bh", "population": 1543000, "area": 765, "density": 2017, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bh.png", "altNames": [], "capital": "Manama"},
+  {"name": "Bangladesh", "code": "bd", "population": 169000000, "area": 148460, "density": 1138, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bd.png", "altNames": [], "capital": "Dhaka"},
+  {"name": "Barbados", "code": "bb", "population": 281000, "area": 430, "density": 653, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bb.png", "altNames": [], "capital": "Bridgetown"},
+  {"name": "Belarus", "code": "by", "population": 9400000, "area": 207600, "density": 45, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/by.png", "altNames": [], "capital": "Minsk"},
+  {"name": "Belgium", "code": "be", "population": 11500000, "area": 30528, "density": 377, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/be.png", "altNames": [], "capital": "Brussels"},
+  {"name": "Belize", "code": "bz", "population": 405000, "area": 22966, "density": 18, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bz.png", "altNames": [], "capital": "Belmopan"},
+  {"name": "Benin", "code": "bj", "population": 13400000, "area": 112622, "density": 119, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bj.png", "altNames": [], "capital": "Porto-Novo"},
+  {"name": "Bhutan", "code": "bt", "population": 782000, "area": 38394, "density": 20, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bt.png", "altNames": [], "capital": "Thimphu"},
+  {"name": "Bolivia", "code": "bo", "population": 12400000, "area": 1098581, "density": 11, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bo.png", "altNames": [], "capital": "La Paz"},
+  {"name": "Bosnia and Herzegovina", "code": "ba", "population": 3200000, "area": 51197, "density": 62, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ba.png", "altNames": [], "capital": "Sarajevo"},
+  {"name": "Botswana", "code": "bw", "population": 2600000, "area": 581730, "density": 4, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bw.png", "altNames": [], "capital": "Gaborone"},
+  {"name": "Brazil", "code": "br", "population": 216000000, "area": 8515767, "density": 25, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/br.png", "altNames": [], "capital": "Brasília"},
+  {"name": "Brunei", "code": "bn", "population": 450000, "area": 5765, "density": 78, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bn.png", "altNames": [], "capital": "Bandar Seri Begawan"},
+  {"name": "Bulgaria", "code": "bg", "population": 6700000, "area": 110879, "density": 60, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bg.png", "altNames": [], "capital": "Sofia"},
+  {"name": "Burkina Faso", "code": "bf", "population": 22800000, "area": 272967, "density": 84, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bf.png", "altNames": [], "capital": "Ouagadougou"},
+  {"name": "Burundi", "code": "bi", "population": 13600000, "area": 27834, "density": 489, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/bi.png", "altNames": [], "capital": "Bujumbura"},
+  {"name": "Cabo Verde", "code": "cv", "population": 600000, "area": 4033, "density": 149, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cv.png", "altNames": ["Cape Verde"], "capital": "Praia"},
+  {"name": "Cambodia", "code": "kh", "population": 17000000, "area": 181035, "density": 94, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/kh.png", "altNames": [], "capital": "Phnom Penh"},
+  {"name": "Cameroon", "code": "cm", "population": 28000000, "area": 475442, "density": 59, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cm.png", "altNames": [], "capital": "Yaoundé"},
+  {"name": "Canada", "code": "ca", "population": 39000000, "area": 9984670, "density": 4, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ca.png", "altNames": [], "capital": "Ottawa"},
+  {"name": "Central African Republic", "code": "cf", "population": 5900000, "area": 622984, "density": 9, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cf.png", "altNames": [], "capital": "Bangui"},
+  {"name": "Chad", "code": "td", "population": 18000000, "area": 1284000, "density": 14, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/td.png", "altNames": [], "capital": "N'Djamena"},
+  {"name": "Chile", "code": "cl", "population": 19600000, "area": 756102, "density": 26, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cl.png", "altNames": [], "capital": "Santiago"},
+  {"name": "China", "code": "cn", "population": 1412000000, "area": 9596961, "density": 147, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cn.png", "altNames": [], "capital": "Beijing"},
+  {"name": "Colombia", "code": "co", "population": 52000000, "area": 1141748, "density": 46, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/co.png", "altNames": [], "capital": "Bogotá"},
+  {"name": "Comoros", "code": "km", "population": 850000, "area": 2235, "density": 380, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/km.png", "altNames": [], "capital": "Moroni"},
+  {"name": "Congo", "code": "cg", "population": 6000000, "area": 342000, "density": 18, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cg.png", "altNames": [], "capital": "Brazzaville"},
+  {"name": "Costa Rica", "code": "cr", "population": 5200000, "area": 51100, "density": 102, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cr.png", "altNames": [], "capital": "San José"},
+  {"name": "Croatia", "code": "hr", "population": 3900000, "area": 56594, "density": 69, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/hr.png", "altNames": [], "capital": "Zagreb"},
+  {"name": "Cuba", "code": "cu", "population": 11200000, "area": 109884, "density": 102, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cu.png", "altNames": [], "capital": "Havana"},
+  {"name": "Cyprus", "code": "cy", "population": 1200000, "area": 9251, "density": 130, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cy.png", "altNames": [], "capital": "Nicosia"},
+  {"name": "Czechia", "code": "cz", "population": 10700000, "area": 78865, "density": 136, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cz.png", "altNames": ["Czech Republic"], "capital": "Prague"},
+  {"name": "Democratic Republic of the Congo", "code": "cd", "population": 99000000, "area": 2344858, "density": 42, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/cd.png", "altNames": ["DR Congo"], "capital": "Kinshasa"},
+  {"name": "Denmark", "code": "dk", "population": 5900000, "area": 43094, "density": 137, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/dk.png", "altNames": [], "capital": "Copenhagen"},
+  {"name": "Djibouti", "code": "dj", "population": 1120000, "area": 23200, "density": 48, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/dj.png", "altNames": [], "capital": "Djibouti"},
+  {"name": "Dominica", "code": "dm", "population": 72000, "area": 751, "density": 96, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/dm.png", "altNames": [], "capital": "Roseau"},
+  {"name": "Dominican Republic", "code": "do", "population": 11000000, "area": 48671, "density": 226, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/do.png", "altNames": [], "capital": "Santo Domingo"},
+  {"name": "Ecuador", "code": "ec", "population": 18000000, "area": 276841, "density": 65, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ec.png", "altNames": [], "capital": "Quito"},
+  {"name": "Egypt", "code": "eg", "population": 109000000, "area": 1002450, "density": 109, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/eg.png", "altNames": [], "capital": "Cairo"},
+  {"name": "El Salvador", "code": "sv", "population": 6500000, "area": 21041, "density": 309, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sv.png", "altNames": [], "capital": "San Salvador"},
+  {"name": "Equatorial Guinea", "code": "gq", "population": 1700000, "area": 28051, "density": 61, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gq.png", "altNames": [], "capital": "Malabo"},
+  {"name": "Eritrea", "code": "er", "population": 3600000, "area": 117600, "density": 31, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/er.png", "altNames": [], "capital": "Asmara"},
+  {"name": "Estonia", "code": "ee", "population": 1330000, "area": 45227, "density": 29, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ee.png", "altNames": [], "capital": "Tallinn"},
+  {"name": "Eswatini", "code": "sz", "population": 1200000, "area": 17364, "density": 69, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sz.png", "altNames": ["Swaziland"], "capital": "Mbabane"},
+  {"name": "Ethiopia", "code": "et", "population": 126000000, "area": 1104300, "density": 114, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/et.png", "altNames": [], "capital": "Addis Ababa"},
+  {"name": "Fiji", "code": "fj", "population": 930000, "area": 18274, "density": 51, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/fj.png", "altNames": [], "capital": "Suva"},
+  {"name": "Finland", "code": "fi", "population": 5600000, "area": 338424, "density": 16, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/fi.png", "altNames": [], "capital": "Helsinki"},
+  {"name": "France", "code": "fr", "population": 68000000, "area": 551695, "density": 123, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/fr.png", "altNames": [], "capital": "Paris"},
+  {"name": "Gabon", "code": "ga", "population": 2400000, "area": 267668, "density": 9, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ga.png", "altNames": [], "capital": "Libreville"},
+  {"name": "Gambia", "code": "gm", "population": 2700000, "area": 11295, "density": 239, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gm.png", "altNames": [], "capital": "Banjul"},
+  {"name": "Georgia", "code": "ge", "population": 3700000, "area": 69700, "density": 53, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ge.png", "altNames": [], "capital": "Tbilisi"},
+  {"name": "Germany", "code": "de", "population": 84000000, "area": 357022, "density": 235, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/de.png", "altNames": [], "capital": "Berlin"},
+  {"name": "Ghana", "code": "gh", "population": 34000000, "area": 238533, "density": 143, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gh.png", "altNames": [], "capital": "Accra"},
+  {"name": "Greece", "code": "gr", "population": 10400000, "area": 131957, "density": 79, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gr.png", "altNames": [], "capital": "Athens"},
+  {"name": "Grenada", "code": "gd", "population": 125000, "area": 344, "density": 363, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gd.png", "altNames": [], "capital": "St. George's"},
+  {"name": "Guatemala", "code": "gt", "population": 18000000, "area": 108889, "density": 165, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gt.png", "altNames": [], "capital": "Guatemala City"},
+  {"name": "Guinea", "code": "gn", "population": 14000000, "area": 245857, "density": 57, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gn.png", "altNames": [], "capital": "Conakry"},
+  {"name": "Guinea-Bissau", "code": "gw", "population": 2200000, "area": 36125, "density": 61, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gw.png", "altNames": [], "capital": "Bissau"},
+  {"name": "Guyana", "code": "gy", "population": 800000, "area": 214969, "density": 4, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gy.png", "altNames": [], "capital": "Georgetown"},
+  {"name": "Haiti", "code": "ht", "population": 11600000, "area": 27750, "density": 418, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ht.png", "altNames": [], "capital": "Port-au-Prince"},
+  {"name": "Honduras", "code": "hn", "population": 10400000, "area": 112492, "density": 92, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/hn.png", "altNames": [], "capital": "Tegucigalpa"},
+  {"name": "Hungary", "code": "hu", "population": 9700000, "area": 93028, "density": 104, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/hu.png", "altNames": [], "capital": "Budapest"},
+  {"name": "Iceland", "code": "is", "population": 380000, "area": 103000, "density": 4, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/is.png", "altNames": [], "capital": "Reykjavík"},
+  {"name": "India", "code": "in", "population": 1428000000, "area": 3287263, "density": 435, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/in.png", "altNames": [], "capital": "New Delhi"},
+  {"name": "Indonesia", "code": "id", "population": 277000000, "area": 1904569, "density": 145, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/id.png", "altNames": [], "capital": "Jakarta"},
+  {"name": "Iran", "code": "ir", "population": 89000000, "area": 1648195, "density": 54, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ir.png", "altNames": [], "capital": "Tehran"},
+  {"name": "Iraq", "code": "iq", "population": 44000000, "area": 438317, "density": 100, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/iq.png", "altNames": [], "capital": "Baghdad"},
+  {"name": "Ireland", "code": "ie", "population": 5000000, "area": 70273, "density": 71, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ie.png", "altNames": [], "capital": "Dublin"},
+  {"name": "Israel", "code": "il", "population": 9600000, "area": 22072, "density": 435, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/il.png", "altNames": [], "capital": "Jerusalem"},
+  {"name": "Italy", "code": "it", "population": 59000000, "area": 301340, "density": 196, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/it.png", "altNames": [], "capital": "Rome"},
+  {"name": "Jamaica", "code": "jm", "population": 2800000, "area": 10991, "density": 255, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/jm.png", "altNames": [], "capital": "Kingston"},
+  {"name": "Japan", "code": "jp", "population": 125000000, "area": 377930, "density": 331, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/jp.png", "altNames": [], "capital": "Tokyo"},
+  {"name": "Jordan", "code": "jo", "population": 11000000, "area": 89342, "density": 123, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/jo.png", "altNames": [], "capital": "Amman"},
+  {"name": "Kazakhstan", "code": "kz", "population": 20000000, "area": 2724900, "density": 7, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/kz.png", "altNames": [], "capital": "Nur-Sultan"},
+  {"name": "Kenya", "code": "ke", "population": 55000000, "area": 580367, "density": 95, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ke.png", "altNames": [], "capital": "Nairobi"},
+  {"name": "Kiribati", "code": "ki", "population": 130000, "area": 811, "density": 160, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ki.png", "altNames": [], "capital": "Tarawa"},
+  {"name": "Kuwait", "code": "kw", "population": 4300000, "area": 17818, "density": 241, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/kw.png", "altNames": [], "capital": "Kuwait City"},
+  {"name": "Kyrgyzstan", "code": "kg", "population": 7000000, "area": 199951, "density": 35, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/kg.png", "altNames": [], "capital": "Bishkek"},
+  {"name": "Laos", "code": "la", "population": 7600000, "area": 236800, "density": 32, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/la.png", "altNames": [], "capital": "Vientiane"},
+  {"name": "Latvia", "code": "lv", "population": 1900000, "area": 64559, "density": 29, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/lv.png", "altNames": [], "capital": "Riga"},
+  {"name": "Lebanon", "code": "lb", "population": 5400000, "area": 10452, "density": 517, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/lb.png", "altNames": [], "capital": "Beirut"},
+  {"name": "Lesotho", "code": "ls", "population": 2300000, "area": 30355, "density": 76, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ls.png", "altNames": [], "capital": "Maseru"},
+  {"name": "Liberia", "code": "lr", "population": 5300000, "area": 111369, "density": 48, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/lr.png", "altNames": [], "capital": "Monrovia"},
+  {"name": "Libya", "code": "ly", "population": 7000000, "area": 1759540, "density": 4, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ly.png", "altNames": [], "capital": "Tripoli"},
+  {"name": "Liechtenstein", "code": "li", "population": 39000, "area": 160, "density": 244, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/li.png", "altNames": [], "capital": "Vaduz"},
+  {"name": "Lithuania", "code": "lt", "population": 2800000, "area": 65300, "density": 43, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/lt.png", "altNames": [], "capital": "Vilnius"},
+  {"name": "Luxembourg", "code": "lu", "population": 660000, "area": 2586, "density": 255, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/lu.png", "altNames": [], "capital": "Luxembourg"},
+  {"name": "Madagascar", "code": "mg", "population": 30000000, "area": 587041, "density": 51, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mg.png", "altNames": [], "capital": "Antananarivo"},
+  {"name": "Malawi", "code": "mw", "population": 21000000, "area": 118484, "density": 177, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mw.png", "altNames": [], "capital": "Lilongwe"},
+  {"name": "Malaysia", "code": "my", "population": 34000000, "area": 330803, "density": 103, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/my.png", "altNames": [], "capital": "Kuala Lumpur"},
+  {"name": "Maldives", "code": "mv", "population": 521000, "area": 298, "density": 1748, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mv.png", "altNames": [], "capital": "Malé"},
+  {"name": "Mali", "code": "ml", "population": 23000000, "area": 1240192, "density": 19, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ml.png", "altNames": [], "capital": "Bamako"},
+  {"name": "Malta", "code": "mt", "population": 520000, "area": 316, "density": 1646, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mt.png", "altNames": [], "capital": "Valletta"},
+  {"name": "Marshall Islands", "code": "mh", "population": 59000, "area": 181, "density": 326, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mh.png", "altNames": [], "capital": "Majuro"},
+  {"name": "Mauritania", "code": "mr", "population": 4800000, "area": 1030700, "density": 5, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mr.png", "altNames": [], "capital": "Nouakchott"},
+  {"name": "Mauritius", "code": "mu", "population": 1300000, "area": 2040, "density": 637, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mu.png", "altNames": [], "capital": "Port Louis"},
+  {"name": "Mexico", "code": "mx", "population": 128000000, "area": 1964375, "density": 65, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mx.png", "altNames": [], "capital": "Mexico City"},
+  {"name": "Micronesia", "code": "fm", "population": 115000, "area": 702, "density": 164, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/fm.png", "altNames": [], "capital": "Palikir"},
+  {"name": "Moldova", "code": "md", "population": 2600000, "area": 33846, "density": 77, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/md.png", "altNames": [], "capital": "Chișinău"},
+  {"name": "Monaco", "code": "mc", "population": 39000, "area": 2, "density": 19500, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mc.png", "altNames": [], "capital": "Monaco"},
+  {"name": "Mongolia", "code": "mn", "population": 3400000, "area": 1564110, "density": 2, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mn.png", "altNames": [], "capital": "Ulaanbaatar"},
+  {"name": "Montenegro", "code": "me", "population": 620000, "area": 13812, "density": 45, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/me.png", "altNames": [], "capital": "Podgorica"},
+  {"name": "Morocco", "code": "ma", "population": 38000000, "area": 446550, "density": 85, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ma.png", "altNames": [], "capital": "Rabat"},
+  {"name": "Mozambique", "code": "mz", "population": 33000000, "area": 801590, "density": 41, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mz.png", "altNames": [], "capital": "Maputo"},
+  {"name": "Myanmar", "code": "mm", "population": 55000000, "area": 676578, "density": 81, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mm.png", "altNames": ["Burma"], "capital": "Naypyidaw"},
+  {"name": "Namibia", "code": "na", "population": 2600000, "area": 825615, "density": 3, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/na.png", "altNames": [], "capital": "Windhoek"},
+  {"name": "Nauru", "code": "nr", "population": 11000, "area": 21, "density": 524, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/nr.png", "altNames": [], "capital": "Yaren"},
+  {"name": "Nepal", "code": "np", "population": 30000000, "area": 147516, "density": 203, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/np.png", "altNames": [], "capital": "Kathmandu"},
+  {"name": "Netherlands", "code": "nl", "population": 17500000, "area": 41543, "density": 421, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/nl.png", "altNames": [], "capital": "Amsterdam"},
+  {"name": "New Zealand", "code": "nz", "population": 5200000, "area": 268838, "density": 19, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/nz.png", "altNames": [], "capital": "Wellington"},
+  {"name": "Nicaragua", "code": "ni", "population": 7000000, "area": 130373, "density": 54, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ni.png", "altNames": [], "capital": "Managua"},
+  {"name": "Niger", "code": "ne", "population": 27000000, "area": 1267000, "density": 21, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ne.png", "altNames": [], "capital": "Niamey"},
+  {"name": "Nigeria", "code": "ng", "population": 223000000, "area": 923768, "density": 241, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ng.png", "altNames": [], "capital": "Abuja"},
+  {"name": "North Korea", "code": "kp", "population": 26000000, "area": 120538, "density": 216, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/kp.png", "altNames": ["DPRK"], "capital": "Pyongyang"},
+  {"name": "North Macedonia", "code": "mk", "population": 2100000, "area": 25713, "density": 82, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/mk.png", "altNames": ["Macedonia"], "capital": "Skopje"},
+  {"name": "Norway", "code": "no", "population": 5400000, "area": 385207, "density": 14, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/no.png", "altNames": [], "capital": "Oslo"},
+  {"name": "Oman", "code": "om", "population": 4600000, "area": 309500, "density": 15, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/om.png", "altNames": [], "capital": "Muscat"},
+  {"name": "Pakistan", "code": "pk", "population": 240000000, "area": 881912, "density": 272, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/pk.png", "altNames": [], "capital": "Islamabad"},
+  {"name": "Palau", "code": "pw", "population": 18000, "area": 459, "density": 39, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/pw.png", "altNames": [], "capital": "Ngerulmud"},
+  {"name": "Palestine", "code": "ps", "population": 5100000, "area": 6220, "density": 820, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ps.png", "altNames": [], "capital": "Ramallah"},
+  {"name": "Panama", "code": "pa", "population": 4400000, "area": 75417, "density": 58, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/pa.png", "altNames": [], "capital": "Panama City"},
+  {"name": "Papua New Guinea", "code": "pg", "population": 10000000, "area": 462840, "density": 22, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/pg.png", "altNames": [], "capital": "Port Moresby"},
+  {"name": "Paraguay", "code": "py", "population": 7000000, "area": 406752, "density": 17, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/py.png", "altNames": [], "capital": "Asunción"},
+  {"name": "Peru", "code": "pe", "population": 34000000, "area": 1285216, "density": 26, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/pe.png", "altNames": [], "capital": "Lima"},
+  {"name": "Philippines", "code": "ph", "population": 117000000, "area": 300000, "density": 390, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ph.png", "altNames": [], "capital": "Manila"},
+  {"name": "Poland", "code": "pl", "population": 38000000, "area": 312696, "density": 122, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/pl.png", "altNames": [], "capital": "Warsaw"},
+  {"name": "Portugal", "code": "pt", "population": 10300000, "area": 92212, "density": 112, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/pt.png", "altNames": [], "capital": "Lisbon"},
+  {"name": "Qatar", "code": "qa", "population": 2800000, "area": 11586, "density": 242, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/qa.png", "altNames": [], "capital": "Doha"},
+  {"name": "Romania", "code": "ro", "population": 19000000, "area": 238397, "density": 80, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ro.png", "altNames": [], "capital": "Bucharest"},
+  {"name": "Russia", "code": "ru", "population": 146000000, "area": 17098242, "density": 9, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ru.png", "altNames": [], "capital": "Moscow"},
+  {"name": "Rwanda", "code": "rw", "population": 14000000, "area": 26338, "density": 532, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/rw.png", "altNames": [], "capital": "Kigali"},
+  {"name": "Saint Kitts and Nevis", "code": "kn", "population": 47000, "area": 261, "density": 180, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/kn.png", "altNames": [], "capital": "Basseterre"},
+  {"name": "Saint Lucia", "code": "lc", "population": 180000, "area": 616, "density": 292, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/lc.png", "altNames": [], "capital": "Castries"},
+  {"name": "Saint Vincent and the Grenadines", "code": "vc", "population": 110000, "area": 389, "density": 283, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/vc.png", "altNames": [], "capital": "Kingstown"},
+  {"name": "Samoa", "code": "ws", "population": 220000, "area": 2842, "density": 77, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ws.png", "altNames": [], "capital": "Apia"},
+  {"name": "San Marino", "code": "sm", "population": 34000, "area": 61, "density": 557, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sm.png", "altNames": [], "capital": "San Marino"},
+  {"name": "Sao Tome and Principe", "code": "st", "population": 230000, "area": 964, "density": 239, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/st.png", "altNames": [], "capital": "São Tomé"},
+  {"name": "Saudi Arabia", "code": "sa", "population": 37000000, "area": 2149690, "density": 17, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sa.png", "altNames": [], "capital": "Riyadh"},
+  {"name": "Senegal", "code": "sn", "population": 18000000, "area": 196722, "density": 92, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sn.png", "altNames": [], "capital": "Dakar"},
+  {"name": "Serbia", "code": "rs", "population": 6900000, "area": 77474, "density": 89, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/rs.png", "altNames": [], "capital": "Belgrade"},
+  {"name": "Seychelles", "code": "sc", "population": 100000, "area": 455, "density": 220, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sc.png", "altNames": [], "capital": "Victoria"},
+  {"name": "Sierra Leone", "code": "sl", "population": 8400000, "area": 71740, "density": 117, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sl.png", "altNames": [], "capital": "Freetown"},
+  {"name": "Singapore", "code": "sg", "population": 5700000, "area": 728, "density": 7820, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sg.png", "altNames": [], "capital": "Singapore"},
+  {"name": "Slovakia", "code": "sk", "population": 5400000, "area": 49035, "density": 110, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sk.png", "altNames": [], "capital": "Bratislava"},
+  {"name": "Slovenia", "code": "si", "population": 2100000, "area": 20273, "density": 104, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/si.png", "altNames": [], "capital": "Ljubljana"},
+  {"name": "Solomon Islands", "code": "sb", "population": 740000, "area": 28896, "density": 26, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sb.png", "altNames": [], "capital": "Honiara"},
+  {"name": "Somalia", "code": "so", "population": 18000000, "area": 637657, "density": 28, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/so.png", "altNames": [], "capital": "Mogadishu"},
+  {"name": "South Africa", "code": "za", "population": 60000000, "area": 1221037, "density": 49, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/za.png", "altNames": [], "capital": "Pretoria"},
+  {"name": "South Korea", "code": "kr", "population": 52000000, "area": 100210, "density": 519, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/kr.png", "altNames": ["Republic of Korea"], "capital": "Seoul"},
+  {"name": "South Sudan", "code": "ss", "population": 11000000, "area": 619745, "density": 18, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ss.png", "altNames": [], "capital": "Juba"},
+  {"name": "Spain", "code": "es", "population": 48000000, "area": 505990, "density": 95, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/es.png", "altNames": [], "capital": "Madrid"},
+  {"name": "Sri Lanka", "code": "lk", "population": 22000000, "area": 65610, "density": 335, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/lk.png", "altNames": [], "capital": "Colombo"},
+  {"name": "Sudan", "code": "sd", "population": 48000000, "area": 1861484, "density": 26, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sd.png", "altNames": [], "capital": "Khartoum"},
+  {"name": "Suriname", "code": "sr", "population": 630000, "area": 163820, "density": 4, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sr.png", "altNames": [], "capital": "Paramaribo"},
+  {"name": "Sweden", "code": "se", "population": 10500000, "area": 450295, "density": 23, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/se.png", "altNames": [], "capital": "Stockholm"},
+  {"name": "Switzerland", "code": "ch", "population": 8900000, "area": 41284, "density": 216, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ch.png", "altNames": [], "capital": "Bern"},
+  {"name": "Syria", "code": "sy", "population": 22000000, "area": 185180, "density": 119, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/sy.png", "altNames": [], "capital": "Damascus"},
+  {"name": "Tajikistan", "code": "tj", "population": 10000000, "area": 143100, "density": 70, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/tj.png", "altNames": [], "capital": "Dushanbe"},
+  {"name": "Tanzania", "code": "tz", "population": 67000000, "area": 945087, "density": 71, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/tz.png", "altNames": [], "capital": "Dodoma"},
+  {"name": "Thailand", "code": "th", "population": 72000000, "area": 513120, "density": 140, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/th.png", "altNames": [], "capital": "Bangkok"},
+  {"name": "Timor-Leste", "code": "tl", "population": 1400000, "area": 14874, "density": 94, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/tl.png", "altNames": ["East Timor"], "capital": "Dili"},
+  {"name": "Togo", "code": "tg", "population": 8900000, "area": 56785, "density": 157, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/tg.png", "altNames": [], "capital": "Lomé"},
+  {"name": "Tonga", "code": "to", "population": 107000, "area": 747, "density": 143, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/to.png", "altNames": [], "capital": "Nuku'alofa"},
+  {"name": "Trinidad and Tobago", "code": "tt", "population": 1500000, "area": 5130, "density": 292, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/tt.png", "altNames": [], "capital": "Port of Spain"},
+  {"name": "Tunisia", "code": "tn", "population": 12000000, "area": 163610, "density": 73, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/tn.png", "altNames": [], "capital": "Tunis"},
+  {"name": "Turkey", "code": "tr", "population": 86000000, "area": 783356, "density": 110, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/tr.png", "altNames": [], "capital": "Ankara"},
+  {"name": "Turkmenistan", "code": "tm", "population": 6500000, "area": 488100, "density": 13, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/tm.png", "altNames": [], "capital": "Ashgabat"},
+  {"name": "Tuvalu", "code": "tv", "population": 12000, "area": 26, "density": 462, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/tv.png", "altNames": [], "capital": "Funafuti"},
+  {"name": "Uganda", "code": "ug", "population": 48000000, "area": 241038, "density": 199, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ug.png", "altNames": [], "capital": "Kampala"},
+  {"name": "Ukraine", "code": "ua", "population": 37000000, "area": 603500, "density": 61, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ua.png", "altNames": [], "capital": "Kyiv"},
+  {"name": "United Arab Emirates", "code": "ae", "population": 9900000, "area": 83600, "density": 118, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ae.png", "altNames": [], "capital": "Abu Dhabi"},
+  {"name": "United Kingdom", "code": "gb", "population": 67000000, "area": 243610, "density": 275, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/gb.png", "altNames": [], "capital": "London"},
+  {"name": "United States", "code": "us", "population": 334000000, "area": 9833517, "density": 34, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/us.png", "altNames": ["USA"], "capital": "Washington, D.C."},
+  {"name": "Uruguay", "code": "uy", "population": 3500000, "area": 181034, "density": 19, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/uy.png", "altNames": [], "capital": "Montevideo"},
+  {"name": "Uzbekistan", "code": "uz", "population": 35000000, "area": 448978, "density": 78, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/uz.png", "altNames": [], "capital": "Tashkent"},
+  {"name": "Vanuatu", "code": "vu", "population": 320000, "area": 12189, "density": 26, "continent": "Oceania", "unMember": true, "isDependency": false, "flag": "assets/images/flags/vu.png", "altNames": [], "capital": "Port Vila"},
+  {"name": "Vatican City", "code": "va", "population": 800, "area": 0.44, "density": 1818, "continent": "Europe", "unMember": true, "isDependency": false, "flag": "assets/images/flags/va.png", "altNames": ["Holy See"], "capital": "Vatican City"},
+  {"name": "Venezuela", "code": "ve", "population": 28000000, "area": 916445, "density": 31, "continent": "South America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ve.png", "altNames": [], "capital": "Caracas"},
+  {"name": "Vietnam", "code": "vn", "population": 99000000, "area": 331212, "density": 299, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/vn.png", "altNames": [], "capital": "Hanoi"},
+  {"name": "Yemen", "code": "ye", "population": 34000000, "area": 527968, "density": 64, "continent": "Asia", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ye.png", "altNames": [], "capital": "Sana'a"},
+  {"name": "Zambia", "code": "zm", "population": 20000000, "area": 752612, "density": 27, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/zm.png", "altNames": [], "capital": "Lusaka"},
+  {"name": "Zimbabwe", "code": "zw", "population": 16300000, "area": 390757, "density": 42, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/zw.png", "altNames": [], "capital": "Harare"},
+  {"name": "Côte d'Ivoire", "code": "ci", "population": 32750000, "area": 318000, "density": 103, "continent": "Africa", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ci.png", "altNames": ["Ivory Coast"], "capital": "Yamoussoukro"},
+  {"name": "Antigua and Barbuda", "code": "ag", "population": 94000, "area": 440, "density": 214, "continent": "North America", "unMember": true, "isDependency": false, "flag": "assets/images/flags/ag.png", "altNames": ["antigua", "barbuda", "antigua barbuda"], "capital": "St. John's"},
   {
     "name": "Aruba",
     "code": "aw",
@@ -204,7 +204,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/aw.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Oranjestad"
   },
   {
     "name": "Anguilla",
@@ -216,7 +217,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/ai.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "The Valley"
   },
   {
     "name": "American Samoa",
@@ -228,7 +230,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/as.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Pago Pago"
   },
   {
     "name": "Åland Islands",
@@ -240,7 +243,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/ax.png",
-    "altNames": ["Aland", "Aland Islands"]
+    "altNames": ["Aland", "Aland Islands"],
+    "capital": "Mariehamn"
   },
   {
     "name": "Saint Barthélemy",
@@ -252,7 +256,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/bl.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Gustavia"
   },
   {
     "name": "Bermuda",
@@ -264,7 +269,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/bm.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Hamilton"
   },
   {
     "name": "Bonaire",
@@ -276,7 +282,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/bq.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Kralendijk"
   },
   {
     "name": "Cocos (Keeling) Islands",
@@ -288,7 +295,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/cc.png",
-    "altNames": ["Cocos", "Keeling", "Cocos Islands", "Keeling Islands"]
+    "altNames": ["Cocos", "Keeling", "Cocos Islands", "Keeling Islands"],
+    "capital": "West Island"
   },
   {
     "name": "Cook Islands",
@@ -300,7 +308,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/ck.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Avarua"
   },
   {
     "name": "Curaçao",
@@ -312,7 +321,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/cw.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Willemstad"
   },
   {
     "name": "Christmas Island",
@@ -324,7 +334,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/cx.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Flying Fish Cove"
   },
   {
     "name": "Western Sahara",
@@ -336,7 +347,8 @@
     "unMember": false,
     "isDependency": false,
     "flag": "assets/images/flags/eh.png",
-    "altNames": []
+    "altNames": [],
+    "capital": ""
   },
   {
     "name": "Falkland Islands",
@@ -348,7 +360,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/fk.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Stanley"
   },
   {
     "name": "Faroe Islands",
@@ -360,7 +373,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/fo.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Tórshavn"
   },
   {
     "name": "England",
@@ -372,7 +386,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/gb-eng.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "London"
   },
   {
     "name": "Northern Ireland",
@@ -384,7 +399,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/gb-nir.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Belfast"
   },
   {
     "name": "Scotland",
@@ -396,7 +412,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/gb-sct.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Edinburgh"
   },
   {
     "name": "Wales",
@@ -408,7 +425,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/gb-wls.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Cardiff"
   },
   {
     "name": "French Guiana",
@@ -420,7 +438,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/gf.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Cayenne"
   },
   {
     "name": "Guernsey",
@@ -432,7 +451,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/gg.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "St. Peter Port"
   },
   {
     "name": "Gibraltar",
@@ -444,7 +464,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/gi.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Gibraltar"
   },
   {
     "name": "Greenland",
@@ -456,7 +477,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/gl.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Nuuk"
   },
   {
     "name": "Guadeloupe",
@@ -468,7 +490,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/gp.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Basse-Terre"
   },
   {
     "name": "South Georgia and the South Sandwich Islands",
@@ -480,7 +503,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/gs.png",
-    "altNames": ["South Georgia","South Georgia Islands","South Sandwich Islands"]
+    "altNames": ["South Georgia","South Georgia Islands","South Sandwich Islands"],
+    "capital": ""
   },
   {
     "name": "Guam",
@@ -492,7 +516,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/gu.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Hagåtña"
   },
   {
     "name": "Hong Kong",
@@ -504,7 +529,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/hk.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Hong Kong"
   },
   {
     "name": "Isle of Man",
@@ -516,7 +542,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/im.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Douglas"
   },
   {
     "name": "British Indian Ocean Territory",
@@ -528,7 +555,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/io.png",
-    "altNames": []
+    "altNames": [],
+    "capital": ""
   },
   {
     "name": "Jersey",
@@ -540,7 +568,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/je.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "St. Helier"
   },
   {
     "name": "Cayman Islands",
@@ -552,7 +581,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/ky.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "George Town"
   },
   {
     "name": "Saint Martin",
@@ -564,7 +594,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/mf.png",
-    "altNames": ["st martin", "st. martin"]
+    "altNames": ["st martin", "st. martin"],
+    "capital": "Marigot"
   },
   {
     "name": "Macao",
@@ -576,7 +607,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/mo.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Macau"
   },
   {
     "name": "Northern Mariana Islands",
@@ -588,7 +620,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/mp.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Saipan"
   },
   {
     "name": "Martinique",
@@ -600,7 +633,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/mq.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Fort-de-France"
   },
   {
     "name": "Montserrat",
@@ -612,7 +646,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/ms.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Plymouth"
   },
   {
     "name": "New Caledonia",
@@ -624,7 +659,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/nc.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Nouméa"
   },
   {
     "name": "Norfolk Island",
@@ -636,7 +672,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/nf.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Kingston"
   },
   {
     "name": "Niue",
@@ -648,7 +685,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/nu.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Alofi"
   },
   {
     "name": "French Polynesia",
@@ -660,7 +698,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/pf.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Papeete"
   },
   {
     "name": "Saint Pierre and Miquelon",
@@ -672,7 +711,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/pm.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Saint-Pierre"
   },
   {
     "name": "Pitcairn Islands",
@@ -684,7 +724,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/pn.png",
-    "altNames": ["Pitcairn"]
+    "altNames": ["Pitcairn"],
+    "capital": "Adamstown"
   },
   {
     "name": "Puerto Rico",
@@ -696,7 +737,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/pr.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "San Juan"
   },
   {
     "name": "Réunion",
@@ -708,7 +750,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/re.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Saint-Denis"
   },
   {
     "name": "Saint Helena",
@@ -720,7 +763,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/sh.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Jamestown"
   },
   {
     "name": "Ascension Island",
@@ -732,7 +776,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/ac.png",
-    "altNames": []
+    "altNames": [],
+    "capital": ""
   },
   {
     "name": "Tristan da Cunha",
@@ -744,7 +789,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/ta.png",
-    "altNames": []
+    "altNames": [],
+    "capital": ""
   },
   {
     "name": "Saba",
@@ -756,7 +802,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/bq.png",
-    "altNames": []
+    "altNames": [],
+    "capital": ""
   },
   {
     "name": "Sint Eustatius",
@@ -768,7 +815,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/bq.png",
-    "altNames": []
+    "altNames": [],
+    "capital": ""
   },
   {
     "name": "Svalbard and Jan Mayen",
@@ -780,7 +828,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/sj.png",
-    "altNames": []
+    "altNames": [],
+    "capital": ""
   },
   {
     "name": "Sint Maarten",
@@ -792,7 +841,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/sx.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Philipsburg"
   },
   {
     "name": "Turks and Caicos Islands",
@@ -804,7 +854,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/tc.png",
-    "altNames": ["Turks and Caicos"]
+    "altNames": ["Turks and Caicos"],
+    "capital": "Cockburn Town"
   },
   {
     "name": "Tokelau",
@@ -816,7 +867,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/tk.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Fakaofo"
   },
   {
     "name": "Taiwan",
@@ -828,7 +880,8 @@
     "unMember": false,
     "isDependency": false,
     "flag": "assets/images/flags/tw.png",
-    "altNames": ["China"]
+    "altNames": ["China"],
+    "capital": "Taipei"
   },
   {
     "name": "United States Minor Outlying Islands",
@@ -840,7 +893,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/um.png",
-    "altNames": []
+    "altNames": [],
+    "capital": ""
   },
   {
     "name": "Virgin Islands (British)",
@@ -852,7 +906,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/vg.png",
-    "altNames": ["British Virgin Islands"]
+    "altNames": ["British Virgin Islands"],
+    "capital": "Road Town"
   },
   {
     "name": "Virgin Islands (U.S.)",
@@ -864,7 +919,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/vi.png",
-    "altNames": ["United States Virgin Islands", "US Virgin Islands"]
+    "altNames": ["United States Virgin Islands", "US Virgin Islands"],
+    "capital": "Charlotte Amalie"
   },
   {
     "name": "Wallis and Futuna",
@@ -876,7 +932,8 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/wf.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Mata-Utu"
   },
   {
     "name": "Kosovo",
@@ -888,7 +945,8 @@
     "unMember": false,
     "isDependency": false,
     "flag": "assets/images/flags/xk.png",
-    "altNames": []
+    "altNames": [],
+    "capital": ""
   },
   {
     "name": "Mayotte",
@@ -900,6 +958,7 @@
     "unMember": false,
     "isDependency": true,
     "flag": "assets/images/flags/yt.png",
-    "altNames": []
+    "altNames": [],
+    "capital": "Mamoudzou"
   }
 ] 
