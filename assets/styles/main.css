@@ -1213,9 +1213,7 @@ a[href*="size-highest-3"] p {
   .modal-content label {
     padding: 0.2rem 0 !important;
   }
-  .modal-content .switch input:checked + .slider:before {
-    transform: translateX(1.05rem) !important;
-  }
+  
   .modal-content .flex {
     margin-top: 1.7rem !important;
   }
