@@ -1318,7 +1318,7 @@ function renderExtremeQuestion() {
     html += `<h3 class=\"text-2xl font-bold mb-4\">Which country does this flag belong to?</h3>`;
     html += `<div class=\"mb-6\" style=\"display: flex; justify-content: center; position: relative;\">`;
     html += `<div id=\"flag-canvas-container\" style=\"position:relative;display:inline-block;\">`;
-    html += `<button id=\"showFlagBtn\" class=\"icon-btn\" style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:3rem;color:#219EBC;z-index:1;pointer-events:auto;\"><i class=\"fa-solid fa-eye\"></i></button>`;
+    html += `<button id=\"showFlagBtn\" class=\"icon-btn\" style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#219EBC;z-index:1;pointer-events:auto;background:none;border:none;\"><i class=\"fa-solid fa-eye\" style=\"font-size:4rem !important;\"></i></button>`;
     html += `</div>`;
     html += `</div>`;
     html += `<div id=\"answerContainer\">`;

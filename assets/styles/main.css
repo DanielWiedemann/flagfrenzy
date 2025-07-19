@@ -1212,8 +1212,7 @@ a[href*="size-highest-3"] p {
   }
   .modal-content label {
     padding: 0.2rem 0 !important;
-  }
-  
+  }  
   .modal-content .flex {
     margin-top: 1.7rem !important;
   }
@@ -1223,4 +1222,9 @@ a[href*="size-highest-3"] p {
   #continentForm > div {
     margin-bottom: 1.7rem !important;
   }
+} 
+#showFlagBtn .fa-eye,
+#showFlagBtn .fa-eye-slash {
+  font-size: 2.5rem !important;
+  line-height: 1;
 } 
