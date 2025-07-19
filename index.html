@@ -14,16 +14,9 @@
       <div class="modal-content" style="max-width: 500px; position: relative;">
         <button id="closeSettings" class="icon-btn" style="position: absolute; top: 1rem; right: 1rem; font-size: 2rem; background: none; border: none;"><i class="fa-solid fa-xmark"></i></button>
         <h2 class="text-2xl font-bold mb-4 text-center">Continent Selection</h2>
-        <div class="flex justify-center items-center mb-6" style="gap: 1rem;">
-          <span id="labelLeftModal" class="font-semibold">UN Countries Only</span>
-          <label class="switch" style="vertical-align: middle;">
-            <input type="checkbox" id="unOnlyToggleModal" style="opacity:0;width:0;height:0;position:absolute;">
-            <span class="slider"></span>
-          </label>
-          <span id="labelRightModal" class="font-semibold">All Countries & Territories</span>
-        </div>
+        
         <form id="continentForm">
-          <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div style="display: flex; flex-direction: column; gap: 0.7rem;">
             <label style="display: flex; align-items: center; justify-content: space-between;">
               <span>Africa</span>
               <span class="switch"><input type="checkbox" name="continent" value="Africa" checked><span class="slider"></span></span>
@@ -50,7 +43,14 @@
             </label>
             </div>
         </form>
-            </div>
+        <div class="flex justify-center items-center mb-6" style="gap: 0.7rem; margin-top: 1.5rem;">
+          <span id="labelLeftModal" class="font-semibold">UN Countries Only</span>
+          <label class="switch" style="vertical-align: middle;">
+            <input type="checkbox" id="unOnlyToggleModal" style="opacity:0;width:0;height:0;position:absolute;">
+            <span class="slider"></span>
+          </label>
+          <span id="labelRightModal" class="font-semibold">All Countries & Territories</span>
+        </div></div>
         </div>
     <div class="container" style="padding-top: 2rem; padding-bottom: 2rem;">
             <div class="text-center mb-8">
