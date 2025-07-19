@@ -1,11 +1,14 @@
 // Continent settings modal logic
-import { getContinents, setContinents } from './shared.js';
+import { getContinents, setContinents, getSettings, setSettings } from './shared.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     const openSettings = document.getElementById('openSettings');
     const settingsModal = document.getElementById('settingsModal');
     const closeSettings = document.getElementById('closeSettings');
     const continentForm = document.getElementById('continentForm');
+    const unOnlyToggle = document.getElementById('unOnlyToggleModal');
+    const labelLeft = document.getElementById('labelLeftModal');
+    const labelRight = document.getElementById('labelRightModal');
     if (openSettings && settingsModal && closeSettings && continentForm) {
         openSettings.onclick = () => { settingsModal.style.display = 'flex'; };
         closeSettings.onclick = () => { settingsModal.style.display = 'none'; };
@@ -42,7 +45,45 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             const selected = checked.map(cb => cb.value);
             setContinents(selected);
+            // Re-initialize the game if function exists
+            if (typeof window.initGame === 'function') {
+                window.initGame();
+            }
         };
+        // Load and apply saved setting
+        let settings = getSettings() || { unOnly: true };
+        if (unOnlyToggle) {
+            const switchEl = unOnlyToggle.closest('.switch');
+            // Invert logic: checked = All Countries, unchecked = UN Only
+            unOnlyToggle.checked = !settings.unOnly;
+            updateLabels();
+            // Always keep switch yellow
+            function updateSwitchBg() {
+                if (switchEl) switchEl.style.background = '#FFB703';
+            }
+            updateSwitchBg();
+            unOnlyToggle.addEventListener('change', function() {
+                settings.unOnly = !unOnlyToggle.checked;
+                setSettings(settings);
+                updateLabels();
+                updateSwitchBg();
+                if (typeof window.initGame === 'function') window.initGame();
+            });
+        }
+        function updateLabels() {
+            if (!labelLeft || !labelRight || !unOnlyToggle) return;
+            if (!unOnlyToggle.checked) {
+                labelLeft.style.fontWeight = '700';
+                labelLeft.style.color = '#10b981';
+                labelRight.style.fontWeight = '400';
+                labelRight.style.color = '#1f2937';
+            } else {
+                labelLeft.style.fontWeight = '400';
+                labelLeft.style.color = '#1f2937';
+                labelRight.style.fontWeight = '700';
+                labelRight.style.color = '#10b981';
+            }
+        }
     }
 });
 

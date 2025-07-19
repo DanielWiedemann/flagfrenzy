@@ -595,7 +595,7 @@ body > * {
 .switch {
   width: 3rem;
   height: 1.5rem;
-  background: #eee;
+  background: #FFB703 !important;
   border-radius: 9999px;
   position: relative;
   cursor: pointer;
@@ -611,7 +611,7 @@ body > * {
   position: absolute;
   cursor: pointer;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: #eee;
+  background-color: #FFB703 !important;
   transition: .4s;
   border-radius: 9999px;
 }
@@ -634,6 +634,38 @@ body > * {
 }
 .switch input:not(:checked) + .slider:before {
   transform: translateX(0);
+}
+
+/* Only apply orange background to the UN selection switch in the modal */
+#unOnlyToggleModal + .slider,
+#unOnlyToggleModal:checked + .slider,
+#unOnlyToggleModal:focus + .slider {
+  background-color: #FFB703 !important;
+}
+#unOnlyToggleModal {
+  /* Ensure parent .switch is always orange */
+}
+#unOnlyToggleModal:checked + .slider:before,
+#unOnlyToggleModal + .slider:before {
+  background-color: #fff;
+}
+/* Restore default for other switches */
+.switch {
+  background: #eee;
+}
+.switch .slider {
+  background-color: #eee;
+}
+.switch input:checked + .slider {
+  background-color: #FFB703;
+}
+
+/* Continent switches: gray when off, orange when on */
+.switch input:not(#unOnlyToggleModal):not(:checked) + .slider {
+  background-color: #eee !important;
+}
+.switch input:not(#unOnlyToggleModal):checked + .slider {
+  background-color: #FFB703 !important;
 }
 
 /* Utility classes */

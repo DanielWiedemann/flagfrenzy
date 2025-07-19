@@ -134,7 +134,9 @@ function getFilteredFlags() {
 }
 
 function generateQuestion() {
-    const available = getFilteredFlags().filter(f => !state.usedQuestions.includes(f.name));
+    // Use state.availableCountries if present (hard/extreme), else getFilteredFlags()
+    const pool = state.availableCountries || getFilteredFlags();
+    const available = pool.filter(f => !state.usedQuestions.includes(f.name));
     if (available.length === 0) {
         state.usedQuestions = [];
         return generateQuestion();
@@ -143,12 +145,10 @@ function generateQuestion() {
     state.usedQuestions.push(correct.name);
     let wrongAnswers = [];
     if (["multiple-choice", "time-attack", "survival"].includes(state.mode)) {
-        // Use only filtered flags for wrong answers
-        wrongAnswers = getSimilarFlags(correct, getFilteredFlags()).map(f => f.name);
-        // Ensure 5 unique wrong answers
+        wrongAnswers = getSimilarFlags(correct, pool).map(f => f.name);
         const usedNames = new Set([correct.name, ...wrongAnswers]);
         if (wrongAnswers.length < 5) {
-            const fill = getFilteredFlags().filter(f => !usedNames.has(f.name));
+            const fill = pool.filter(f => !usedNames.has(f.name));
             for (const flag of shuffle(fill)) {
                 if (wrongAnswers.length >= 5) break;
                 wrongAnswers.push(flag.name);
@@ -165,7 +165,7 @@ function renderQuestion() {
     state.currentQuestion = generateQuestion();
     let html = '';
     html += `<div class="card text-center">`;
-    html += `<div class="mb-6"><div class="text-gray mb-2" style="font-size: 0.875rem;">Question ${state.questionNumber}</div>`;
+    html += `<div class="mb-6"><div class="text-gray mb-2" style="font-size: 0.875rem;">Question ${state.questionNumber} of ${state.totalQuestions}</div>`;
     html += `<h3 class="text-2xl font-bold mb-4">Which country does this flag belong to?</h3>`;
     html += `<div class="mb-6" style="display: flex; justify-content: center;"><img src="${state.currentQuestion.correct.flag}" alt="Flag" class="flag-img" /></div>`;
     html += `<div id="answerContainer">`;
@@ -213,7 +213,7 @@ function renderPopulationMCQuestion() {
     }
     populations = shuffle(populations);
     let html = `<div class="card text-center">`;
-    html += `<div class="mb-6"><div class="text-gray mb-2" style="font-size: 0.875rem;">Question ${state.questionNumber}</div>`;
+    html += `<div class="mb-6"><div class="text-gray mb-2" style="font-size: 0.875rem;">Question ${state.questionNumber} of ${state.totalQuestions}</div>`;
     html += `<h3 class="text-2xl font-bold mb-4">What is the population of <span class='text-primary'>${correct.name}</span>?</h3>`;
     html += `<div class="mb-6" style="display: flex; justify-content: center;"><img src="${correct.flag}" alt="Flag" class="flag-img" /></div>`;
     html += `<div id="answerContainer"><div class="grid md:grid-cols-2 lg:grid-cols-3">`;
@@ -834,6 +834,8 @@ function endGame() {
 
 async function initGame() {
     countries = await getCountries(settings.unOnly);
+    // Define availableCountries before using it
+    const availableCountries = getFilteredFlags();
     // Reset common state properties
     state.score = 0;
     state.streak = 0;
@@ -843,7 +845,7 @@ async function initGame() {
     state.usedQuestions = [];
 
     if (state.mode === 'extreme') {
-        state.totalQuestions = 195;
+        state.totalQuestions = availableCountries.length;
         renderExtremeQuestion();
     } else if (state.mode === 'population-mc') {
         state.totalQuestions = 10;
@@ -873,7 +875,7 @@ async function initGame() {
         state.highest3Countries = null;
         renderSizeHighest3Question();
     } else if (state.mode === 'hard') {
-        state.totalQuestions = 50;
+        state.totalQuestions = Math.min(50, availableCountries.length);
         renderHardQuestion();
     } else {
         startGame();
@@ -977,7 +979,7 @@ function renderSizeMCQuestion() {
     }
     areas = shuffle(areas);
     let html = `<div class="card text-center">`;
-    html += `<div class="mb-6"><div class="text-gray mb-2" style="font-size: 0.875rem;">Question ${state.questionNumber}</div>`;
+    html += `<div class="mb-6"><div class="text-gray mb-2" style="font-size: 0.875rem;">Question ${state.questionNumber} of ${state.totalQuestions}</div>`;
     html += `<h3 class="text-2xl font-bold mb-4">What is the land area of <span class='text-primary'>${correct.name}</span>?</h3>`;
     html += `<div class="mb-6" style="display: flex; justify-content: center;"><img src="${correct.flag}" alt="Flag" class="flag-img" /></div>`;
     html += `<div id="answerContainer"><div class="grid md:grid-cols-2 lg:grid-cols-3">`;
@@ -1222,12 +1224,12 @@ function renderHardQuestion() {
     state.currentQuestion = generateQuestion();
     let html = '';
     html += `<div class="card text-center">`;
-    html += `<div class="mb-6"><div class="text-gray mb-2" style="font-size: 0.875rem;">Question ${state.questionNumber} of 50</div>`;
+    html += `<div class="mb-6"><div class="text-gray mb-2" style="font-size: 0.875rem;">Question ${state.questionNumber} of ${(state.availableCountries ? state.availableCountries.length : state.totalQuestions)}</div>`;
     html += `<h3 class="text-2xl font-bold mb-4">Which country does this flag belong to?</h3>`;
     // Randomly choose transformations
     const transforms = [];
-    if (Math.random() < 0.5) transforms.push('mirror'); // scaleX(-1)
-    if (Math.random() < 0.5) transforms.push('flip');   // scaleY(-1)
+    if (Math.random() < 0.7) transforms.push('mirror'); // scaleX(-1)
+    if (Math.random() < 0.7) transforms.push('flip');   // scaleY(-1)
     const doColorReplace = Math.random() < 0.7;
     html += `<div class="mb-6" style="display: flex; justify-content: center;">
       <div id="flag-canvas-container" style="position:relative;display:inline-block;"></div>
@@ -1312,7 +1314,7 @@ function renderExtremeQuestion() {
     state.currentQuestion = generateQuestion();
     let html = '';
     html += `<div class=\"card text-center\">`;
-    html += `<div class=\"mb-6\"><div class=\"text-gray mb-2\" style=\"font-size: 0.875rem;\">Question ${state.questionNumber} of 195</div>`;
+    html += `<div class=\"mb-6\"><div class=\"text-gray mb-2\" style=\"font-size: 0.875rem;\">Question ${state.questionNumber} of ${(state.availableCountries ? state.availableCountries.length : state.totalQuestions)}</div>`;
     html += `<h3 class=\"text-2xl font-bold mb-4\">Which country does this flag belong to?</h3>`;
     html += `<div class=\"mb-6\" style=\"display: flex; justify-content: center; position: relative;\">`;
     html += `<div id=\"flag-canvas-container\" style=\"position:relative;display:inline-block;\">`;
@@ -1339,8 +1341,8 @@ function renderExtremeQuestion() {
         const ctx = canvas.getContext('2d');
         // Randomly choose transformations
         const transforms = [];
-        if (Math.random() < 0.5) transforms.push('mirror');
-        if (Math.random() < 0.5) transforms.push('flip');
+        if (Math.random() < 0.7) transforms.push('mirror');
+        if (Math.random() < 0.7) transforms.push('flip');
         ctx.save();
         if (transforms.includes('mirror')) {
             ctx.translate(displayWidth, 0);
@@ -1437,7 +1439,7 @@ initGame = async function() {
     countries = await getCountries(settings.unOnly);
     if (state.mode === 'extreme') {
         state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
-        state.totalQuestions = 195;
+        state.totalQuestions = availableCountries.length;
         renderExtremeQuestion();
     } else {
         return _initGameExtreme.apply(this, arguments);
@@ -1516,3 +1518,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
   
 }); 
+
+// Patch initGame to support correct round count for Hard and Extreme modes
+const _initGameOriginal = initGame;
+initGame = async function() {
+    countries = await getCountries(settings.unOnly);
+    const availableCountries = getFilteredFlags();
+    if (state.mode === 'extreme') {
+        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
+        state.availableCountries = availableCountries;
+        state.totalQuestions = Math.min(availableCountries.length, 195);
+        renderExtremeQuestion();
+    } else if (state.mode === 'hard') {
+        state.score = 0; state.streak = 0; state.bestStreak = 0; state.questionNumber = 0; state.correctAnswers = 0; state.usedQuestions = [];
+        state.availableCountries = availableCountries;
+        state.totalQuestions = Math.min(50, availableCountries.length);
+        renderHardQuestion();
+    } else {
+        return _initGameOriginal.apply(this, arguments);
+    }
+} 
